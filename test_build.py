@@ -1,4 +1,5 @@
 import json
+import re
 import tempfile
 import unittest
 from pathlib import Path
@@ -58,6 +59,35 @@ class BuildTests(unittest.TestCase):
                 build(Path(temporary) / 'release', 'http://theranosfilm.com')
             with self.assertRaises(ValueError):
                 build(Path(temporary), 'https://theranosfilm.com')
+
+    def test_viewer_discovery_metadata_matches_visible_source_linked_pages(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / 'release'
+            build(output, 'https://theranosfilm.com')
+            titles, descriptions = [], []
+            for filename in PAGES:
+                text = (output / filename).read_text()
+                titles.append(re.search(r'<title>(.*?)</title>', text).group(1))
+                descriptions.append(re.search(r'<meta name="description" content="([^"]+)"', text).group(1))
+                schemas = [json.loads(value) for value in re.findall(
+                    r'<script type="application/ld\+json">(.*?)</script>', text, re.S)]
+                self.assertEqual(schemas[0]['about']['name'], 'You Can See Everything')
+                self.assertIn('name="twitter:description"', text)
+                self.assertNotIn('SearchAction', text)
+                if 'aria-label="Breadcrumb"' in text:
+                    breadcrumb = schemas[1]['itemListElement']
+                    self.assertEqual(breadcrumb[0]['item'], 'https://theranosfilm.com/')
+                    self.assertEqual(breadcrumb[1]['position'], 2)
+                    self.assertEqual(breadcrumb[1]['item'], f'https://theranosfilm.com/{filename}')
+                    self.assertIn(breadcrumb[1]['name'], text)
+            self.assertEqual(len(titles), len(set(titles)))
+            self.assertEqual(len(descriptions), len(set(descriptions)))
+            guide = (output / 'start-here.html').read_text()
+            for question in ['Who is the interviewer?', 'What did the Theranos machine actually do?',
+                             'What does the ending prove?']:
+                self.assertIn(question, guide)
+            self.assertIn('Questions after watching You Can See Everything', guide)
+            self.assertNotIn('FAQPage', guide)  # No claim of eligibility for FAQ rich results.
 
 
 if __name__ == '__main__':

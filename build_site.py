@@ -25,7 +25,9 @@ class Metadata(HTMLParser):
     def __init__(self, source):
         super().__init__()
         self.in_title = False
+        self.in_h1 = False
         self.title = ''
+        self.heading = ''
         self.description = ''
         self.feed(source)
 
@@ -33,16 +35,22 @@ class Metadata(HTMLParser):
         attrs = dict(attrs)
         if tag == 'title':
             self.in_title = True
+        if tag == 'h1':
+            self.in_h1 = True
         if tag == 'meta' and attrs.get('name') == 'description':
             self.description = attrs.get('content', '')
 
     def handle_endtag(self, tag):
         if tag == 'title':
             self.in_title = False
+        if tag == 'h1':
+            self.in_h1 = False
 
     def handle_data(self, text):
         if self.in_title:
             self.title += text
+        if self.in_h1:
+            self.heading += text
 
 
 def build(destination, base_url, source=ROOT):
@@ -91,9 +99,18 @@ def build(destination, base_url, source=ROOT):
             'url': canonical, 'inLanguage': 'en-GB',
             'isAccessibleForFree': True
         }
+        website_id = base + '#website'
+        movie = {'@type': 'Movie', 'name': 'You Can See Everything',
+                 'url': 'https://a24films.com/films/you-can-see-everything'}
+        schema['about'] = movie
+        breadcrumbs = None
+        if filename == 'index.html':
+            schema.update({'@id': website_id, 'name': 'Theranos Film',
+                           'alternateName': 'You Can See Everything explained'})
         if filename != 'index.html':
             schema.update(headline=meta.title,
                           mainEntityOfPage=canonical,
+                          isPartOf={'@id': website_id},
                           dateModified=project['updated'],
                           author={'@type': 'Organization', 'name': 'Theranos Film project',
                                   'url': base + 'about.html'},
@@ -101,6 +118,15 @@ def build(destination, base_url, source=ROOT):
                                      'url': base},
                           license='https://creativecommons.org/licenses/by-sa/4.0/',
                           creativeWorkStatus='Editorial draft; research incomplete')
+            # Visible Home / page breadcrumb; no invented hierarchy or search action.
+            breadcrumbs = {
+                '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+                'itemListElement': [
+                    {'@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': base},
+                    {'@type': 'ListItem', 'position': 2,
+                     'name': meta.heading.strip(), 'item': canonical}
+                ]
+            } if 'aria-label="Breadcrumb"' in text else None
         tags = [
             '<meta name="robots" content="index,follow,max-image-preview:large">',
             f'<link rel="canonical" href="{html.escape(canonical, quote=True)}">',
@@ -115,8 +141,16 @@ def build(destination, base_url, source=ROOT):
             '<meta property="og:image:height" content="630">',
             '<meta property="og:image:alt" content="Theranos Film: independent, source-linked analysis of You Can See Everything">',
             '<meta name="twitter:card" content="summary_large_image">',
+            f'<meta name="twitter:title" content="{html.escape(meta.title, quote=True)}">',
+            f'<meta name="twitter:description" content="{html.escape(meta.description, quote=True)}">',
+            f'<meta name="twitter:image" content="{html.escape(base, quote=True)}social-card.png">',
+            '<meta name="twitter:image:alt" content="Theranos Film: independent analysis of You Can See Everything">',
             '<script type="application/ld+json">' + json.dumps(schema, ensure_ascii=False).replace('<', '\\u003c') + '</script>'
         ]
+        if breadcrumbs:
+            tags.append('<script type="application/ld+json">'
+                        + json.dumps(breadcrumbs, ensure_ascii=False).replace('<', '\\u003c')
+                        + '</script>')
         text = text.replace('</head>', '\n' + '\n'.join(tags) + '\n</head>', 1)
         (destination / filename).write_text(text)
     for filename in ASSETS:

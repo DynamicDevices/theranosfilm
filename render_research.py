@@ -11,12 +11,26 @@ PAGES = ('film-guide.html', 'claims.html', 'timeline.html', 'contribute.html',
          'accessibility.html', 'technology.html', 'start-here.html',
          'analysis.html', 'capabilities.html', 'money.html', 'evidence.html') + DOSSIER_PAGES
 
+# Viewer questions, not a list of repeated keywords. H1s retain the chapter's scope.
+SEARCH_TITLES = {
+    'start-here.html': 'You Can See Everything explained: facts and questions',
+    'film-guide.html': 'You Can See Everything: real footage or actors?',
+    'analysis.html': 'You Can See Everything: Holmes, Fielder and Seyfried',
+    'claims.html': 'You Can See Everything fact check: evidence and limits',
+    'technology.html': 'Theranos technology explained: Edison and miniLab',
+    'capabilities.html': 'Theranos claims: working technology or future promise?',
+    'engineer.html': 'Theranos used the wrong technology? The engineer question',
+    'financial-records.html': 'Where did Theranos money go? Records and remaining gaps',
+    'scene-companion.html': 'You Can See Everything scene analysis and evidence',
+}
+
 
 def esc(value):
     return html.escape(str(value), quote=True)
 
 
 def page(title, description, eyebrow, intro, body, active):
+    search_title = SEARCH_TITLES.get(active, title)
     nav = [('start-here.html', 'Start here'), ('film-guide.html', 'Film guide'), ('claims.html', 'Claims'),
            ('analysis.html', 'People'), ('technology.html', 'Technology'),
            ('timeline.html', 'Timeline'), ('money.html', 'Money'),
@@ -26,11 +40,13 @@ def page(title, description, eyebrow, intro, body, active):
     return (f'<!doctype html>\n<html lang="en-GB"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1">'
             f'<meta name="robots" content="noindex"><meta name="description" content="{esc(description)}">'
-            f'<title>{esc(title)} — Theranos Film</title><link rel="stylesheet" href="editorial.css">'
+            f'<title>{esc(search_title)} — Theranos Film</title><link rel="stylesheet" href="editorial.css">'
             '<script src="research-ui.js" defer></script></head><body>'
             '<a class="skip-link" href="#article">Skip to analysis</a><header>'
             '<a class="wordmark" href="index.html">theranos<span>film / independent analysis</span></a>'
             f'<nav aria-label="Main">{links}</nav></header>'
+            '<nav class="reading" aria-label="Breadcrumb"><a href="index.html">Home</a> / '
+            f'<span aria-current="page">{esc(title)}</span></nav>'
             f'<main id="article" class="reading longform"><p class="eyebrow">{esc(eyebrow)}</p>'
             f'<h1>{esc(title)}</h1><p class="standfirst">{esc(intro)}</p>'
             '<p class="editorial-note">Edited by the Theranos Film project · Briar assisted · '
