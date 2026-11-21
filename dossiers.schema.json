@@ -41,7 +41,7 @@
       "required": ["id", "label", "period", "basis", "amount_usd", "locator", "sources"],
       "properties": {
         "id": {"$ref": "#/$defs/id"}, "label": {"$ref": "#/$defs/text"}, "period": {"$ref": "#/$defs/text"},
-        "basis": {"enum": ["forecast", "reported_snapshot", "court_account"]},
+        "basis": {"enum": ["forecast", "reported_snapshot", "reported_accounts", "court_account"]},
         "amount_usd": {"type": "integer"}, "locator": {"$ref": "#/$defs/text"}, "sources": {"$ref": "#/$defs/sources"}
       }
     },

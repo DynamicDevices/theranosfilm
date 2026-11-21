@@ -80,8 +80,9 @@ def sections(data, references):
                      + '<p><a href="specialists.html#expert-patent">Review this claim chart</a> · '
                      '<a href="technology.html">Technology and validation explanation</a></p>')
         elif work['page'] == 'financial-records.html':
-            body += '<h2>Transcribed figures with their accounting status</h2><p>Amounts below are USD. Negative expense/deficit signs are retained. A reported snapshot is a company statement—not independent verification. Forecast values must not be added up as money actually spent.</p>'
+            body += '<h2>Transcribed figures with their accounting status</h2><p>Amounts below are USD. Expenses and losses are presented as negative, including positive expense magnitudes converted to negative here as noted in the locator. Company accounts and balances are not independent verification or cash payments. Forecast values must not be added up as money actually spent.</p>'
             for basis, title in [('forecast', 'Projected/proforma figures — not actual spending'),
+                                 ('reported_accounts', 'Historical/actual-labelled company accounts — not an independent audit or cash ledger'),
                                  ('reported_snapshot', 'Company-reported balance sheet — not independently audited here'),
                                  ('court_account', 'Court-described trial figures — not a reconstructed ledger')]:
                 if not any(row['basis'] == basis for row in data['financial_rows']):
@@ -95,7 +96,8 @@ def sections(data, references):
                                  f'<td>{esc(row["period"])}</td><td>{dollars(row["amount_usd"])}</td>'
                                  f'<td>{esc(row["locator"])}</td></tr>')
                 body += '</tbody></table></div>'
-            body += refs(['exhibit-15031']) + '<h2>Reproducible arithmetic checks</h2><p>Difference means printed comparison minus the first value/calculation. We do not silently correct the document. These are arithmetic observations, not findings about motive, accounting intent or investor delivery.</p>'
+                body += refs(sorted({source for row in data['financial_rows'] if row['basis'] == basis for source in row['sources']}))
+            body += '<h2>Reproducible arithmetic checks</h2><p>Difference means printed comparison minus the first value/calculation. We do not silently correct the document. These checks concern Exhibit 15031 forecasts only, not the separate historical accounts. They are arithmetic observations, not findings about motive, accounting intent or investor delivery.</p>'
             for check in financial_checks(data):
                 body += (f'<section class="evidence-card" id="{esc(check["id"])}"><h3>{esc(check["label"])}</h3>'
                          f'<dl><dt>First value / calculation</dt><dd>{dollars(check["left"])}</dd>'

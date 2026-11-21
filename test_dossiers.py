@@ -89,11 +89,36 @@ class DossierTests(unittest.TestCase):
         findings = {f['id']: f for w in self.data['workstreams'] for f in w['findings']}
         investor = findings['peterson-exhibit-1853']
         self.assertIn('Exhibit 1853', investor['text'])
-        self.assertIn('not been independently inspected', investor['text'])
-        self.assertEqual(investor['sources'], ['trial-peterson-2021'])
+        self.assertIn('exact scan identity remains unresolved', investor['text'])
+        self.assertEqual(investor['sources'], ['trial-peterson-2021', 'balwani-4859', 'holmes-cross-rdv'])
         self.assertIn('does not identify', findings['engineer-cto-role']['text'])
         self.assertIn('not independent verification', findings['companion-two-part-account']['text'])
         self.assertIn('not clearance of a universal', findings['engineer-limited-clearance']['text'].lower())
+
+    def test_historical_accounts_remain_separate_from_cash_and_forecasts(self):
+        rows = {r['id']: r for r in self.data['financial_rows']}
+        self.assertEqual(rows['aranca-opex-2014']['amount_usd'], -100031000)
+        self.assertEqual(rows['aranca-loss-2014']['amount_usd'], -106666000)
+        self.assertEqual(rows['aranca-revenue-2014']['amount_usd'], 150000)
+        for key, row in rows.items():
+            if key.startswith('aranca-') and '-cash-' not in key:
+                self.assertEqual(row['basis'], 'reported_accounts')
+                self.assertEqual(row['sources'], ['balwani-5209'])
+            if key.endswith('2015-short'):
+                self.assertIn('2 Mth-A', row['period'])
+                self.assertIn('not assumed Q1', row['period'])
+        self.assertEqual(rows['aranca-cash-2015']['basis'], 'reported_snapshot')
+        sections_by_page = sections(self.validate(self.data), lambda ids: 'REFS:' + ','.join(ids))
+        financial = sections_by_page['financial-records.html'][-1]
+        self.assertIn('REFS:balwani-5209', financial)
+        self.assertIn('not an independent audit or cash ledger', financial)
+
+    def test_device_and_company_paper_limits_have_sources(self):
+        findings = {f['id']: f for w in self.data['workstreams'] for f in w['findings']}
+        self.assertIn('not independent replication', findings['engineer-platform-architecture']['text'])
+        self.assertIn('not a Theranos-machine', findings['engineer-sampling-evidence']['text'])
+        self.assertIn('not our independent identification', findings['companion-device-counteraccount']['text'])
+        self.assertEqual(findings['grossman-existing-business']['sources'], ['trial-grossman-2021'])
 
     def test_arithmetic_differences_are_derived_not_hidden(self):
         checks = {c['id']: c for c in financial_checks(self.data)}
