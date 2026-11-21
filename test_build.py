@@ -8,6 +8,24 @@ from build_site import build, PAGES
 
 
 class BuildTests(unittest.TestCase):
+    def test_publication_upload_is_gated_and_precedes_a_separate_deploy_job(self):
+        workflow = (Path(__file__).parent / '.github/workflows/site.yml').read_text()
+        checks, publish = workflow.split('\n  publish:\n', 1)
+        dispatch_gate = "if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'"
+        binding, upload = checks.split('      # Keep upload and deployment', 1)
+        binding = binding.split('      - name: Bind upload', 1)[1]
+        self.assertIn(dispatch_gate, binding)
+        self.assertIn('test "$GITHUB_SHA" = "$EXPECTED_SHA"', binding)
+        self.assertIn('python release_manifest.py _site --expect "$EXPECTED_MANIFEST"', binding)
+        self.assertIn('actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9', upload)
+        self.assertIn(dispatch_gate, upload)
+        self.assertNotIn('actions/upload-pages-artifact@', publish)
+        self.assertEqual(workflow.count('actions/upload-pages-artifact@'), 1)
+        self.assertIn('needs: checks', publish)
+        self.assertIn(dispatch_gate, publish)
+        self.assertIn('name: github-pages', publish)
+        self.assertIn('actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346', publish)
+
     def test_publication_installs_builder_dependencies_before_build(self):
         workflow = (Path(__file__).parent / '.github/workflows/site.yml').read_text()
         publish = workflow.split('\n  publish:\n', 1)[1]
