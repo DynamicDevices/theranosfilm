@@ -22,10 +22,12 @@
     "format": "JSON",
     "schema": "contribution.schema.json",
     "guidance": "CONTRIBUTING.md",
-    "planned_transport": "GitHub pull requests",
+    "transport": "GitHub evidence issues and source-backed JSON pull requests",
     "attribution": "Public profile, PR and exact reviewed revision; not proof of real-world identity",
     "initial_status": "proposed",
-    "workflow_live": false
+    "workflow_live": true,
+    "workflow_scope": "Version-controlled proposals, exact-hash separate editorial records and correction history; no automatic acceptance or issue importer; profile labels are not authenticated real-world identities",
+    "reading_page": "contribute.html"
   },
   "licensing": {
     "original_research": "CC-BY-SA-4.0",
@@ -34,10 +36,11 @@
     "software": "No licence selected"
   },
   "publication": {
-    "stage": "release candidate; not deployed",
+    "stage": "Production hosting active; source changes require a separate approved release",
     "repository_url": "https://github.com/DynamicDevices/theranosfilm",
-    "deployment_verified": false,
-    "indexing": "noindex pending reviewed deployment",
+    "deployment_verified": true,
+    "verification_scope": "Initial HTTPS production deployment verified 21 November 2026; not a claim that every later source commit is deployed",
+    "indexing": "Release builds are crawlable; working source HTML remains noindex",
     "private_research": "Excluded; never upload the parent working directory"
   },
   "repository_governance": {

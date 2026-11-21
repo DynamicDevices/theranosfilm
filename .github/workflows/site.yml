@@ -32,6 +32,19 @@ jobs:
       - run: python -m pip install -r requirements.txt
       - run: python -m unittest discover -p 'test_*.py' -v
       - run: node --check map.js
+      - run: node --check research-ui.js
+      - run: node --test test_research_ui.cjs
+      - run: python research.py
+      - name: Read the exact PR base for append-only evidence history
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, Node 24
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: .evidence-base
+          persist-credentials: false
+      - name: Preserve existing proposal and review records
+        if: github.event_name == 'pull_request'
+        run: python research.py --check-history .evidence-base
       - run: python build_site.py --base-url https://theranosfilm.com --output _site
 
   publish:

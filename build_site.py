@@ -8,13 +8,15 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
 from xml.etree import ElementTree as ET
+from research import load
+from render_research import PAGES as RESEARCH_PAGES, render
 
 ROOT = Path(__file__).resolve().parent
 PAGES = ('index.html', 'analysis.html', 'technology.html', 'investors.html',
-         'money.html', 'sources.html', 'about.html')
+         'money.html', 'sources.html', 'about.html') + tuple(p for p in RESEARCH_PAGES if p != 'technology.html')
 ASSETS = ('style.css', 'editorial.css', 'map.js', 'LICENSE.md',
           'CONTRIBUTING.md', 'contribution.schema.json', 'project.json',
-          'research-issues.json')
+          'research-issues.json', 'research-ui.js', 'review.schema.json')
 
 
 class Metadata(HTMLParser):
@@ -55,6 +57,10 @@ def build(destination, base_url, source=ROOT):
     if destination.exists():
         raise ValueError('Use a new empty release directory; existing output is not overwritten')
     project = json.loads((source / 'project.json').read_text())
+    research, proposals, reviews = load(source)
+    for filename, expected in render(source).items():
+        if (source / filename).read_text() != expected:
+            raise ValueError(f'Research page out of date: {filename}')
     destination.mkdir(parents=True)
     urls = []
     for filename in PAGES:
@@ -92,6 +98,12 @@ def build(destination, base_url, source=ROOT):
         (destination / filename).write_text(text)
     for filename in ASSETS:
         shutil.copyfile(source / filename, destination / filename)
+    # Only validated, explicitly addressed public records are release assets.
+    public_records = ['data/research.json'] + [f'data/contributions/{key}.json' for key in proposals] + [f'data/reviews/{key}.json' for key in reviews]
+    for filename in public_records:
+        target = destination / filename
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source / filename, target)
     sitemap = ET.Element('urlset', xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for url in urls:
         entry = ET.SubElement(sitemap, 'url')

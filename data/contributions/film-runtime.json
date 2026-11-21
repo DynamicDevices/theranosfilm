@@ -1,0 +1,12 @@
+{
+  "id":"film-runtime",
+  "claim":"Film at Lincoln Center lists You Can See Everything with a runtime of 174 minutes and directors Nathan Fielder and Lance Oppenheim.",
+  "contributor":{"display_name":"Project research — Briar assisted","profile_url":"https://github.com/DynamicDevices/theranosfilm","identity_status":"self_reported"},
+  "submitted_at":"2026-11-21T12:37:34Z",
+  "sources":[{"url":"https://www.filmlinc.org/nyff2026/films/you-can-see-everything/","locator":"Director and runtime fields","supports":"The festival listing states these credits and runtime.","kind":"primary_document","rights_note":"Link and original paraphrase only; festival material retains its rights."}],
+  "limitations":"A listing does not authenticate an individual screening edition, every on-screen credit or footage provenance. Seed proposal authored for this project, not an independently accepted public contribution.",
+  "status":"proposed",
+  "license":"CC-BY-SA-4.0",
+  "license_consent":true,
+  "history":[]
+}

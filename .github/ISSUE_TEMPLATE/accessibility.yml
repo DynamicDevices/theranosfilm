@@ -1,0 +1,21 @@
+name: Access barrier
+description: Report a difficulty reading or navigating the evidence.
+title: "[Access] "
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page or entry URL
+    validations:
+      required: true
+  - type: textarea
+    id: barrier
+    attributes:
+      label: What happened and what you expected
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Browser, device and assistive technology, if relevant
+      description: Optional. Do not include private identifiers, medical information or logs containing secrets.
