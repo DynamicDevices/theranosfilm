@@ -28,6 +28,19 @@ class Page(HTMLParser):
 
 
 class SiteTests(unittest.TestCase):
+    def test_homepage_update_history_is_dated_linked_and_server_readable(self):
+        source = (ROOT / 'index.html').read_text()
+        history = source.split('<section id="updates"', 1)[1].split('</section>', 1)[0]
+        self.assertIn('aria-labelledby="updates-title"', history)
+        self.assertIn('not new findings about Theranos', history)
+        self.assertEqual(history.count('<time datetime="2026-11-21">'), 4)
+        positions = [history.index(f'/pull/{number}"') for number in (26, 25, 24, 22)]
+        self.assertEqual(positions, sorted(positions))
+        self.assertIn('/commits/main/', history)
+        self.assertIn('href="contribute.html"', history)
+        self.assertLess(source.index('class="participate"'), source.index('id="updates"'))
+        self.assertLess(source.index('id="updates"'), source.index('<footer>'))
+
     def test_map_interaction_regressions(self):
         import subprocess
         subprocess.run(['node', '--test', str(ROOT / 'test_map_interactions.cjs')],
