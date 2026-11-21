@@ -1,6 +1,43 @@
 # Current development state — 21 November 2026
 
-## Current checkpoint — analysis-depth
+## Current checkpoint — primary-source-dossiers
+
+Alex asked “work through 1 - 6” for engineer identification, a documented investor
+case, patent/product mapping, a scene companion, financial reconstruction and
+genuine specialist contributions. Selected signed development coverage:
+`config/authority-proposals/develop-primary-dossiers-20261121.json`, digest
+adceef01c3462750ca806bd7d2b9af10c3c277479e9d587ac2f2ed58d99c0e4f.
+Verify it live; it expires 22 November 2026, 12:54:17 GMT, and excludes production
+and direct outreach. No Preloop or required manual PR approval.
+
+Source baseline: merged main 6dfa642aa9a4213f57153b7fb040eb2f4304670f, whose
+fifteen-page release is live. This update adds six validated JSON-backed chapters
+and extends source references/locators. Public court Exhibit 15031 financial
+pages were visually inspected; projections and reported balances remain distinct
+from actual spending. The amended 2025 opinion supplies selected investor/trial
+accounts. Claims 1 and 9 of US8283155B2 receive a first element chart; product
+mapping and legal-title conclusions remain unverified.
+
+Unresolved: engineer identity/full passage, lawful checked scene timestamps,
+investor-specific document delivery/reliance, complete expenditure ledger and
+actual specialist contacts/reviews. Publicity, search extracts and patent
+inventor names do not close those gaps. Five specialist briefs and an unsent
+draft are prepared; nobody was contacted through this workstream.
+
+29 Python tests and four Node tests pass; the release contains 21 distinct
+indexable pages. Local build manifest:
+93dddaf50cd28ea0500b731cfed1f5e7e3e6d67249bc64701013cdab3a0fda0e.
+Browser checks passed for all six chapters at 390px without page-level horizontal
+overflow; the default viewport was restored. Financial arithmetic output was
+inspected on the page. This is not a full screen-reader or WCAG audit.
+Next: commit/push a ready own-repository PR, use authentic
+strict current-base CI for integration, and obtain separate exact-build approval
+if publishing. Do not deploy under the fifteen-page signature or claim six fully
+completed investigations. Downloaded court PDF/images stay outside the public
+allowlist and repository.
+
+## Historical checkpoint — analysis-depth (published by PR #11)
+
 
 Alex requested the next six improvements and then “lock this in and commit and
 push”. Signed development coverage is in the ignored authority proposal

@@ -2,7 +2,7 @@
 from html import escape
 
 
-def sections(research, depth, references):
+def sections(research, depth, references, dossiers=None):
     def esc(value):
         return escape(str(value), quote=True)
 
@@ -81,8 +81,17 @@ def sections(research, depth, references):
     money += '''<h2>Reconcile cash before allocating blame</h2><p>For one consistent period: opening cash + financing receipts + operating cash receipts + asset-sale proceeds − operating payments − capital payments − financing repayments = closing cash. Reconcile transfers and accounting classifications so the same item is not counted twice.</p><p>Document estimates as estimates, identify their source and avoid adding overlapping reported totals. A court's loss or restitution figure answers a different question from the company's expenditure.</p><h2>What a contribution should contain</h2><p>Bring a public filing or reliable account with its reporting period, currency, exact page and definition of the amount. Explain whether it records paid cash, an accrual, a forecast or a third party's estimate. Do not upload private banking records, personal employee data or unauthorised document copies.</p><p><a href="contribute.html?claim=cash-spending">Contribute financial evidence</a> · <a href="timeline.html">Read the investor timeline</a></p>'''
 
     evidence = '''<p>A source can prove that a statement was made without proving it true. These permanent source entries expose the inspected location and limitations. Expand citations within a claim to follow the same record here.</p><p><a href="data/research.json">Download the source/claim JSON</a> · <a href="data/depth.json">Download profiles and comparison JSON</a> · <a href="https://github.com/DynamicDevices/theranosfilm/commits/main/data/research.json">Source register revision history</a> · <a href="contribute.html">Proposal and editorial decision history</a></p>'''
+    if dossiers:
+        start += '<h2>Go deeper into the primary records</h2><ul>' + ''.join(
+            f'<li><a href="{esc(work["page"])}">{esc(work["title"])}</a> — {esc(work["status"])}</li>'
+            for work in dossiers['workstreams']) + '</ul>'
+        money += '<h2>Read the actual source tables</h2><p><a href="financial-records.html">Inspect the first financial exhibit transcription and arithmetic checks</a>. Forecasts and reported balances remain distinct from actual expenditure.</p>'
+        capability += '<p><a href="investor-case.html">Follow the Peterson investor evidence chain</a> · <a href="patent-map.html">Inspect the first granted-claim chart</a>.</p>'
     for source in research['sources']:
         uses = []
+        if dossiers:
+            uses += [f'<a href="{esc(work["page"])}">{esc(work["title"])}</a>'
+                     for work in dossiers['workstreams'] if source['id'] in work['sources']]
         for group, filename, labelkey in [('profiles', 'analysis.html', 'name'), ('representations', 'capabilities.html', 'label'), ('finances', 'money.html', 'label')]:
             uses += [f'<a href="{filename}#{esc(item["id"])}">{esc(item[labelkey])}</a>' for item in depth[group] if source['id'] in item['sources']]
         for group, filename, labelkey in [('claims', 'claims.html', 'question'), ('scenes', 'film-guide.html', 'title'), ('timeline', 'timeline.html', 'event')]:

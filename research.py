@@ -101,6 +101,49 @@ def load_depth(root, research):
     return depth
 
 
+def load_dossiers(root, research):
+    """Validate research workstreams without upgrading gaps into findings."""
+    root = Path(root)
+    data = read_json(root / 'data/dossiers.json')
+    schema = read_json(root / 'dossiers.schema.json')
+    Draft202012Validator.check_schema(schema)
+    Draft202012Validator(schema, format_checker=FormatChecker()).validate(data)
+    validate_links(data)
+    sources = {s['id'] for s in research['sources']}
+    identifiers, pages = set(), set()
+
+    def record(item):
+        if item['id'] in identifiers:
+            raise ValueError('Duplicate dossier ID')
+        identifiers.add(item['id'])
+        if any(source not in sources for source in item.get('sources', [])):
+            raise ValueError('Unknown dossier source')
+
+    for work in data['workstreams']:
+        record(work)
+        if work['page'] in pages:
+            raise ValueError('Duplicate dossier page')
+        pages.add(work['page'])
+        for finding in work['findings']:
+            record(finding)
+    expected = {'engineer.html', 'investor-case.html', 'patent-map.html',
+                'scene-companion.html', 'financial-records.html', 'specialists.html'}
+    if pages != expected:
+        raise ValueError('Incomplete research workstreams')
+    for group in ('patent_elements', 'financial_rows', 'scene_records', 'expert_briefs'):
+        for item in data[group]:
+            record(item)
+    for scene in data['scene_records']:
+        times = (scene['start_seconds'], scene['end_seconds'])
+        if scene['verification'] == 'not_authenticated':
+            if times != (None, None):
+                raise ValueError('Unverified scenes must not assert timestamps')
+        elif (not scene['edition'] or not scene['sources'] or None in times
+              or times[1] <= times[0]):
+            raise ValueError('Checked scenes need edition, sources and ordered times')
+    return data
+
+
 def load(root=ROOT):
     root = Path(root)
     research = read_json(root / 'data/research.json')
@@ -109,6 +152,7 @@ def load(root=ROOT):
         raise ValueError('Duplicate source ID')
     validate_links(research)
     load_depth(root, research)
+    load_dossiers(root, research)
     seen = set()
     for group in ('claims', 'scenes', 'timeline'):
         for item in research[group]:

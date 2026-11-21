@@ -18,7 +18,7 @@ PAGES += tuple(p for p in RESEARCH_PAGES if p not in PAGES)
 ASSETS = ('style.css', 'editorial.css', 'map.js', 'LICENSE.md',
           'CONTRIBUTING.md', 'contribution.schema.json', 'project.json',
           'research-issues.json', 'research-ui.js', 'review.schema.json', 'social-card.png',
-          'views-preview.svg')
+          'views-preview.svg', 'dossiers.schema.json')
 
 
 class Metadata(HTMLParser):
@@ -122,7 +122,7 @@ def build(destination, base_url, source=ROOT):
     for filename in ASSETS:
         shutil.copyfile(source / filename, destination / filename)
     # Only validated, explicitly addressed public records are release assets.
-    public_records = ['data/research.json', 'data/depth.json'] + [f'data/contributions/{key}.json' for key in proposals] + [f'data/reviews/{key}.json' for key in reviews]
+    public_records = ['data/research.json', 'data/depth.json', 'data/dossiers.json'] + [f'data/contributions/{key}.json' for key in proposals] + [f'data/reviews/{key}.json' for key in reviews]
     for filename in public_records:
         target = destination / filename
         target.parent.mkdir(parents=True, exist_ok=True)

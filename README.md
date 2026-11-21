@@ -57,7 +57,7 @@ Theranos technology, investor representations and money questions that need
 more than a film account to resolve. It is not affiliated with Theranos or the
 filmmakers. Editorial draft; not independently fact-checked. Briar assisted.
 
-The next source update includes:
+The reading chapters include:
 
 - [Start after watching](start-here.html): a short, spoiler-labelled reading route.
 - [People and connections](analysis.html): six attributed profiles, with roles and limits kept separate.
@@ -72,3 +72,24 @@ publication requires its own exact-build approval and verification.
 Curated profiles and comparisons are in [data/depth.json](data/depth.json).
 The [research roadmap](RESEARCH-ROADMAP.md) records what remains unfinished.
 Original research is CC BY-SA 4.0; third-party sources retain their rights.
+
+## Primary-source investigations
+
+The next research update adds six connected dossiers, backed by
+[validated public JSON](data/dossiers.json):
+
+- [Engineer investigation](engineer.html): technical hypotheses and a later-company patent lead; speaker and exchange remain unauthenticated.
+- [Peterson investor case](investor-case.html): a court-described projection and an internal financial exhibit, with the delivery/reliance gap visible.
+- [Patent claim chart](patent-map.html): selected granted elements of US8283155B2; product implementation and legal title remain unverified.
+- [Scene companion](scene-companion.html): edition-aware verification records with deliberately empty timestamps until a lawful recording is checked.
+- [Financial records](financial-records.html): visually checked figures, forecast/snapshot distinctions and reproducible arithmetic—not a complete spending ledger.
+- [Specialist briefs](specialists.html): five focused review tasks and an invitation draft. Nobody has been contacted or endorsed the work through this workstream.
+
+The source includes an amended appellate opinion and public trial Exhibit 15031.
+The latter's projected income, proforma cash flow and reported balance sheet are
+not interchangeable. The balance sheet's thousands-of-dollars units are explicitly
+converted; forecasts are never presented as actual payments.
+
+These dossiers do not complete every research question. Direct specialist
+outreach needs selected recipients and approved sends; publication of changed
+site bytes retains separate exact-build controls.
