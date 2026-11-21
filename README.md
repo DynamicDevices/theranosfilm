@@ -1,5 +1,7 @@
 # Theranos Film — Independent Evidence Analysis
 
+[![Site CI](https://github.com/DynamicDevices/theranosfilm/actions/workflows/site.yml/badge.svg?branch=main)](https://github.com/DynamicDevices/theranosfilm/actions/workflows/site.yml?query=branch%3Amain)
+
 An independent, public research project examining *You Can See Everything* and the Theranos story: what the film shows, what the underlying sources establish, and what remains unanswered.
 
 **Website:** [theranosfilm.com](https://theranosfilm.com) · **Research and corrections:** [GitHub issues](https://github.com/DynamicDevices/theranosfilm/issues)
