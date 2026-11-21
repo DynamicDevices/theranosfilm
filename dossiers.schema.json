@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["updated", "workstreams", "patent_elements", "financial_rows", "scene_records", "expert_briefs"],
+  "properties": {
+    "updated": {"type": "string", "format": "date"},
+    "workstreams": {"type": "array", "items": {"$ref": "#/$defs/workstream"}},
+    "patent_elements": {"type": "array", "items": {"$ref": "#/$defs/patent"}},
+    "financial_rows": {"type": "array", "items": {"$ref": "#/$defs/financial"}},
+    "scene_records": {"type": "array", "items": {"$ref": "#/$defs/scene"}},
+    "expert_briefs": {"type": "array", "items": {"$ref": "#/$defs/expert"}}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1},
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"},
+    "sources": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+    "finding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "label", "text", "sources"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "label": {"$ref": "#/$defs/text"}, "text": {"$ref": "#/$defs/text"}, "sources": {"$ref": "#/$defs/sources"}}
+    },
+    "workstream": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "page", "title", "status", "summary", "findings", "gaps", "sources"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "page": {"enum": ["engineer.html", "investor-case.html", "patent-map.html", "scene-companion.html", "financial-records.html", "specialists.html"]},
+        "title": {"$ref": "#/$defs/text"}, "status": {"$ref": "#/$defs/text"}, "summary": {"$ref": "#/$defs/text"},
+        "findings": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/finding"}},
+        "gaps": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/text"}}, "sources": {"$ref": "#/$defs/sources"}
+      }
+    },
+    "patent": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "claim", "element", "locator", "product_mapping", "sources"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "claim": {"$ref": "#/$defs/text"}, "element": {"$ref": "#/$defs/text"}, "locator": {"$ref": "#/$defs/text"}, "product_mapping": {"$ref": "#/$defs/text"}, "sources": {"$ref": "#/$defs/sources"}}
+    },
+    "financial": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "label", "period", "basis", "amount_usd", "locator", "sources"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "label": {"$ref": "#/$defs/text"}, "period": {"$ref": "#/$defs/text"},
+        "basis": {"enum": ["forecast", "reported_snapshot", "court_account"]},
+        "amount_usd": {"type": "integer"}, "locator": {"$ref": "#/$defs/text"}, "sources": {"$ref": "#/$defs/sources"}
+      }
+    },
+    "scene": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "title", "edition", "start_seconds", "end_seconds", "verification", "question", "sources"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "title": {"$ref": "#/$defs/text"},
+        "edition": {"type": ["string", "null"]}, "start_seconds": {"type": ["integer", "null"], "minimum": 0}, "end_seconds": {"type": ["integer", "null"], "minimum": 0},
+        "verification": {"enum": ["not_authenticated", "checked_recording"]},
+        "question": {"$ref": "#/$defs/text"}, "sources": {"$ref": "#/$defs/sources"}
+      }
+    },
+    "expert": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "specialty", "question", "deliverable", "conflicts", "status"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "specialty": {"$ref": "#/$defs/text"}, "question": {"$ref": "#/$defs/text"}, "deliverable": {"$ref": "#/$defs/text"}, "conflicts": {"$ref": "#/$defs/text"}, "status": {"const": "brief_prepared_no_contact"}}
+    }
+  }
+}

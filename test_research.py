@@ -38,7 +38,7 @@ class ResearchTests(unittest.TestCase):
     def fixture(self, folder):
         root = Path(folder)
         shutil.copytree(ROOT / 'data', root / 'data')
-        for name in ('contribution.schema.json', 'review.schema.json'):
+        for name in ('contribution.schema.json', 'review.schema.json', 'dossiers.schema.json'):
             shutil.copyfile(ROOT / name, root / name)
         return root
 

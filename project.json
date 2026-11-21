@@ -18,6 +18,15 @@
     "source_register": "evidence.html",
     "research_limits": "No authenticated timed scene audit, complete spending ledger, investor-by-investor reliance history or patent-to-product claim chart. Publicity search extracts are labelled as such."
   },
+  "primary_source_dossiers": {
+    "data": "data/dossiers.json",
+    "schema": "dossiers.schema.json",
+    "chapters": ["engineer.html", "investor-case.html", "patent-map.html", "scene-companion.html", "financial-records.html", "specialists.html"],
+    "status": "Research in progress; source implementation is not proof of publication",
+    "financial_scope": "Selected forecast and company-reported balance-sheet figures, not a complete expenditure ledger",
+    "film_scope": "Untimed leads; no authenticated film copy/transcript or speaker identification",
+    "expert_scope": "Review briefs and unsent invitation draft; no contacts, endorsements or real new review decisions"
+  },
   "views_badge": {
     "provider": "https://hits.sh/",
     "placement": "Homepage footer only",

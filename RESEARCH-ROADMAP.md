@@ -1,5 +1,25 @@
 # Six improvements and the research they still need
 
+## Primary-source follow-up — 21 November 2026
+
+Alex subsequently asked Briar to work through the engineer identification,
+investor case, patent/product mapping, scene companion, financial reconstruction
+and specialist contributions. New source dossiers are in `data/dossiers.json`,
+validated against `dossiers.schema.json` and rendered as six connected chapters.
+
+The work adds selected appellate/court-exhibit evidence, a granted-claim chart,
+classified financial figures and derived arithmetic checks. It does not identify
+the engineer, authenticate scene timestamps, prove delivery of a particular
+financial version to an investor, reconstruct all actual spending or recruit
+specialists. Five review briefs and an unsent draft are prepared; direct outreach
+needs chosen recipients and approved sends. These gaps must not be closed merely
+because a page or schema exists.
+
+The live site and the current source branch can differ. Use the actual deployment
+receipt rather than treating a generated page as published.
+
+## Earlier site structure
+
 Alex requested these six changes on 21 November 2026. The implementation adds
 readable chapters and evidence links; it does not make unresolved research
 complete. This is independent commentary, not an official film site.

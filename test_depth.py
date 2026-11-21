@@ -83,7 +83,7 @@ class DepthTests(unittest.TestCase):
             output = Path(temporary) / 'release'
             build(output, 'https://theranosfilm.com')
             self.assertEqual(len(PAGES), len(set(PAGES)))
-            self.assertEqual(len(PAGES), 15)
+            self.assertEqual(len(PAGES), 21)
             self.assertTrue((output / 'data/depth.json').is_file())
             self.assertTrue((output / 'social-card.png').read_bytes().startswith(b'\x89PNG\r\n\x1a\n'))
             for name in ('analysis.html', 'money.html', 'start-here.html', 'capabilities.html', 'evidence.html'):

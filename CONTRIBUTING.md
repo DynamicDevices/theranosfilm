@@ -64,6 +64,15 @@ contribution decisions. Add explicit source IDs and preserve the distinction
 between direct quotation, paraphrase and interpretation. Source entries must
 state partial access honestly, including search-only inspection.
 
+`data/dossiers.json` follows `dossiers.schema.json`: six source-linked research
+workstreams, patent elements, classified USD figures, edition-aware scene leads
+and prepared specialist briefs. Empty scene times must remain null until the
+record is explicitly checked with an edition, source and ordered timestamps.
+Forecast and reported-snapshot values are not actual-spending records. Do not
+upgrade prepared briefs into expert endorsements or infer a speaker's identity
+from a patent inventor's name. Curated dossier history is separate from submitted
+proposals and exact-hash editorial decisions.
+
 Regenerate derived HTML with `python3 render_research.py --write`. This writes
 only named research pages; the release builder checks their exact contents.
 

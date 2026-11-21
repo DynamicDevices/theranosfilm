@@ -1,0 +1,116 @@
+{
+  "updated": "2026-11-21",
+  "workstreams": [
+    {
+      "id": "engineer-investigation", "page": "engineer.html", "title": "Who said Theranos used the wrong technology?",
+      "status": "Speaker and full exchange not authenticated",
+      "summary": "Investigate the remembered statement without turning a plausible technical explanation into an attributed quotation.",
+      "findings": [
+        {"id": "engineer-source-boundary", "label": "What the film sources establish", "text": "The distributor describes a film following Holmes and later events over three years. KPBS reports Evans's later venture, Haemanthus. Neither inspected passage identifies the engineer or authenticates the remembered exchange. Unauthorised CAM/subtitle search results were not used as verified film evidence.", "sources": ["a24", "kpbs-evans"]},
+        {"id": "engineer-optical-lead", "label": "A separate technical lead—not speaker identification", "text": "A published Haemanthus application, US20250277701A1, names Joseph G. LaChapelle and Roger S. Cannon and concerns Raman spectroscopy. A patent record does not identify an on-screen speaker, establish their employment at a particular date or prove a working diagnostic product. This application must not be called a granted patent.", "sources": ["haemanthus-application"]},
+        {"id": "engineer-technical-test", "label": "What would make the criticism testable?", "text": "Separate sample preparation, assay chemistry, optical detection, instrument integration and business economics. Raman spectroscopy examines light scattered by molecular vibrations; translating spectra into a reliable clinical result still needs calibration, interference testing and independent clinical validation. An alternative detection method does not by itself solve all the sample or validation problems. This is a general technical explanation, not the unidentified speaker's verified argument.", "sources": []}
+      ],
+      "gaps": ["A lawful checked film passage, speaker caption or authenticated credits, edition and timestamp.", "The complete question and answer: which analyte, earlier device, alternative method and evidence were being compared?", "Dated source evidence linking any proposed speaker to this particular passage. No identity has been assigned from a patent name or visual resemblance."],
+      "sources": ["a24", "kpbs-evans", "haemanthus-application"]
+    },
+    {
+      "id": "peterson-investor-case", "page": "investor-case.html", "title": "An investor case study: Lisa Peterson's evidence",
+      "status": "Primary-record case study; delivery and reliance history incomplete",
+      "summary": "Follow a court-described representation to a surviving financial exhibit, while keeping the missing connection between those records visible.",
+      "findings": [
+        {"id": "peterson-court-account", "label": "What the appellate opinion records", "text": "The amended opinion places Peterson among 2014 C-2 investors and recounts her testimony that financial documents received from Holmes and Balwani projected $230 million profit by the end of 2015. This is the court's account of trial evidence, not her complete transcript or investment file.", "sources": ["appeal-2025"]},
+        {"id": "peterson-document-match", "label": "A matching number is not proof of delivery", "text": "Exhibit 15031 includes a July 2014 internal email and projections containing $230 million 2015 net income. This numerical match does not establish that this exact version was delivered to Peterson, when she received it, its accompanying qualifications or the decisions it influenced.", "sources": ["exhibit-15031"]},
+        {"id": "peterson-reliance-test", "label": "What this already clarifies", "text": "A financial forecast is explicitly about a future period. A claim that a proprietary instrument already performs a test is about present capability. An investment pitch can contain both, and uncertainty in the forecast does not automatically qualify the separate technical representation. Establish actual delivery and reliance before explaining why this investor invested.", "sources": ["exhibit"]}
+      ],
+      "gaps": ["Peterson's full testimony and the exact admitted investor-facing exhibit versions.", "Dated delivery emails, meeting notes, demonstrations and oral qualifications.", "The actual investing entity, payment records, decision process and information relied on; do not infer motives or identify a family solely from a secondary shorthand.", "A checked film passage addressing this investor or these representations. The film is not a substitute for the transaction file."],
+      "sources": ["appeal-2025", "exhibit-15031", "exhibit"]
+    },
+    {
+      "id": "patent-product-map", "page": "patent-map.html", "title": "What did Theranos patent—and what did it prove?",
+      "status": "Granted-claim reading; product implementation and legal title not verified",
+      "summary": "A first claim-by-claim map of US8283155B2 distinguishes protected architecture from evidence of clinical performance.",
+      "findings": [
+        {"id": "patent-scope", "label": "The granted claim's centre", "text": "Claim 1 concerns a two-way communication system: a reader, an external protocol source and an identified test device with a sample collector and assay reactants. Dependent claim 9 adds collection below about 500 microlitres. That limit is not itself a claim that all tests run from one drop.", "sources": ["patent"]},
+        {"id": "patent-title-boundary", "label": "Ownership and dates need their own evidence", "text": "The record lists Theranos as original assignee and 9 October 2012 as the grant publication date. Later database ownership labels do not establish legal title at every investment date. Check the assignment instruments and prosecution history before making an ownership, validity or freedom-to-operate conclusion.", "sources": ["patent"]},
+        {"id": "patent-proof-boundary", "label": "Architecture is not validation", "text": "A claim can define an invention without proving that a commercial device implemented it reliably, met a clinical acceptance criterion, delivered a broad menu or justified an investor representation. Product mapping below is deliberately unverified rather than inferred from a similar diagram.", "sources": []}
+      ],
+      "gaps": ["A dated product configuration, schematics, software/protocol records and assay validation for each proposed mapping.", "Assignment instruments and patent prosecution history, not merely a current database label.", "A specialist's reading of claim scope, dependencies and relevant alternatives. This is not legal advice or an infringement opinion."],
+      "sources": ["patent", "exhibit"]
+    },
+    {
+      "id": "film-companion", "page": "scene-companion.html", "title": "A film companion you can verify scene by scene",
+      "status": "Untimed research leads; not a timestamped scene audit",
+      "summary": "Prepare an edition-aware companion without inventing timestamps or treating an unauthenticated transcript as the film.",
+      "findings": [
+        {"id": "companion-edition", "label": "Runtime does not identify a scene", "text": "IDFA lists 174 minutes. That programme runtime does not establish the edition, distributor cards, start convention or location of any remembered passage in the Liverpool screening. Record those details before aligning different viewers' notes.", "sources": ["idfa"]},
+        {"id": "companion-performance-method", "label": "Separate recording and performance at passage level", "text": "The participant interview supports a performance element. A usable scene record must identify the visible performer, voice, script source, archive inserts and reconstruction notices separately. It must not assume a perfectly clean division into two halves.", "sources": ["participants"]},
+        {"id": "companion-status", "label": "What has actually been done", "text": "The records below are explicit verification tasks with empty time fields. No lawful viewing copy or authenticated transcript has been inspected for this workstream, and no timestamp is represented as checked. A contributor can supply a short necessary description and locator without uploading the film.", "sources": []}
+      ],
+      "gaps": ["A lawfully accessible film edition or authenticated transcript/continuity script.", "Checked start/end times, surrounding dialogue and any performance disclosure for each passage.", "Independent checking before a proposed timestamp becomes an editorial finding."],
+      "sources": ["idfa", "participants", "a24"]
+    },
+    {
+      "id": "financial-reconstruction", "page": "financial-records.html", "title": "Theranos financial records: forecasts are not spending",
+      "status": "Selected primary records transcribed; no complete expenditure ledger",
+      "summary": "Inspect reported balances and forecasts separately, then test arithmetic before drawing conclusions about where money went.",
+      "findings": [
+        {"id": "finance-source-type", "label": "Three different statements in one exhibit", "text": "Exhibit 15031 contains projected income, proforma cash flow and a company-reported 14 July 2014 balance sheet. The balance sheet uses thousands of dollars; the forecast tables use dollars. A reported balance is not independently audited cash, and neither a deficit nor a forecast expense is a paid-cash ledger.", "sources": ["exhibit-15031"]},
+        {"id": "finance-court-counterweight", "label": "A court-described counterweight", "text": "The opinion recounts controller testimony of $92 million net loss in 2013 and a November 2013 internal account of up to $2 million weekly spending. Those figures are not a period-wide, independently reconstructed cash ledger; do not multiply a weekly rate into an invented total.", "sources": ["appeal-2025"]},
+        {"id": "finance-arithmetic-limit", "label": "Arithmetic discrepancies are questions, not intent findings", "text": "The reproduced forecasts contain differences between labelled net-income figures and between displayed closing balances and arithmetic. The checks below use the printed values without silently repairing them. Underlying worksheets, definitions and rounding policies are needed before explaining the differences.", "sources": ["exhibit-15031"]}
+      ],
+      "gaps": ["Actual period-matched income statements, cash ledgers, bank reconciliations and expense detail.", "The source workbook/version and an explanation of the forecast's labels and rounding.", "A reconciliation of trial-described figures with company statements and their accounting periods.", "Actual payroll, supplier, capital and legal-cost records; projections cannot fill those gaps."],
+      "sources": ["exhibit-15031", "appeal-2025"]
+    },
+    {
+      "id": "specialist-review", "page": "specialists.html", "title": "Help check the science, patents, money and film",
+      "status": "Review briefs prepared; no invitations sent or expert reviews recorded",
+      "summary": "Make it easy for specialists to challenge one precise claim while keeping expertise, attribution and editorial decisions distinct.",
+      "findings": [
+        {"id": "specialist-no-endorsement", "label": "No invented expert panel", "text": "No specialist has been contacted or enrolled through this workstream. Prepared briefs are not endorsements, accepted contributions or independently reviewed findings. Existing records contain one seed proposal and no real independent editorial decisions.", "sources": []},
+        {"id": "specialist-review-route", "label": "A genuine review needs a traceable record", "text": "Use an evidence issue or JSON pull request. Give a specific correction, exact source location, limitations, relevant experience and conflicts. A separate editorial decision must bind the exact proposal hash and actual GitHub discussion/revision. Labels and credentials are not independently authenticated identities.", "sources": []},
+        {"id": "specialist-outreach-boundary", "label": "Direct invitations remain a separate step", "text": "An invitation draft appears below. Alex must choose recipients and approve the applicable send before anyone is contacted. A public self-service call is not evidence that an invitation was sent or accepted. Do not submit confidential laboratory, employer, patient or client material.", "sources": []}
+      ],
+      "gaps": ["Alex's choice of recipients and approved contact route before direct outreach.", "Real source-backed contributions and separate editorial decisions.", "Permission before identifying a person as a reviewer, displaying an affiliation or implying an endorsement."],
+      "sources": []
+    }
+  ],
+  "patent_elements": [
+    {"id":"patent-reader","claim":"1(a)","element":"Programmable reader linked to a communications assembly.","locator":"US8283155B2, claim 1(a)","product_mapping":"Unverified: needs the dated reader design and software record.","sources":["patent"]},
+    {"id":"patent-protocol","claim":"1(b)","element":"External device transmits a protocol.","locator":"Claim 1(b)","product_mapping":"Unverified: identify the external device and actual protocol exchange.","sources":["patent"]},
+    {"id":"patent-cartridge","claim":"1(c)(i–ii)","element":"Inserted test device collects fluid and contains assay reactants.","locator":"Claim 1(c)(i–ii)","product_mapping":"Unverified: identify cartridge, sample path and reagents—not just a similar enclosure.","sources":["patent"]},
+    {"id":"patent-identifier","claim":"1(c)(iii)","element":"Device identifier triggers selection/transmission of the protocol.","locator":"Claim 1(c)(iii)","product_mapping":"Unverified: needs identifier behaviour and protocol-selection evidence.","sources":["patent"]},
+    {"id":"patent-signal","claim":"1, final clause","element":"Protocol governs reaction/detection; measured signal returns externally.","locator":"Claim 1, final wherein clause","product_mapping":"Unverified: signal communication is not proof of accuracy, throughput or a clinical menu.","sources":["patent"]},
+    {"id":"patent-volume","claim":"9, dependent on 1","element":"Collection below about 500 microlitres.","locator":"Claim 9","product_mapping":"Unverified: this collection limit does not establish usable volume for every advertised assay.","sources":["patent"]}
+  ],
+  "financial_rows": [
+    {"id":"forecast-revenue-2014","label":"Total revenue","period":"2014","basis":"forecast","amount_usd":140000000,"locator":"Exhibit 15031, PDF p2 / HOLMES0019226","sources":["exhibit-15031"]},
+    {"id":"forecast-revenue-2015","label":"Total revenue","period":"2015","basis":"forecast","amount_usd":990000000,"locator":"PDF p2 / HOLMES0019226","sources":["exhibit-15031"]},
+    {"id":"forecast-rd-2014","label":"Research and development expense","period":"2014","basis":"forecast","amount_usd":-57000000,"locator":"PDF p2 / HOLMES0019226","sources":["exhibit-15031"]},
+    {"id":"forecast-rd-2015","label":"Research and development expense","period":"2015","basis":"forecast","amount_usd":-127000000,"locator":"PDF p2 / HOLMES0019226","sources":["exhibit-15031"]},
+    {"id":"forecast-opex-2015","label":"Total operating expenses","period":"2015","basis":"forecast","amount_usd":-399000000,"locator":"PDF p2 / HOLMES0019226","sources":["exhibit-15031"]},
+    {"id":"income-net-2015","label":"Income-statement net income","period":"2015","basis":"forecast","amount_usd":230000000,"locator":"PDF p2 / HOLMES0019226","sources":["exhibit-15031"]},
+    {"id":"cash-net-2015","label":"Cash-flow row labelled net income","period":"2015","basis":"forecast","amount_usd":237000000,"locator":"PDF p3 / HOLMES0019227","sources":["exhibit-15031"]},
+    {"id":"cash-open-2014","label":"Beginning cash balance","period":"2014","basis":"forecast","amount_usd":108900000,"locator":"PDF p3 / HOLMES0019227","sources":["exhibit-15031"]},
+    {"id":"cash-movement-2014","label":"Total cash flow in/(out)","period":"2014","basis":"forecast","amount_usd":88469000,"locator":"PDF p3 / HOLMES0019227","sources":["exhibit-15031"]},
+    {"id":"cash-close-2014","label":"Ending cash balance","period":"2014","basis":"forecast","amount_usd":198000000,"locator":"PDF p3 / HOLMES0019227","sources":["exhibit-15031"]},
+    {"id":"cash-open-2015","label":"Beginning cash balance","period":"2015","basis":"forecast","amount_usd":198000000,"locator":"PDF p3 / HOLMES0019227","sources":["exhibit-15031"]},
+    {"id":"cash-movement-2015","label":"Total cash flow in/(out)","period":"2015","basis":"forecast","amount_usd":214200000,"locator":"PDF p3 / HOLMES0019227","sources":["exhibit-15031"]},
+    {"id":"cash-close-2015","label":"Ending cash balance","period":"2015","basis":"forecast","amount_usd":412000000,"locator":"PDF p3 / HOLMES0019227","sources":["exhibit-15031"]},
+    {"id":"snapshot-cash","label":"Cash and investment","period":"14 July 2014","basis":"reported_snapshot","amount_usd":162713000,"locator":"PDF p4 / HOLMES0019228; printed $'000 converted to USD","sources":["exhibit-15031"]},
+    {"id":"snapshot-plant","label":"Plant and equipment","period":"14 July 2014","basis":"reported_snapshot","amount_usd":21534000,"locator":"PDF p4 / HOLMES0019228; $'000 converted","sources":["exhibit-15031"]},
+    {"id":"snapshot-deficit","label":"Accumulated deficit","period":"14 July 2014","basis":"reported_snapshot","amount_usd":-305787000,"locator":"PDF p4 / HOLMES0019228; $'000 converted; not cash expenditure","sources":["exhibit-15031"]}
+  ],
+  "scene_records": [
+    {"id":"companion-documentary","title":"Domestic documentary access","edition":null,"start_seconds":null,"end_seconds":null,"verification":"not_authenticated","question":"Who is visible and speaking? Is any archive, reconstructed speech or production disclosure present?","sources":["a24","idfa"]},
+    {"id":"companion-performance","title":"Seyfried performance material","edition":null,"start_seconds":null,"end_seconds":null,"verification":"not_authenticated","question":"Where does performance begin and end, and what is the script or speech source?","sources":["participants"]},
+    {"id":"companion-engineer","title":"Remembered wrong-technology exchange","edition":null,"start_seconds":null,"end_seconds":null,"verification":"not_authenticated","question":"Authenticate speaker, full question/answer and the specific device or method being criticised.","sources":[]},
+    {"id":"companion-capability","title":"Present capability versus future possibility","edition":null,"start_seconds":null,"end_seconds":null,"verification":"not_authenticated","question":"Preserve tense, date, qualifiers and surrounding question. Compare with the investor case and contemporary documents.","sources":[]}
+  ],
+  "expert_briefs": [
+    {"id":"expert-lab","specialty":"Clinical laboratory science","question":"Which assay/sample-specific evidence would establish or refute a claimed testing capability?","deliverable":"One sourced correction or validation critique, naming device, analyte, sample and date.","conflicts":"Disclose relevant employment, consulting, litigation or commercial interests; no patient data.","status":"brief_prepared_no_contact"},
+    {"id":"expert-engineering","specialty":"Instrument engineering and optical spectroscopy","question":"Does the proposed detection approach address the specific failure mode, or merely change the measurement principle?","deliverable":"A diagram or short sourced comparison separating collection, preparation, optics and inference.","conflicts":"Disclose patent, employer and product interests; do not reveal trade secrets.","status":"brief_prepared_no_contact"},
+    {"id":"expert-patent","specialty":"Patent interpretation","question":"Is our reading of claims 1 and 9 accurate, and which documents would establish product mapping and relevant ownership?","deliverable":"A source-located claim-chart correction with legal and technical limits.","conflicts":"Disclose representation or financial interests; no client-confidential material.","status":"brief_prepared_no_contact"},
+    {"id":"expert-accounting","specialty":"Forensic accounting","question":"Which figures are comparable, and what can the forecast differences establish without a ledger?","deliverable":"A checked arithmetic or classification correction tied to exact exhibit pages.","conflicts":"Disclose company, investor or litigation work; no private bank or employee records.","status":"brief_prepared_no_contact"},
+    {"id":"expert-film","specialty":"Documentary editing and film research","question":"How should recording, performance and reconstructed speech be coded for this edition?","deliverable":"A lawful scene locator and short contextual correction, not an uploaded film copy.","conflicts":"Disclose production, distribution or promotional involvement.","status":"brief_prepared_no_contact"}
+  ]
+}

@@ -3,12 +3,13 @@ import html
 import json
 from datetime import datetime
 
-from research import ROOT, digest, load, load_depth
+from research import ROOT, digest, load, load_depth, load_dossiers
 from render_depth import sections
+from render_dossiers import PAGES as DOSSIER_PAGES, sections as dossier_sections
 
 PAGES = ('film-guide.html', 'claims.html', 'timeline.html', 'contribute.html',
          'accessibility.html', 'technology.html', 'start-here.html',
-         'analysis.html', 'capabilities.html', 'money.html', 'evidence.html')
+         'analysis.html', 'capabilities.html', 'money.html', 'evidence.html') + DOSSIER_PAGES
 
 
 def esc(value):
@@ -50,6 +51,7 @@ def page(title, description, eyebrow, intro, body, active):
 def render(root=ROOT):
     research, proposals, reviews = load(root)
     depth = load_depth(root, research)
+    dossiers = load_dossiers(root, research)
     sources = {s['id']: s for s in research['sources']}
 
     def references(ids):
@@ -245,6 +247,9 @@ def render(root=ROOT):
 <h2>What is not claimed</h2><p>This is not a WCAG certification or a substitute for testing with disabled readers. Automated checks cannot establish screen-reader usability, clear language or a fully accessible WebGL map. Report a barrier with the page, device/browser, assistive technology if relevant and what you expected—without sharing private information.</p>
 <p><a href="https://github.com/DynamicDevices/theranosfilm/issues/new?template=accessibility.yml">Report an access barrier</a> · <a href="film-guide.html">Read the film guide</a> · <a href="claims.html">Read the evidence without the map</a></p>'''
 
+    film += '<h2>Continue the scene investigation</h2><p><a href="scene-companion.html">Use the edition-aware scene companion</a> · <a href="engineer.html">Investigate the remembered wrong-technology exchange</a>.</p>'
+    technology += '<h2>Inspect a granted claim</h2><p><a href="patent-map.html">Read the first patent claim chart</a> and keep legal scope separate from product validation.</p>'
+    timeline += '<h2>Follow one investor evidence chain</h2><p><a href="investor-case.html">Read the Peterson case study</a>: court-described testimony, an internal financial version and the delivery link still missing.</p>'
     definitions = {
         'film-guide.html': ('What is real footage in You Can See Everything?', 'A source-backed guide to documentary access, performance, uncertain scene boundaries and the evidence needed to distinguish them.', 'Film / recording and performance', 'Separate who is speaking, what was recorded, what was performed and what we still need to verify.', film),
         'claims.html': ('Claims, evidence and qualifications', 'Compare Theranos and film questions with original documents, qualifications, provisional analysis and specific gaps.', 'Evidence / claim by claim', 'Follow a claim to its source—and keep its limits in view.', claims),
@@ -253,7 +258,8 @@ def render(root=ROOT):
         'contribute.html': ('Contribute evidence. Keep the history.', 'Prepare a source-backed JSON contribution, inspect attribution and exact revision hashes, and follow separate editorial decisions and corrections.', 'Participation / sources and corrections', 'Make one claim precise, show its source, explain its limits—and leave room for correction.', contributions),
         'accessibility.html': ('Read, navigate and question the evidence', 'Accessible reading alternatives, keyboard navigation, optional search, testing scope and an access-barrier reporting route.', 'Access / readable by design', 'The evidence should remain available without graphics, scripts or a particular way of navigating.', accessibility)
     }
-    definitions.update(sections(research, depth, references))
+    definitions.update(sections(research, depth, references, dossiers))
+    definitions.update(dossier_sections(dossiers, references))
     return {name: page(*parts, active=name) for name, parts in definitions.items()}
 
 
