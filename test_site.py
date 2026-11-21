@@ -36,6 +36,9 @@ class SiteTests(unittest.TestCase):
         self.assertNotRegex(video_tag, r'(?<![-\w])src=')
         self.assertIn('id="hero-video-toggle"', source)
         self.assertIn('preload="none"', source)
+        css = (ROOT / 'editorial.css').read_text()
+        self.assertIn('border-radius: 50%', css)
+        self.assertIn('border-radius: inherit', css)
         subprocess.run(['node', '--check', str(ROOT / 'hero-motion.js')], check=True, capture_output=True)
         subprocess.run(['node', '--test', str(ROOT / 'test_hero_motion.cjs')], check=True, capture_output=True)
 

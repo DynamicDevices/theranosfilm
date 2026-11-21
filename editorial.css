@@ -24,17 +24,18 @@ blockquote { border-left: 3px solid #ef3340; padding-left: 1rem; margin-inline: 
 
 /* Give a first-time viewer an explanation before asking them to choose a dossier. */
 .intro.has-motion::after { display: none; }
-.hero-motion { position: absolute; inset: 0 0 0 58%; z-index: -1; pointer-events: none; opacity: .78; mask-image: linear-gradient(to right, transparent, #000 32%); }
-.hero-motion img, .hero-motion video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; }
+.hero-motion { position: absolute; width: 48vw; aspect-ratio: 1; right: -6vw; top: 50%; transform: translateY(-50%); z-index: -1; pointer-events: none; border: 1px solid #ad142b42; border-radius: 50%; box-shadow: 0 0 0 55px #ad142b07, 0 0 0 110px #ad142b05, 0 0 0 165px #ad142b03; }
+.hero-motion img, .hero-motion video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; border-radius: inherit; }
 .hero-motion [hidden] { display: none; }
 .hero-toggle { position: absolute; right: 6vw; bottom: 24px; z-index: 1; min-height: 44px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 3px; color: var(--ink); background: #f4f0e9; font: inherit; font-size: 13px; cursor: pointer; }
 .hero-toggle:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+.map-help, .legend { background: var(--paper); color: var(--muted); padding: 6px 8px; }
 @media (min-width: 901px) {
   .intro.has-motion h1 { max-width: 58%; }
   .intro.has-motion .standfirst, .intro.has-motion .entry-links, .intro.has-motion .intro-note { max-width: 52%; }
 }
 @media (max-width: 900px) {
-  .hero-motion { position: relative; inset: auto; z-index: 0; aspect-ratio: 16 / 9; margin-top: 24px; opacity: 1; mask-image: none; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+  .hero-motion { position: relative; inset: auto; z-index: 0; width: min(100%, 440px); aspect-ratio: 1; transform: none; margin: 38px auto 28px; box-shadow: 0 0 0 18px #ad142b07, 0 0 0 36px #ad142b05, 0 0 0 54px #ad142b03; }
   .hero-toggle { position: static; margin-top: 10px; }
 }
 @media print { .hero-motion, .hero-toggle { display: none; } }
