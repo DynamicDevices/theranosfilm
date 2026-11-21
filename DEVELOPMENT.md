@@ -19,17 +19,29 @@ audit. No new independent fact-check decisions are claimed. See
 RESEARCH-ROADMAP.md for the specific remaining gaps. This source update is not
 yet claimed deployed. No Preloop, new manual PR gate, DNS or HTTPS changes.
 
-Validation: 20 Python tests and four Node tests pass. The allowlisted build has
+Validation: 22 Python tests pass; the unchanged four Node tests passed for the
+preceding source update. The allowlisted build has
 15 distinct indexable pages; build manifest is
-a1f0e04c9cdf7d3dbf72187d758320a2789a8ebb1aa87252de639e212097b65b.
+9af0c8a3eacc77fd36e5c88d165e5bd4dad7b63e82e1c80a4ec6dbf3556eb569.
 Browser checks covered all five new/replaced chapters at 390px without page-level
 horizontal overflow; default viewport restored. Existing keyboard, local JSON
 helper and contribution checks remain covered by earlier tests; this is not a
 full WCAG or new independent factual audit.
 
-Next: sign the source commit, push analysis-depth and use the ready PR/strict-CI
-route. Native CI/PR integration remains separate from exact-build production
-approval. The earlier release approval does not authorize this new manifest.
+The six-chapter update was committed and pushed as 2558dea on analysis-depth.
+Alex then requested a footer views badge and selected an external provider.
+Standalone signed badge development coverage is in
+`config/authority-proposals/develop-badge-20261121.json`; it retains the same
+expiry and excludes merge/deployment. It covers the homepage-only Hits.sh image,
+privacy disclosure, local-only inactive placeholder, tests and commit/push.
+The counter endpoint was not probed or loaded during local tests. Its production
+availability and a live count are not claimed. The badge has a no-referrer policy;
+the provider receives IP/request metadata. Counts are approximate badge loads,
+not unique readers. The old no-analytics statement has been replaced.
+
+Next: commit/push the badge source. Native CI/PR integration remains separate
+from exact-build production approval. The earlier release approval does not
+authorize this new manifest. No claim is made that either update is deployed.
 
 ## Historical checkpoint — superseded by the current state above
 

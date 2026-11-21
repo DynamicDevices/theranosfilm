@@ -17,7 +17,8 @@ PAGES = ('index.html', 'analysis.html', 'technology.html', 'investors.html',
 PAGES += tuple(p for p in RESEARCH_PAGES if p not in PAGES)
 ASSETS = ('style.css', 'editorial.css', 'map.js', 'LICENSE.md',
           'CONTRIBUTING.md', 'contribution.schema.json', 'project.json',
-          'research-issues.json', 'research-ui.js', 'review.schema.json', 'social-card.png')
+          'research-issues.json', 'research-ui.js', 'review.schema.json', 'social-card.png',
+          'views-preview.svg')
 
 
 class Metadata(HTMLParser):
@@ -66,6 +67,15 @@ def build(destination, base_url, source=ROOT):
     urls = []
     for filename in PAGES:
         text = (source / filename).read_text()
+        if filename == 'index.html':
+            marker = r'<!-- views-counter:start -->.*?<!-- views-counter:end -->'
+            if len(re.findall(marker, text, flags=re.S)) != 1:
+                raise ValueError('Homepage must contain exactly one views-counter placeholder')
+            if base == 'https://theranosfilm.com/':
+                badge = ('<img src="https://hits.sh/theranosfilm.com.svg?label=page%20views&amp;color=ad142b&amp;labelColor=242126" '
+                         'alt="Approximate homepage badge loads, counted by Hits.sh" '
+                         'height="24" decoding="async" referrerpolicy="no-referrer">')
+                text = re.sub(marker, badge, text, flags=re.S)
         meta = Metadata(text)
         if not meta.title.strip() or not meta.description.strip():
             raise ValueError(f'Missing title/description: {filename}')

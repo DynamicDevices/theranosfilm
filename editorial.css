@@ -16,3 +16,7 @@ p,li,dd{line-height:1.75}li{margin:.6em 0}a:hover{text-decoration-thickness:2px}
 .editorial-note { font-size: .92rem; line-height: 1.6; padding: 1rem 0; border-block: 1px solid #666; }
 .reading-route li { margin-block: 1rem; }
 blockquote { border-left: 3px solid #ef3340; padding-left: 1rem; margin-inline: 0; }
+.views-badge { margin-top: 1.5rem; }
+.views-badge > a { display: inline-flex; align-items: center; min-height: 44px; }
+.views-badge img { display: block; max-width: 100%; }
+.views-badge small { display: block; line-height: 1.6; }

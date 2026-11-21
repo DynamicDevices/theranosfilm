@@ -18,6 +18,14 @@
     "source_register": "evidence.html",
     "research_limits": "No authenticated timed scene audit, complete spending ledger, investor-by-investor reliance history or patent-to-product claim chart. Publicity search extracts are labelled as such."
   },
+  "views_badge": {
+    "provider": "https://hits.sh/",
+    "placement": "Homepage footer only",
+    "metric": "Approximate badge-image loads; not unique readers or audited traffic",
+    "privacy": "External image exposes IP address and request metadata to provider; no-referrer policy; no tracking scripts or visitor identifiers added",
+    "source_preview": "Inactive local SVG placeholder",
+    "release_activation": "Release builder for https://theranosfilm.com only; not a claim of deployment"
+  },
   "planned_issues": "research-issues.json",
   "interface": {
     "primary": "WebGL evidence map",

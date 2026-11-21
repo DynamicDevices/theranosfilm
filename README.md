@@ -38,7 +38,7 @@ Do not submit private medical or contact information, unsupported allegations or
 
 ## Publication and access
 
-The site is static, with readable chapters, accessible relationship links and no advertising, analytics or remote fonts. Releases include canonical URLs, a sitemap and structured metadata to help readers and search engines find the analysis; inclusion or ranking is not guaranteed.
+The site is static, with readable chapters, accessible relationship links and no advertising, tracking scripts or remote fonts. The next release adds a Hits.sh counter image to the homepage footer: its provider receives visitors' IP addresses and request metadata. The figure represents approximate badge loads, not unique readers or an audited audience. Local source previews use an inactive placeholder. See [counter and privacy](about.html#views-privacy). Releases include canonical URLs, a sitemap and structured metadata to help readers and search engines find the analysis; inclusion or ranking is not guaranteed.
 
 Changes use pull requests and genuine current-base CI, without required manual PR approval. Preloop is paused for this project at Alex's request. Publication separately checks the approved main commit and exact build manifest. See [Actions](https://github.com/DynamicDevices/theranosfilm/actions) for the actual workflow state; a passing check is not proof that the public domain is live.
 
