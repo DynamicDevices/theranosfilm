@@ -1,5 +1,30 @@
 # Current development state — 21 November 2026
 
+## Latest direction and current publication work
+
+Alex: “lock out preloop for now - we need to make progress - we will continue
+to pursue this work without preloop”. Stop Preloop calls/admission/reviews for
+this project. Do not disable the shared DD flow or affect its other consumers.
+The attempted admission failed with HTTP 422; readback retained revision 13 and
+41 admissions. A project record was created, but this is not flow admission.
+
+Root cause identified from the supported validator: an event-driven native
+review needs BOTH its trigger-project allowlist and a matching read-only clone
+mapping. The attempted change included only the allowlist. No retry of that
+mutation was made; a deliberately stale If-Match diagnostic returned 412.
+
+GitHub main now has an empty signed base, e8b727ccecfb851d495b3456b24d41837d12cca4,
+pushed under unchanged protections. Source implementation is not on main.
+Domain control is verified through authenticated Cloudflare UI; zone has zero
+records. SEO release builder and tests are implemented locally. Six site tests
+pass. A replacement exact-artifact manual release agreement is required because
+the previous production agreement requires Preloop before publication.
+
+Proposed route: source PR with real site CI; preserve main review protection;
+publish only the separately approved built artifact from gh-pages through
+GitHub Pages. No source merge or protection bypass. DNS only after the domain
+is bound to the claimed hosting. Historical notes below describe earlier state.
+
 Alex selected theranosfilm.com and requested a public DD repository, Theranos-
 inspired branding, connection/evidence-first WebGL UX, accessible and balanced
 film analysis, tracked JSON contributions, CC licensing, metadata, main

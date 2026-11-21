@@ -1,0 +1,70 @@
+name: Site checks and approved publication
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      expected_sha:
+        description: Exact reviewed main commit approved for publication
+        required: true
+        type: string
+      expected_manifest_sha256:
+        description: Approved deterministic release manifest SHA256
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: site-checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, Node 24
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0, Node 24
+        with:
+          python-version: '3.14'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest discover -p 'test_*.py' -v
+      - run: node --check map.js
+      - run: python build_site.py --base-url https://theranosfilm.com --output _site
+
+  publish:
+    name: publish-approved-release
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    needs: checks
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14'
+      - name: Bind deployment to the approved commit
+        env:
+          EXPECTED_SHA: ${{ inputs.expected_sha }}
+        run: test "$GITHUB_SHA" = "$EXPECTED_SHA"
+      - run: python build_site.py --base-url https://theranosfilm.com --output _site
+      - name: Verify approved release manifest
+        env:
+          EXPECTED_MANIFEST: ${{ inputs.expected_manifest_sha256 }}
+        run: python release_manifest.py _site --expect "$EXPECTED_MANIFEST"
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0, composite; upload-artifact Node 24
+        with:
+          path: _site
+      - name: Deploy approved static artifact
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1, Node 24

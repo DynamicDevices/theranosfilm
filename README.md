@@ -1,5 +1,10 @@
 # Local interface prototype
 
+Current direction: Preloop is paused for this project at Alex's explicit request.
+Do not trigger it or change shared flows. `DEVELOPMENT.md` records the current
+source/release state and supersedes the earlier rollout notes below. Domain
+control is verified. Production publication is not yet complete.
+
 `project.json` records the purpose, research scope, evidence standards, UX,
 contribution tracking, licence and actual publication status. It describes
 main-branch protections and their verification status. The public repository is

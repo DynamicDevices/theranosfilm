@@ -3,7 +3,8 @@
   "name": "Theranos Film — Independent Evidence Analysis",
   "updated": "2026-11-21",
   "selected_domain": "theranosfilm.com",
-  "domain_control_verified": false,
+  "domain_control_verified": true,
+  "domain_control_evidence": "Authenticated Cloudflare registration and domain-management view plus registry/DNS checks, 21 November 2026; no DNS write performed by this verification",
   "purpose": "Examine You Can See Everything by connecting specific claims with sources, qualifications, alternative explanations and corrections.",
   "research_topics": ["Film portrayal and recording context", "People, relationships and chronology", "Technology, platform claims and clinical validation", "Patents and actual implementation", "Investor representations: present capability versus future potential", "Financing, actual expenditure and failure"],
   "priority_profiles": ["Elizabeth Holmes", "Billy Evans; separately Ramesh Sunny Balwani, with dated role research pending", "Nathan Fielder, co-director with Lance Oppenheim", "Amanda Seyfried, participant and performer; scene audit pending"],
@@ -33,20 +34,22 @@
     "software": "No licence selected"
   },
   "publication": {
-    "stage": "local prototype",
+    "stage": "release candidate; not deployed",
     "repository_url": "https://github.com/DynamicDevices/theranosfilm",
     "deployment_verified": false,
     "indexing": "noindex pending reviewed deployment",
     "private_research": "Excluded; never upload the parent working directory"
   },
   "repository_governance": {
+    "preloop": "Paused for this project by Alex on 21 November 2026; do not admit, trigger or disable shared flows",
+    "release_route": "Proposed exact-artifact manual publication after site CI, without merging or weakening protected main; requires replacement signed release approval",
     "intended_owner": "DynamicDevices",
     "intended_visibility": "public",
     "default_branch": "main",
     "protection_verified": true,
     "protection_ruleset_id": 27780408,
     "required_ci_and_preloop_checks_configured": false,
-    "requested_protections": ["Require pull requests and at least one approving review", "Dismiss stale approvals", "Require conversation resolution", "Block force pushes and deletion", "Require genuine Preloop review and CI once configured; verify exact check names", "Enforce for administrators without routine bypass"]
+    "requested_protections": ["Require pull requests and at least one approving review", "Dismiss stale approvals", "Require conversation resolution", "Block force pushes and deletion", "Require site CI; Preloop paused by Alex", "Enforce for administrators without routine bypass"]
   },
   "assistance": "Assisted-by: Briar"
 }
