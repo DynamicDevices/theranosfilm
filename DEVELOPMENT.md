@@ -19,7 +19,7 @@ audit. No new independent fact-check decisions are claimed. See
 RESEARCH-ROADMAP.md for the specific remaining gaps. This source update is not
 yet claimed deployed. No Preloop, new manual PR gate, DNS or HTTPS changes.
 
-Validation: 22 Python tests pass; the unchanged four Node tests passed for the
+Validation: 23 Python tests pass; the unchanged four Node tests passed for the
 preceding source update. The allowlisted build has
 15 distinct indexable pages; build manifest is
 9af0c8a3eacc77fd36e5c88d165e5bd4dad7b63e82e1c80a4ec6dbf3556eb569.
@@ -39,9 +39,19 @@ availability and a live count are not claimed. The badge has a no-referrer polic
 the provider receives IP/request metadata. Counts are approximate badge loads,
 not unique readers. The old no-analytics statement has been replaced.
 
-Next: commit/push the badge source. Native CI/PR integration remains separate
-from exact-build production approval. The earlier release approval does not
-authorize this new manifest. No claim is made that either update is deployed.
+The badge was committed and pushed as 0ee7b3e. Alex then requested “update the
+site”. The complete selected publication agreement is now
+`config/authority-proposals/publish-depth-badge-20261121.json` with detached
+signature, digest 868a500e323f9c1df300595d3c6bde3a0afad0a75b3d73d7afdc27d85311382a.
+It binds this exact fifteen-page release, CI-gated integration and unchanged
+expiry. Verify it live; do not combine predecessor rights. The publish job's
+missing existing-dependency install has been repaired with a regression test;
+permissions, triggers and protections are unchanged.
+
+Next: commit/push the workflow repair, create the ready PR, integrate through
+authentic strict site-checks, freeze/rebuild main and dispatch with the approved
+manifest. The agreement permits no Preloop or required manual PR approval. No
+claim is yet made that either update is deployed.
 
 ## Historical checkpoint — superseded by the current state above
 
