@@ -92,6 +92,25 @@ class DossierTests(unittest.TestCase):
         self.assertIn('null protocol', page)
         self.assertIn('not our reconstruction of every visit', page)
 
+    def test_committee_memo_keeps_authorship_counterevidence_and_film_limits(self):
+        investor = next(w for w in self.data['workstreams'] if w['id'] == 'peterson-investor-case')
+        findings = {f['id']: f for f in investor['findings']}
+        self.assertIn('not a Theranos pitch deck', findings['peterson-committee-memo']['label'])
+        self.assertIn('not evidence of actual military use', findings['peterson-technical-reliance']['text'])
+        self.assertIn('not a bank receipt', findings['peterson-closing-chain']['text'])
+        self.assertIn('$99,999,984', findings['peterson-investment-amount']['text'])
+        self.assertIn('does not establish what Theranos spent', findings['peterson-investment-amount']['text'])
+        self.assertIn('did not certify scientific performance', findings['peterson-pharma-validation']['text'])
+        self.assertIn('neither establishes that no diligence', findings['peterson-cross-examination-limit']['text'])
+        page = render(ROOT)['investor-case.html']
+        for anchor in ['investor-claim-types', 'peterson-committee-memo', 'peterson-cross-examination-limit']:
+            self.assertTrue(f'id="{anchor}"' in page, anchor)
+        for source in ['rdv-memo-testimony', 'rdv-cross-testimony']:
+            self.assertTrue(f'evidence.html#source-{source}' in page, source)
+            self.assertTrue(f'id="source-{source}"' in render(ROOT)['evidence.html'], source)
+        self.assertIn('does not yet label it true or false', page)
+        self.assertIn('not every investor', page)
+
     def test_film_and_comparator_limits_remain_explicit(self):
         findings = {f['id']: f for w in self.data['workstreams'] for f in w['findings']}
         self.assertIn('No frequency count or behavioural diagnosis', findings['companion-nodding-boundary']['text'])

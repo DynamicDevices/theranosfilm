@@ -101,7 +101,7 @@ The next research update adds six connected dossiers, backed by
 [validated public JSON](data/dossiers.json):
 
 - [Engineer investigation](engineer.html): technical hypotheses and a later-company patent lead; speaker and exchange remain unauthenticated.
-- [Peterson investor case](investor-case.html): a court-described projection and an internal financial exhibit, with the delivery/reliance gap visible.
+- [Peterson investor case](investor-case.html): investor financials, committee-memo and closing-authority testimony; present capability versus future forecasts, pharmaceutical counter-evidence and defence cross-examination, with the remaining delivery/reliance gaps visible.
 - [Patent claim chart](patent-map.html): selected granted elements of US8283155B2; product implementation and legal title remain unverified.
 - [Scene companion](scene-companion.html): edition-aware verification records with deliberately empty timestamps until a lawful recording is checked.
 - [Financial records](financial-records.html): visually checked figures, forecast/snapshot distinctions and reproducible arithmetic—not a complete spending ledger.
