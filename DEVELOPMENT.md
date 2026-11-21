@@ -1,6 +1,59 @@
 # Current development state — 21 November 2026
 
-## Evidence-analysis update: current checkpoint
+## Current checkpoint — analysis-depth
+
+Alex requested the next six improvements and then “lock this in and commit and
+push”. Signed development coverage is in the ignored authority proposal
+`config/authority-proposals/develop-depth-20261121.json` and its detached signature;
+verify it live before consequential operations. It expires 22 November 2026,
+12:54:17 GMT. Production is excluded from this development agreement.
+
+Work starts from merged main eb8647d663dd07b12e16711a663c6f5b8473d501 on
+analysis-depth. New curated data drives start-here, six people profiles,
+present-versus-future comparison, money analysis and an inspectable source
+register. Source inspection limits, explicit interpretation labels, Git history
+links, editorial attribution and discovery metadata are retained.
+
+The implementation is not a full biography, spending, clinical, patent or film
+audit. No new independent fact-check decisions are claimed. See
+RESEARCH-ROADMAP.md for the specific remaining gaps. This source update is not
+yet claimed deployed. No Preloop, new manual PR gate, DNS or HTTPS changes.
+
+Validation: 23 Python tests pass; the unchanged four Node tests passed for the
+preceding source update. The allowlisted build has
+15 distinct indexable pages; build manifest is
+9af0c8a3eacc77fd36e5c88d165e5bd4dad7b63e82e1c80a4ec6dbf3556eb569.
+Browser checks covered all five new/replaced chapters at 390px without page-level
+horizontal overflow; default viewport restored. Existing keyboard, local JSON
+helper and contribution checks remain covered by earlier tests; this is not a
+full WCAG or new independent factual audit.
+
+The six-chapter update was committed and pushed as 2558dea on analysis-depth.
+Alex then requested a footer views badge and selected an external provider.
+Standalone signed badge development coverage is in
+`config/authority-proposals/develop-badge-20261121.json`; it retains the same
+expiry and excludes merge/deployment. It covers the homepage-only Hits.sh image,
+privacy disclosure, local-only inactive placeholder, tests and commit/push.
+The counter endpoint was not probed or loaded during local tests. Its production
+availability and a live count are not claimed. The badge has a no-referrer policy;
+the provider receives IP/request metadata. Counts are approximate badge loads,
+not unique readers. The old no-analytics statement has been replaced.
+
+The badge was committed and pushed as 0ee7b3e. Alex then requested “update the
+site”. The complete selected publication agreement is now
+`config/authority-proposals/publish-depth-badge-20261121.json` with detached
+signature, digest 868a500e323f9c1df300595d3c6bde3a0afad0a75b3d73d7afdc27d85311382a.
+It binds this exact fifteen-page release, CI-gated integration and unchanged
+expiry. Verify it live; do not combine predecessor rights. The publish job's
+missing existing-dependency install has been repaired with a regression test;
+permissions, triggers and protections are unchanged.
+
+Next: commit/push the workflow repair, create the ready PR, integrate through
+authentic strict site-checks, freeze/rebuild main and dispatch with the approved
+manifest. The agreement permits no Preloop or required manual PR approval. No
+claim is yet made that either update is deployed.
+
+## Historical checkpoint — superseded by the current state above
 
 Alex requested improvements 1–6: film guide, claim/evidence comparison, technology
 explanation, investor timeline, tracked contributions and accessibility. Work is

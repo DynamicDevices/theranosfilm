@@ -8,6 +8,14 @@ from build_site import build, PAGES
 
 
 class BuildTests(unittest.TestCase):
+    def test_publication_installs_builder_dependencies_before_build(self):
+        workflow = (Path(__file__).parent / '.github/workflows/site.yml').read_text()
+        publish = workflow.split('\n  publish:\n', 1)[1]
+        self.assertLess(publish.index('python -m pip install -r requirements.txt'),
+                        publish.index('python build_site.py'))
+        self.assertIn('test "$GITHUB_SHA" = "$EXPECTED_SHA"', publish)
+        self.assertIn('python release_manifest.py _site --expect "$EXPECTED_MANIFEST"', publish)
+
     def test_crawlable_release_has_consistent_canonicals_and_no_private_files(self):
         with tempfile.TemporaryDirectory() as temporary:
             output = Path(temporary) / 'release'

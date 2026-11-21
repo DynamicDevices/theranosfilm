@@ -68,6 +68,39 @@ def records(root, group):
     return result
 
 
+def load_depth(root, research):
+    """Check curated reading data too; validation is not independent fact checking."""
+    depth = read_json(Path(root) / 'data/depth.json')
+    validate_links(depth)
+    sources = {s['id'] for s in research['sources']}
+    fields = {
+        'profiles': ('name', 'role', 'background', 'involvement', 'connection', 'analysis', 'gap'),
+        'representations': ('label', 'when', 'wording', 'wording_type', 'reading', 'test', 'limit'),
+        'finances': ('label', 'status', 'account', 'needed')
+    }
+    seen = set()
+    for key in ('updated', 'editor', 'assistance', 'review_status'):
+        if not isinstance(depth.get(key), str) or not depth[key].strip():
+            raise ValueError('Missing editorial metadata')
+    datetime.strptime(depth['updated'], '%Y-%m-%d')
+    for group, required in fields.items():
+        if not isinstance(depth.get(group), list) or not depth[group]:
+            raise ValueError('Missing depth records')
+        for item in depth[group]:
+            identifier = item.get('id')
+            if (not isinstance(identifier, str) or not identifier
+                    or any(c not in 'abcdefghijklmnopqrstuvwxyz0123456789-' for c in identifier)
+                    or identifier in seen):
+                raise ValueError('Invalid or duplicate depth ID')
+            seen.add(identifier)
+            for key in required:
+                if not isinstance(item.get(key), str) or not item[key].strip():
+                    raise ValueError('Incomplete depth record')
+            if not isinstance(item.get('sources'), list) or any(s not in sources for s in item['sources']):
+                raise ValueError('Unknown depth source reference')
+    return depth
+
+
 def load(root=ROOT):
     root = Path(root)
     research = read_json(root / 'data/research.json')
@@ -75,6 +108,7 @@ def load(root=ROOT):
     if len(sources) != len(research['sources']):
         raise ValueError('Duplicate source ID')
     validate_links(research)
+    load_depth(root, research)
     seen = set()
     for group in ('claims', 'scenes', 'timeline'):
         for item in research[group]:

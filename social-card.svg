@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#111111"/>
+  <rect width="20" height="630" fill="#ef3340"/>
+  <g font-family="DejaVu Sans, sans-serif" fill="#fafafa">
+    <text x="80" y="115" font-size="30" fill="#ff727b">THERANOS FILM / INDEPENDENT ANALYSIS</text>
+    <text x="80" y="238" font-size="64">You Can See Everything</text>
+    <text x="80" y="330" font-size="46">What does the evidence show?</text>
+    <text x="80" y="432" font-size="29">The people. The technology. The investor claims.</text>
+    <text x="80" y="480" font-size="29">Sources, uncertainty and traceable corrections.</text>
+    <text x="80" y="565" font-size="27" fill="#ff727b">theranosfilm.com — not an official film website</text>
+  </g>
+</svg>

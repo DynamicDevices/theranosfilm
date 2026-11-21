@@ -3,10 +3,12 @@ import html
 import json
 from datetime import datetime
 
-from research import ROOT, digest, load
+from research import ROOT, digest, load, load_depth
+from render_depth import sections
 
 PAGES = ('film-guide.html', 'claims.html', 'timeline.html', 'contribute.html',
-         'accessibility.html', 'technology.html')
+         'accessibility.html', 'technology.html', 'start-here.html',
+         'analysis.html', 'capabilities.html', 'money.html', 'evidence.html')
 
 
 def esc(value):
@@ -14,9 +16,10 @@ def esc(value):
 
 
 def page(title, description, eyebrow, intro, body, active):
-    nav = [('film-guide.html', 'Film guide'), ('claims.html', 'Claims'),
+    nav = [('start-here.html', 'Start here'), ('film-guide.html', 'Film guide'), ('claims.html', 'Claims'),
            ('analysis.html', 'People'), ('technology.html', 'Technology'),
-           ('timeline.html', 'Timeline'), ('contribute.html', 'Contribute')]
+           ('timeline.html', 'Timeline'), ('money.html', 'Money'),
+           ('evidence.html', 'Evidence'), ('contribute.html', 'Contribute')]
     links = ''.join(f'<a href="{href}"' + (' aria-current="page"' if href == active else '')
                     + f'>{label}</a>' for href, label in nav)
     return (f'<!doctype html>\n<html lang="en-GB"><head><meta charset="utf-8">'
@@ -28,10 +31,16 @@ def page(title, description, eyebrow, intro, body, active):
             '<a class="wordmark" href="index.html">theranos<span>film / independent analysis</span></a>'
             f'<nav aria-label="Main">{links}</nav></header>'
             f'<main id="article" class="reading longform"><p class="eyebrow">{esc(eyebrow)}</p>'
-            f'<h1>{esc(title)}</h1><p class="standfirst">{esc(intro)}</p>{body}</main>'
+            f'<h1>{esc(title)}</h1><p class="standfirst">{esc(intro)}</p>'
+            '<p class="editorial-note">Edited by the Theranos Film project · Briar assisted · '
+            '<time datetime="2026-11-21">Updated 21 November 2026</time>. '
+            'Editorial draft; not independently fact-checked. '
+            '<a href="about.html">About this independent project</a> · '
+            '<a href="contribute.html">Corrections and review history</a>.</p>'
+            f'{body}</main>'
             '<footer>Independent research in progress · 21 November 2026. '
             'Not affiliated with Theranos, the filmmakers or any agency. '
-            '<a href="sources.html">Source register</a> · '
+            '<a href="evidence.html">Source register and inspection limits</a> · '
             '<a href="accessibility.html">Access and reading options</a> · '
             '<a href="contribute.html">Corrections and history</a>.'
             '<span>Original research: <a href="LICENSE.md">CC BY-SA 4.0</a>. '
@@ -40,13 +49,15 @@ def page(title, description, eyebrow, intro, body, active):
 
 def render(root=ROOT):
     research, proposals, reviews = load(root)
+    depth = load_depth(root, research)
     sources = {s['id']: s for s in research['sources']}
 
     def references(ids):
         if not ids:
             return '<p class="limit">No source yet verifies this observation. Treat it as an open question.</p>'
         return '<details class="source-notes"><summary>Sources and inspection limits</summary><ul>' + ''.join(
-            f'<li><a href="{esc(sources[i]["url"])}">{esc(sources[i]["title"])}</a>'
+            f'<li><a href="evidence.html#source-{esc(i)}">{esc(sources[i]["title"])}</a>'
+            f' · <a href="{esc(sources[i]["url"])}">Original source</a>'
             f'<p>{esc(sources[i]["kind"])} · {esc(sources[i]["locator"])}</p>'
             f'<p>{esc(sources[i]["inspected"])}. {esc(sources[i]["limit"])}</p></li>' for i in ids) + '</ul></details>'
 
@@ -242,8 +253,18 @@ def render(root=ROOT):
         'contribute.html': ('Contribute evidence. Keep the history.', 'Prepare a source-backed JSON contribution, inspect attribution and exact revision hashes, and follow separate editorial decisions and corrections.', 'Participation / sources and corrections', 'Make one claim precise, show its source, explain its limits—and leave room for correction.', contributions),
         'accessibility.html': ('Read, navigate and question the evidence', 'Accessible reading alternatives, keyboard navigation, optional search, testing scope and an access-barrier reporting route.', 'Access / readable by design', 'The evidence should remain available without graphics, scripts or a particular way of navigating.', accessibility)
     }
+    definitions.update(sections(research, depth, references))
     return {name: page(*parts, active=name) for name, parts in definitions.items()}
 
 
 if __name__ == '__main__':
-    print(json.dumps(render(), ensure_ascii=False))
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--write', action='store_true', help='Regenerate only the named derived HTML pages')
+    args = parser.parse_args()
+    if args.write:
+        for name, content in render().items():
+            (ROOT / name).write_text(content)
+        print(f'Rendered {len(PAGES)} research pages')
+    else:
+        print(json.dumps(render(), ensure_ascii=False))

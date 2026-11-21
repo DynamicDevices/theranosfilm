@@ -58,6 +58,15 @@ manual GitHub PR-approval gate. Publication still follows the site's separate
 signed exact-artifact release controls. A valid or merged JSON file is not
 automatically an independently accepted research finding.
 
+`data/depth.json` holds the curated profiles, representation comparisons and
+financial research entries. It is editorial draft material, not a set of accepted
+contribution decisions. Add explicit source IDs and preserve the distinction
+between direct quotation, paraphrase and interpretation. Source entries must
+state partial access honestly, including search-only inspection.
+
+Regenerate derived HTML with `python3 render_research.py --write`. This writes
+only named research pages; the release builder checks their exact contents.
+
 `data/research.json` holds the initial curated source register, claim
 comparisons, sequence leads and investor timeline. The six derived HTML pages
 must match `render_research.py` output; the builder rejects stale pages. Source

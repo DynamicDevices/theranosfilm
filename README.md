@@ -38,7 +38,7 @@ Do not submit private medical or contact information, unsupported allegations or
 
 ## Publication and access
 
-The site is static, with readable chapters, accessible relationship links and no advertising, analytics or remote fonts. Releases include canonical URLs, a sitemap and structured metadata to help readers and search engines find the analysis; inclusion or ranking is not guaranteed.
+The site is static, with readable chapters, accessible relationship links and no advertising, tracking scripts or remote fonts. The next release adds a Hits.sh counter image to the homepage footer: its provider receives visitors' IP addresses and request metadata. The figure represents approximate badge loads, not unique readers or an audited audience. Local source previews use an inactive placeholder. See [counter and privacy](about.html#views-privacy). Releases include canonical URLs, a sitemap and structured metadata to help readers and search engines find the analysis; inclusion or ranking is not guaranteed.
 
 Changes use pull requests and genuine current-base CI, without required manual PR approval. Preloop is paused for this project at Alex's request. Publication separately checks the approved main commit and exact build manifest. See [Actions](https://github.com/DynamicDevices/theranosfilm/actions) for the actual workflow state; a passing check is not proof that the public domain is live.
 
@@ -49,3 +49,26 @@ Original research text and annotations are licensed under **CC BY-SA 4.0**; see 
 Theranos-inspired colours identify the subject of the research, not an official affiliation. Private working research and authority records are excluded from this repository and the published site.
 
 Assisted-by: Briar.
+
+## New analysis chapters
+
+This independent analysis of **You Can See Everything** follows the people,
+Theranos technology, investor representations and money questions that need
+more than a film account to resolve. It is not affiliated with Theranos or the
+filmmakers. Editorial draft; not independently fact-checked. Briar assisted.
+
+The next source update includes:
+
+- [Start after watching](start-here.html): a short, spoiler-labelled reading route.
+- [People and connections](analysis.html): six attributed profiles, with roles and limits kept separate.
+- [Working now or possible later?](capabilities.html): investor wording, technical proof and later accounts.
+- [Where did the money go?](money.html): financial definitions, source accounts and missing records—not an invented spending chart.
+- [Inspect the evidence](evidence.html): source locations, inspection scope, uses and correction routes.
+- Search/social metadata, an original preview image and visible editorial attribution.
+
+These source files do not establish that the changed build is live. Production
+publication requires its own exact-build approval and verification.
+
+Curated profiles and comparisons are in [data/depth.json](data/depth.json).
+The [research roadmap](RESEARCH-ROADMAP.md) records what remains unfinished.
+Original research is CC BY-SA 4.0; third-party sources retain their rights.

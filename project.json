@@ -7,9 +7,25 @@
   "domain_control_evidence": "Authenticated Cloudflare registration and domain-management view plus registry/DNS checks, 21 November 2026; no DNS write performed by this verification",
   "purpose": "Examine You Can See Everything by connecting specific claims with sources, qualifications, alternative explanations and corrections.",
   "research_topics": ["Film portrayal and recording context", "People, relationships and chronology", "Technology, platform claims and clinical validation", "Patents and actual implementation", "Investor representations: present capability versus future potential", "Financing, actual expenditure and failure"],
-  "priority_profiles": ["Elizabeth Holmes", "Billy Evans; separately Ramesh Sunny Balwani, with dated role research pending", "Nathan Fielder, co-director with Lance Oppenheim", "Amanda Seyfried, participant and performer; scene audit pending"],
-  "plain_language_analysis": "analysis.html",
-  "reading_sections": ["analysis.html", "technology.html", "investors.html", "money.html", "sources.html", "about.html"],
+  "priority_profiles": ["Elizabeth Holmes", "Billy Evans and separately Ramesh Sunny Balwani; distinct roles and periods", "Nathan Fielder and Lance Oppenheim; co-directors, editorial division unverified", "Amanda Seyfried; performer, scene audit pending"],
+  "plain_language_analysis": "start-here.html",
+  "reading_sections": ["start-here.html", "analysis.html", "film-guide.html", "capabilities.html", "claims.html", "technology.html", "timeline.html", "investors.html", "money.html", "evidence.html", "contribute.html", "about.html"],
+  "editorial": {
+    "editor": "Theranos Film project",
+    "assistance": "Briar",
+    "status": "Editorial draft; not independently fact-checked",
+    "curated_records": "data/depth.json",
+    "source_register": "evidence.html",
+    "research_limits": "No authenticated timed scene audit, complete spending ledger, investor-by-investor reliance history or patent-to-product claim chart. Publicity search extracts are labelled as such."
+  },
+  "views_badge": {
+    "provider": "https://hits.sh/",
+    "placement": "Homepage footer only",
+    "metric": "Approximate badge-image loads; not unique readers or audited traffic",
+    "privacy": "External image exposes IP address and request metadata to provider; no-referrer policy; no tracking scripts or visitor identifiers added",
+    "source_preview": "Inactive local SVG placeholder",
+    "release_activation": "Release builder for https://theranosfilm.com only; not a claim of deployment"
+  },
   "planned_issues": "research-issues.json",
   "interface": {
     "primary": "WebGL evidence map",

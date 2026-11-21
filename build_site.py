@@ -13,10 +13,12 @@ from render_research import PAGES as RESEARCH_PAGES, render
 
 ROOT = Path(__file__).resolve().parent
 PAGES = ('index.html', 'analysis.html', 'technology.html', 'investors.html',
-         'money.html', 'sources.html', 'about.html') + tuple(p for p in RESEARCH_PAGES if p != 'technology.html')
+         'money.html', 'sources.html', 'about.html')
+PAGES += tuple(p for p in RESEARCH_PAGES if p not in PAGES)
 ASSETS = ('style.css', 'editorial.css', 'map.js', 'LICENSE.md',
           'CONTRIBUTING.md', 'contribution.schema.json', 'project.json',
-          'research-issues.json', 'research-ui.js', 'review.schema.json')
+          'research-issues.json', 'research-ui.js', 'review.schema.json', 'social-card.png',
+          'views-preview.svg')
 
 
 class Metadata(HTMLParser):
@@ -65,6 +67,15 @@ def build(destination, base_url, source=ROOT):
     urls = []
     for filename in PAGES:
         text = (source / filename).read_text()
+        if filename == 'index.html':
+            marker = r'<!-- views-counter:start -->.*?<!-- views-counter:end -->'
+            if len(re.findall(marker, text, flags=re.S)) != 1:
+                raise ValueError('Homepage must contain exactly one views-counter placeholder')
+            if base == 'https://theranosfilm.com/':
+                badge = ('<img src="https://hits.sh/theranosfilm.com.svg?label=page%20views&amp;color=ad142b&amp;labelColor=242126" '
+                         'alt="Approximate homepage badge loads, counted by Hits.sh" '
+                         'height="24" decoding="async" referrerpolicy="no-referrer">')
+                text = re.sub(marker, badge, text, flags=re.S)
         meta = Metadata(text)
         if not meta.title.strip() or not meta.description.strip():
             raise ValueError(f'Missing title/description: {filename}')
@@ -83,7 +94,13 @@ def build(destination, base_url, source=ROOT):
         if filename != 'index.html':
             schema.update(headline=meta.title,
                           mainEntityOfPage=canonical,
-                          dateModified=project['updated'])
+                          dateModified=project['updated'],
+                          author={'@type': 'Organization', 'name': 'Theranos Film project',
+                                  'url': base + 'about.html'},
+                          publisher={'@type': 'Organization', 'name': 'Theranos Film — independent analysis',
+                                     'url': base},
+                          license='https://creativecommons.org/licenses/by-sa/4.0/',
+                          creativeWorkStatus='Editorial draft; research incomplete')
         tags = [
             '<meta name="robots" content="index,follow,max-image-preview:large">',
             f'<link rel="canonical" href="{html.escape(canonical, quote=True)}">',
@@ -92,6 +109,12 @@ def build(destination, base_url, source=ROOT):
             f'<meta property="og:description" content="{html.escape(meta.description, quote=True)}">',
             f'<meta property="og:type" content="{"website" if filename == "index.html" else "article"}">',
             '<meta property="og:locale" content="en_GB">',
+            '<meta property="og:site_name" content="Theranos Film — independent analysis">',
+            f'<meta property="og:image" content="{html.escape(base, quote=True)}social-card.png">',
+            '<meta property="og:image:width" content="1200">',
+            '<meta property="og:image:height" content="630">',
+            '<meta property="og:image:alt" content="Theranos Film: independent, source-linked analysis of You Can See Everything">',
+            '<meta name="twitter:card" content="summary_large_image">',
             '<script type="application/ld+json">' + json.dumps(schema, ensure_ascii=False).replace('<', '\\u003c') + '</script>'
         ]
         text = text.replace('</head>', '\n' + '\n'.join(tags) + '\n</head>', 1)
@@ -99,7 +122,7 @@ def build(destination, base_url, source=ROOT):
     for filename in ASSETS:
         shutil.copyfile(source / filename, destination / filename)
     # Only validated, explicitly addressed public records are release assets.
-    public_records = ['data/research.json'] + [f'data/contributions/{key}.json' for key in proposals] + [f'data/reviews/{key}.json' for key in reviews]
+    public_records = ['data/research.json', 'data/depth.json'] + [f'data/contributions/{key}.json' for key in proposals] + [f'data/reviews/{key}.json' for key in reviews]
     for filename in public_records:
         target = destination / filename
         target.parent.mkdir(parents=True, exist_ok=True)
