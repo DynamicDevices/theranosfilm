@@ -67,6 +67,9 @@ def build(destination, base_url, source=ROOT):
     if destination.exists():
         raise ValueError('Use a new empty release directory; existing output is not overwritten')
     project = json.loads((source / 'project.json').read_text())
+    verification = project.get('google_site_verification', '')
+    if not isinstance(verification, str) or not re.fullmatch(r'[A-Za-z0-9_-]*', verification):
+        raise ValueError('Invalid public Google ownership token')
     research, proposals, reviews = load(source)
     for filename, expected in render(source).items():
         if (source / filename).read_text() != expected:
@@ -147,6 +150,9 @@ def build(destination, base_url, source=ROOT):
             '<meta name="twitter:image:alt" content="Theranos Film: independent analysis of You Can See Everything">',
             '<script type="application/ld+json">' + json.dumps(schema, ensure_ascii=False).replace('<', '\\u003c') + '</script>'
         ]
+        if verification and filename == 'index.html' and base == 'https://theranosfilm.com/':
+            tags.append('<meta name="google-site-verification" content="'
+                        + html.escape(verification, quote=True) + '">')
         if breadcrumbs:
             tags.append('<script type="application/ld+json">'
                         + json.dumps(breadcrumbs, ensure_ascii=False).replace('<', '\\u003c')

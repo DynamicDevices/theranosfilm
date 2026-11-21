@@ -3,12 +3,45 @@ import re
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 from xml.etree import ElementTree as ET
 
 from build_site import build, PAGES
 
 
 class BuildTests(unittest.TestCase):
+    def test_google_proof_is_homepage_and_exact_production_domain_only(self):
+        root = Path(__file__).parent
+        token = json.loads((root / 'project.json').read_text())['google_site_verification']
+        with tempfile.TemporaryDirectory() as temporary:
+            for index, base in enumerate(('https://theranosfilm.com',
+                                          'https://example.org',
+                                          'https://theranosfilm.com/preview',
+                                          'https://theranosfilm.com:443')):
+                output = Path(temporary) / str(index)
+                build(output, base)
+                for filename in PAGES:
+                    text = (output / filename).read_text()
+                    expected = index == 0 and filename == 'index.html'
+                    self.assertEqual(text.count('name="google-site-verification"'), int(expected))
+                    if expected:
+                        self.assertIn(f'content="{token}"', text.split('</head>')[0])
+            self.assertNotIn('google-site-verification', (root / 'index.html').read_text())
+
+    def test_google_proof_rejects_markup_and_non_string_tokens(self):
+        original = Path.read_text
+        for invalid in ('"><script>', None, 123):
+            def read(path, *args, **kwargs):
+                value = original(path, *args, **kwargs)
+                if path.name == 'project.json':
+                    data = json.loads(value)
+                    data['google_site_verification'] = invalid
+                    return json.dumps(data)
+                return value
+            with tempfile.TemporaryDirectory() as temporary, patch.object(Path, 'read_text', read):
+                with self.assertRaisesRegex(ValueError, 'ownership token'):
+                    build(Path(temporary) / 'release', 'https://theranosfilm.com')
+
     def test_publication_upload_is_gated_and_precedes_a_separate_deploy_job(self):
         workflow = (Path(__file__).parent / '.github/workflows/site.yml').read_text()
         checks, publish = workflow.split('\n  publish:\n', 1)

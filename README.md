@@ -56,8 +56,9 @@ The optional llms.txt is a reading index, not a Google indexing requirement.
 
 These choices follow Google's [SEO starter guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
 and [AI search guidance](https://developers.google.com/search/docs/appearance/ai-features).
-Search Console submission and index-coverage reporting have not been performed
-as part of this update; sitemap availability alone does not establish indexing.
+The production homepage includes Google's public ownership-verification tag.
+Search Console verification and sitemap submission are separate account actions;
+the tag and sitemap alone do not establish verification, indexing or ranking.
 
 The site is static, with readable chapters, accessible relationship links and no advertising, tracking scripts or remote fonts. The next release adds a Hits.sh counter image to the homepage footer: its provider receives visitors' IP addresses and request metadata. The figure represents approximate badge loads, not unique readers or an audited audience. Local source previews use an inactive placeholder. See [counter and privacy](about.html#views-privacy). Releases include canonical URLs, a sitemap and structured metadata to help readers and search engines find the analysis; inclusion or ranking is not guaranteed.
 
