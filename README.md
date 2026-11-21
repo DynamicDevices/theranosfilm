@@ -49,3 +49,26 @@ Original research text and annotations are licensed under **CC BY-SA 4.0**; see 
 Theranos-inspired colours identify the subject of the research, not an official affiliation. Private working research and authority records are excluded from this repository and the published site.
 
 Assisted-by: Briar.
+
+## New analysis chapters
+
+This independent analysis of **You Can See Everything** follows the people,
+Theranos technology, investor representations and money questions that need
+more than a film account to resolve. It is not affiliated with Theranos or the
+filmmakers. Editorial draft; not independently fact-checked. Briar assisted.
+
+The next source update includes:
+
+- [Start after watching](start-here.html): a short, spoiler-labelled reading route.
+- [People and connections](analysis.html): six attributed profiles, with roles and limits kept separate.
+- [Working now or possible later?](capabilities.html): investor wording, technical proof and later accounts.
+- [Where did the money go?](money.html): financial definitions, source accounts and missing records—not an invented spending chart.
+- [Inspect the evidence](evidence.html): source locations, inspection scope, uses and correction routes.
+- Search/social metadata, an original preview image and visible editorial attribution.
+
+These source files do not establish that the changed build is live. Production
+publication requires its own exact-build approval and verification.
+
+Curated profiles and comparisons are in [data/depth.json](data/depth.json).
+The [research roadmap](RESEARCH-ROADMAP.md) records what remains unfinished.
+Original research is CC BY-SA 4.0; third-party sources retain their rights.

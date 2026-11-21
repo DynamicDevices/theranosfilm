@@ -1,0 +1,143 @@
+{
+  "updated": "2026-11-21",
+  "editor": "Theranos Film project",
+  "assistance": "Briar",
+  "review_status": "Editorial draft; not independently fact-checked",
+  "profiles": [
+    {
+      "id": "elizabeth",
+      "name": "Elizabeth Holmes",
+      "role": "Theranos founder and chief executive; central subject of the film",
+      "background": "The SEC's 2018 announcement identifies Holmes as Theranos's founder and CEO. Her corporate role makes dated representations about the company's technology and business relevant to this investigation.",
+      "involvement": "The festival synopsis describes documentary access before her incarceration. A later account of a past capability must be compared with evidence available at the earlier date, not treated as a substitute for it.",
+      "connection": "Led the company in which Balwani held senior operational roles. The later domestic setting with Billy Evans is a different relationship and period.",
+      "analysis": "Test specific statements, knowledge and dates. Neither a sympathetic portrayal nor an uncomfortable interview overturns a legal finding. The DOJ reported four investor-related convictions in January 2022, alongside acquittals and counts without a verdict.",
+      "gap": "A checked film transcript, dated technical responsibilities and a statement-by-statement comparison remain incomplete. Visible nodding cannot establish dishonesty or a diagnosis.",
+      "sources": ["sec-release", "doj", "flc"]
+    },
+    {
+      "id": "balwani",
+      "name": "Ramesh ‘Sunny’ Balwani",
+      "role": "Former Theranos president and chief operating officer; separately tried defendant",
+      "background": "The DOJ describes Balwani as a senior Theranos executive. Its July 2022 announcement reports two conspiracy convictions and ten wire-fraud convictions involving investors and patients.",
+      "involvement": "His operational role belongs to the company history under examination. That does not establish which film sequences discuss him; a checked scene record is still needed.",
+      "connection": "Executive colleague of Holmes. His verdict came from a separate trial and must not be substituted for hers, or hers for his.",
+      "analysis": "Investigate responsibility through dated organisational roles, communications and specific decisions. A general label such as partner is too imprecise to allocate responsibility.",
+      "gap": "A complete relationship chronology, disputed accounts and operational decision map have not been assembled here. The conviction announcement is not the full trial or later appellate record.",
+      "sources": ["balwani-doj", "doj"]
+    },
+    {
+      "id": "evans",
+      "name": "William ‘Billy’ Evans",
+      "role": "Holmes's romantic partner in the festival's account of the film",
+      "background": "The festival listing identifies Evans in the domestic setting. This provides a limited, attributed starting point—not a verified biography or technical credential.",
+      "involvement": "His presence can give viewers access to Holmes's later private life. Assess what he actually says and what period it concerns before drawing a business connection.",
+      "connection": "A later personal relationship with Holmes does not establish a role in earlier Theranos fundraising, laboratory operations or representations.",
+      "analysis": "Domestic testimony may illuminate personal experience while leaving technical or financial questions unanswered. Those are different subjects, not inherently contradictory accounts.",
+      "gap": "Independent background checks, exact scene statements and any documented business involvement remain research questions. No wrongdoing is inferred from the relationship.",
+      "sources": ["flc"]
+    },
+    {
+      "id": "interviewer",
+      "name": "Nathan Fielder",
+      "role": "Co-director; the interviewer identified in this research",
+      "background": "The festival credits Fielder alongside Lance Oppenheim. An indexed HBO publicity listing associates him with Nathan For You and The Rehearsal; direct access to that publicity page was blocked during this pass.",
+      "involvement": "The participant interview discusses the film and performance. Credits establish an authored filmmaking role, not merely a neutral questioner placed in front of a camera.",
+      "connection": "Works with Oppenheim on the film and with performer Amanda Seyfried in its production context. Professional collaboration does not establish a shared view of every disputed claim.",
+      "analysis": "His earlier work is a reason to examine staging, awkward pauses, constructed situations and uncertainty about sincerity. That is a viewing hypothesis, not proof that a particular scene is staged or that his intention was to deceive.",
+      "gap": "Why he was selected, who approached whom, editorial control and the exact interview protocol require direct production accounts. We cannot infer a commissioning motive from his reputation as a comedian.",
+      "sources": ["flc", "participants", "fielder-publicity"]
+    },
+    {
+      "id": "oppenheim",
+      "name": "Lance Oppenheim",
+      "role": "Co-director",
+      "background": "The festival listing credits Oppenheim as a director alongside Fielder. A fuller career profile needs additional inspected sources.",
+      "involvement": "Include him when examining access, selection, editing and the film's framing. The interviewer is not necessarily the sole author of what an audience sees.",
+      "connection": "Shares the directing credit with Fielder; the division of practical and editorial responsibility is not established by the credit alone.",
+      "analysis": "Ask how an account was constructed: which questions, recordings and counterevidence were retained, omitted or placed next to one another. Conclusions about intention need production evidence.",
+      "gap": "A sourced background chronology, production decisions and allocation of final-cut authority remain unverified here.",
+      "sources": ["flc", "participants"]
+    },
+    {
+      "id": "actress",
+      "name": "Amanda Seyfried",
+      "role": "Actor involved in the film's performance element",
+      "background": "The participant interview identifies Seyfried's involvement and discusses performance. It is an edited participant account, not a complete verification of what every shot depicts.",
+      "involvement": "A performed passage can explore or reconstruct an account. It is not itself a contemporaneous recording of Holmes saying those words.",
+      "connection": "Collaborates within the film's production. Playing or interpreting a person does not make the performer a witness to the earlier business events.",
+      "analysis": "For each passage distinguish voice, visible performer, script source, reconstruction notice and any documentary insert. Similar appearance or delivery is not a reliable identification method.",
+      "gap": "The exact boundaries between recording and performance, source script and scene timestamps still need a checked film copy or authenticated transcript.",
+      "sources": ["participants", "flc"]
+    }
+  ],
+  "representations": [
+    {
+      "id": "deck-present",
+      "label": "Surviving investor presentation",
+      "when": "Exhibit version; delivery date to an individual investor not established here",
+      "wording": "runs comprehensive blood tests from a finger-stick",
+      "wording_type": "Short excerpt: Trial Exhibit 3696, PDF page 3",
+      "reading": "The verb runs presents a capability. The excerpt is not expressly framed as a future research objective.",
+      "test": "Identify device version, test menu, sample volume, off-device work, accuracy and qualifications accompanying this version.",
+      "limit": "The slide alone proves neither capability nor that a particular investor received it. It does not establish every oral qualification or an individual's knowledge and intent.",
+      "sources": ["exhibit"]
+    },
+    {
+      "id": "sec-technology",
+      "label": "Contemporaneous representation versus alleged operation",
+      "when": "14 March 2018 enforcement announcement, describing earlier conduct",
+      "wording": "The SEC alleged a mismatch between represented proprietary capability and the use of third-party analyzers for most patient testing.",
+      "wording_type": "Editorial paraphrase of civil allegations; not a quotation",
+      "reading": "The material question is what the represented service could actually deliver at the investment date, not whether the general research ambition was worthwhile.",
+      "test": "Match an individual representation to dated demonstrations, validation, internal limitations and investor communications.",
+      "limit": "Civil allegations and settlement terms are not criminal findings. The DOJ's later account and count-by-count verdict must be read separately.",
+      "sources": ["sec-release", "sec", "doj"]
+    },
+    {
+      "id": "later-platform",
+      "label": "Later platform account",
+      "when": "2016 company technology announcement; later film discussion needs timestamps",
+      "wording": "A proposed integrated platform is a different claim from validated earlier delivery of a full testing service.",
+      "wording_type": "Editorial distinction; not a quotation from the film or company",
+      "reading": "A later architecture or development plan cannot retrospectively validate a prior product or investor representation. Conversely, failure of a prior product does not prove every later proposal scientifically impossible.",
+      "test": "Separate prototype operation, assay-specific validation, clinical use, menu breadth and commercial reliability for each date and version.",
+      "limit": "The company announcement is not independent performance evidence. The film's exact wording and surrounding question remain unverified.",
+      "sources": ["minilab", "jci", "participants"]
+    }
+  ],
+  "finances": [
+    {
+      "id": "capital-raised",
+      "label": "Capital raised",
+      "status": "Reported in a civil enforcement announcement",
+      "account": "The SEC said Theranos raised more than $700 million from investors through the alleged fraud. This is a fundraising statement, not a reconstruction of the company's total lifetime receipts or expenditure.",
+      "needed": "Dated cash receipts, investment instruments, opening and closing cash, and reconciliation to the precise period and scope of the figure.",
+      "sources": ["sec-release"]
+    },
+    {
+      "id": "revenue-representations",
+      "label": "Revenue forecasts and actual revenue",
+      "status": "Civil allegations; not audited accounts",
+      "account": "The SEC announcement alleges misleading business and revenue representations. Revenue is income from customers; investment receipts and share valuation belong in different categories.",
+      "needed": "Exact forecast version and date, supporting assumptions, period-matched recognised revenue and the records available to the investor at the time.",
+      "sources": ["sec-release", "sec"]
+    },
+    {
+      "id": "cash-spending",
+      "label": "Actual expenditure",
+      "status": "Not quantified in this research",
+      "account": "No verified allocation between payroll, research, premises, equipment, retail operations, advisers or litigation has been assembled. Those are investigation categories, not reported spending figures.",
+      "needed": "Period-matched general ledger, bank reconciliation, payroll summaries, supplier invoices, fixed-asset records and reliable public filings. Do not publish private account or employee details.",
+      "sources": []
+    },
+    {
+      "id": "failure-types",
+      "label": "What does failure mean?",
+      "status": "Editorial distinctions supported by different evidence types",
+      "account": "Scientific feasibility, assay performance, service reliability, business viability, honest fundraising and legal liability are separate questions. The DOJ reported investor-fraud convictions; a JCI service comparison examines a narrower testing question. Neither is a complete cash ledger.",
+      "needed": "Define the claimed failure before selecting evidence. A failed business is not by itself fraud; a fraud conviction does not settle whether every underlying scientific concept is impossible.",
+      "sources": ["doj", "jci"]
+    }
+  ]
+}

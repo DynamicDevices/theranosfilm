@@ -1,6 +1,37 @@
 # Current development state — 21 November 2026
 
-## Evidence-analysis update: current checkpoint
+## Current checkpoint — analysis-depth
+
+Alex requested the next six improvements and then “lock this in and commit and
+push”. Signed development coverage is in the ignored authority proposal
+`config/authority-proposals/develop-depth-20261121.json` and its detached signature;
+verify it live before consequential operations. It expires 22 November 2026,
+12:54:17 GMT. Production is excluded from this development agreement.
+
+Work starts from merged main eb8647d663dd07b12e16711a663c6f5b8473d501 on
+analysis-depth. New curated data drives start-here, six people profiles,
+present-versus-future comparison, money analysis and an inspectable source
+register. Source inspection limits, explicit interpretation labels, Git history
+links, editorial attribution and discovery metadata are retained.
+
+The implementation is not a full biography, spending, clinical, patent or film
+audit. No new independent fact-check decisions are claimed. See
+RESEARCH-ROADMAP.md for the specific remaining gaps. This source update is not
+yet claimed deployed. No Preloop, new manual PR gate, DNS or HTTPS changes.
+
+Validation: 20 Python tests and four Node tests pass. The allowlisted build has
+15 distinct indexable pages; build manifest is
+a1f0e04c9cdf7d3dbf72187d758320a2789a8ebb1aa87252de639e212097b65b.
+Browser checks covered all five new/replaced chapters at 390px without page-level
+horizontal overflow; default viewport restored. Existing keyboard, local JSON
+helper and contribution checks remain covered by earlier tests; this is not a
+full WCAG or new independent factual audit.
+
+Next: sign the source commit, push analysis-depth and use the ready PR/strict-CI
+route. Native CI/PR integration remains separate from exact-build production
+approval. The earlier release approval does not authorize this new manifest.
+
+## Historical checkpoint — superseded by the current state above
 
 Alex requested improvements 1–6: film guide, claim/evidence comparison, technology
 explanation, investor timeline, tracked contributions and accessibility. Work is
