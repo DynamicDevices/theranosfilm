@@ -26,6 +26,8 @@ Read the [film sequence guide](film-guide.html), [claim-to-evidence comparisons]
 
 We distinguish allegations, court findings, source observations and interpretation. A document can establish what someone claimed without proving that the claimed technology worked. Inspection limits, uncertainty and competing supported accounts belong alongside the evidence. We do not infer dishonesty from body language, diagnose participants or imply guilt by association.
 
+The latest research adds selected filed-trial testimony identifying investor-facing Exhibit 1853 and Dynasty Financial II LLC, reported 2011–2013 operating expenses and R&D, the limited FDA HSV-1 assay clearance, independent comparative testing, and the filmmakers' account of the film's two-part structure. The people chapter documents Christian Holmes's specific Enron role without implying involvement in its fraud. Sources retain exact locations and access limits: these advances do not complete the cash ledger, authenticate the engineer or supply checked scene timestamps.
+
 ## Contribute or correct something
 
 [Open an evidence issue](https://github.com/DynamicDevices/theranosfilm/issues/new?template=evidence.yml) with one specific claim or correction, an exact source location, what it supports and its limitations. The [contribution page](contribute.html) offers a local JSON helper and readable record history. Source-backed JSON contributions can be proposed through a pull request using [contribution.schema.json](contribution.schema.json). Read [CONTRIBUTING.md](CONTRIBUTING.md) for evidence, attribution, review and rights requirements.

@@ -5,6 +5,16 @@
   "review_status": "Editorial draft; not independently fact-checked",
   "profiles": [
     {
+      "id": "christian-holmes", "name": "Christian R. Holmes",
+      "role": "Elizabeth Holmes's father; former Enron Clean Energy Solutions Group vice president",
+      "background": "Rice University's professional biography describes a vice-presidential role concentrating on environmental technology and energy efficiency: fuel cells, waste-to-energy, pollution control and emissions allowances.",
+      "involvement": "This institutional source narrows the Enron role beyond the generic description of an executive. It does not establish responsibility for Enron's accounting or financing structures.",
+      "connection": "A family relationship and employment at another failed company are biographical connections, not evidence of involvement in either company's fraud.",
+      "analysis": "Keep employment, operational remit, knowledge and misconduct separate. No evidence connecting him to Enron's accounting fraud was found in this bounded research pass; that is not a comprehensive exoneration or a finding that all his work was investigated.",
+      "gap": "A complete dated employment history and any relevant primary conduct records have not been assembled. Do not infer guilt by association or diagnose family motives.",
+      "sources": ["rice-holmes"]
+    },
+    {
       "id": "elizabeth",
       "name": "Elizabeth Holmes",
       "role": "Theranos founder and chief executive; central subject of the film",
@@ -64,7 +74,7 @@
       "name": "Amanda Seyfried",
       "role": "Actor involved in the film's performance element",
       "background": "The participant interview identifies Seyfried's involvement and discusses performance. It is an edited participant account, not a complete verification of what every shot depicts.",
-      "involvement": "A performed passage can explore or reconstruct an account. It is not itself a contemporaneous recording of Holmes saying those words.",
+      "involvement": "Fielder says Seyfried was approached after the Holmes/Evans filming and shown what became the first half. Her recreations address off-camera conversations; they are not contemporaneous recordings of Holmes speaking.",
       "connection": "Collaborates within the film's production. Playing or interpreting a person does not make the performer a witness to the earlier business events.",
       "analysis": "For each passage distinguish voice, visible performer, script source, reconstruction notice and any documentary insert. Similar appearance or delivery is not a reliable identification method.",
       "gap": "The exact boundaries between recording and performance, source script and scene timestamps still need a checked film copy or authenticated transcript.",
@@ -126,10 +136,10 @@
     {
       "id": "cash-spending",
       "label": "Actual expenditure",
-      "status": "Not quantified in this research",
-      "account": "No verified allocation between payroll, research, premises, equipment, retail operations, advisers or litigation has been assembled. Those are investigation categories, not reported spending figures.",
+      "status": "Selected 2011–2013 expense testimony quantified; complete cash allocation unavailable",
+      "account": "Spivey's testimony about Defence Exhibit 4176 gives operating expenses/R&D of $28.2m/$22m in 2011, about $67m/$53m in 2012 and about $92m/$68m in 2013. R&D is part of operating expenses, not an amount to add on top. These are testified accounting expenses, not a complete payment ledger or independently audited allocation. See the financial-records chapter for exact transcript locations and source limits.",
       "needed": "Period-matched general ledger, bank reconciliation, payroll summaries, supplier invoices, fixed-asset records and reliable public filings. Do not publish private account or employee details.",
-      "sources": []
+      "sources": ["trial-spivey-2021"]
     },
     {
       "id": "failure-types",

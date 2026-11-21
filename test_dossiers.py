@@ -64,13 +64,36 @@ class DossierTests(unittest.TestCase):
 
     def test_forecasts_cannot_be_silently_marked_actual_spending(self):
         bad = copy.deepcopy(self.data)
-        bad['financial_rows'][0]['basis'] = 'actual_spending'
+        next(r for r in bad['financial_rows'] if r['id'] == 'forecast-revenue-2014')['basis'] = 'actual_spending'
         with self.assertRaises(ValidationError):
             self.validate(bad)
         rows = {r['id']: r for r in self.data['financial_rows']}
         self.assertEqual(rows['snapshot-cash']['amount_usd'], 162713000)
         self.assertEqual(rows['snapshot-deficit']['amount_usd'], -305787000)
         self.assertEqual(rows['forecast-rd-2015']['basis'], 'forecast')
+
+    def test_new_expense_testimony_is_not_a_forecast_or_a_cash_ledger(self):
+        rows = {r['id']: r for r in self.data['financial_rows']}
+        for year, opex, rd in [(2011, 28200000, 22000000),
+                               (2012, 67000000, 53000000),
+                               (2013, 92000000, 68000000)]:
+            for prefix, amount in [('opex', opex), ('rd', rd)]:
+                row = rows[f'testified-{prefix}-{year}']
+                self.assertEqual(row['basis'], 'court_account')
+                self.assertEqual(row['amount_usd'], -amount)
+                self.assertIn('approximate', row['label'])
+                self.assertEqual(row['sources'], ['trial-spivey-2021'])
+            self.assertLess(rd, opex)
+
+    def test_investor_exhibit_and_film_identity_boundaries_stay_explicit(self):
+        findings = {f['id']: f for w in self.data['workstreams'] for f in w['findings']}
+        investor = findings['peterson-exhibit-1853']
+        self.assertIn('Exhibit 1853', investor['text'])
+        self.assertIn('not been independently inspected', investor['text'])
+        self.assertEqual(investor['sources'], ['trial-peterson-2021'])
+        self.assertIn('does not identify', findings['engineer-cto-role']['text'])
+        self.assertIn('not independent verification', findings['companion-two-part-account']['text'])
+        self.assertIn('not clearance of a universal', findings['engineer-limited-clearance']['text'].lower())
 
     def test_arithmetic_differences_are_derived_not_hidden(self):
         checks = {c['id']: c for c in financial_checks(self.data)}
