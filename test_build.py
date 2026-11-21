@@ -10,6 +10,20 @@ from build_site import build, PAGES
 
 
 class BuildTests(unittest.TestCase):
+    def test_release_versions_css_js_and_nested_import_together(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / 'release'
+            build(output, 'https://example.org')
+            home = (output / 'index.html').read_text()
+            version = re.search(r'href="editorial.css\?v=([0-9a-f]{16})"', home).group(1)
+            self.assertIn(f'src="map.js?v={version}"', home)
+            self.assertIn(f'@import url("style.css?v={version}")',
+                          (output / 'editorial.css').read_text())
+            for name in PAGES:
+                text = (output / name).read_text()
+                if 'editorial.css' in text:
+                    self.assertIn(f'href="editorial.css?v={version}"', text)
+
     def test_google_proof_is_homepage_and_exact_production_domain_only(self):
         root = Path(__file__).parent
         token = json.loads((root / 'project.json').read_text())['google_site_verification']

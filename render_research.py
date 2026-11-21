@@ -1,7 +1,9 @@
 """Render readable, source-linked research pages. All incoming text is escaped."""
 import html
 import json
+import re
 from datetime import datetime
+from html.parser import HTMLParser
 
 from research import ROOT, digest, load, load_depth, load_dossiers
 from render_depth import sections
@@ -29,7 +31,49 @@ def esc(value):
     return html.escape(str(value), quote=True)
 
 
+def chapter_outline(body):
+    """Stable, readable section links; existing citation/claim anchors stay intact."""
+    class Label(HTMLParser):
+        def __init__(self, source):
+            super().__init__(convert_charrefs=True)
+            self.parts = []
+            self.feed(source)
+
+        def handle_data(self, value):
+            self.parts.append(value)
+
+    used = set(re.findall(r'\bid=["\']([^"\']+)["\']', body))
+    entries = []
+
+    def heading(match):
+        attributes, content = match.group(1), match.group(2)
+        label = ' '.join(''.join(Label(content).parts).split())
+        existing = re.search(r'\bid=["\']([^"\']+)["\']', attributes)
+        if existing:
+            identifier = html.unescape(existing.group(1))
+        else:
+            stem = 'section-' + (re.sub(r'[^a-z0-9]+', '-', label.lower()).strip('-') or 'notes')
+            identifier, suffix = stem, 2
+            while identifier in used:
+                identifier, suffix = f'{stem}-{suffix}', suffix + 1
+            used.add(identifier)
+            attributes += f' id="{esc(identifier)}"'
+        entries.append((identifier, label))
+        return f'<h2{attributes}>{content}</h2>'
+
+    body = re.sub(r'<h2\b([^>]*)>(.*?)</h2>', heading, body, flags=re.S)
+    if len(entries) < 3:
+        return '', body
+    outline = ('<nav class="chapter-outline" aria-label="In this chapter"><details>'
+               '<summary>In this chapter</summary><ol>'
+               + ''.join(f'<li><a href="#{esc(identifier)}">{esc(label)}</a></li>'
+                         for identifier, label in entries)
+               + '</ol></details></nav>')
+    return outline, body
+
+
 def page(title, description, eyebrow, intro, body, active):
+    outline, body = chapter_outline(body)
     search_title = SEARCH_TITLES.get(active, title)
     nav = [('start-here.html', 'Start here'), ('film-guide.html', 'Film guide'), ('claims.html', 'Claims'),
            ('analysis.html', 'People'), ('technology.html', 'Technology'),
@@ -54,7 +98,7 @@ def page(title, description, eyebrow, intro, body, active):
             'Editorial draft; not independently fact-checked. '
             '<a href="about.html">About this independent project</a> · '
             '<a href="contribute.html">Corrections and review history</a>.</p>'
-            f'{body}</main>'
+            f'{outline}{body}</main>'
             '<footer>Independent research in progress · 21 November 2026. '
             'Not affiliated with Theranos, the filmmakers or any agency. '
             '<a href="evidence.html">Source register and inspection limits</a> · '
@@ -79,7 +123,14 @@ def render(root=ROOT):
             f'<p>{esc(sources[i]["kind"])} · {esc(sources[i]["locator"])}</p>'
             f'<p>{esc(sources[i]["inspected"])}. {esc(sources[i]["limit"])}</p></li>' for i in ids) + '</ul></details>'
 
-    film = ('<div class="callout"><h2>Was the first half acted?</h2>'
+    film = ('<h2>Which film and which edition?</h2>'
+            '<p><cite>You Can See Everything</cite> is directed by Nathan Fielder and Lance Oppenheim. '
+            'A24 lists its runtime as 2H55M (175 minutes); IDFA lists 174 minutes. '
+            'These listings do not establish the exact cut screened at FACT Liverpool, or explain '
+            'a viewer’s recollection of a cinema visit lasting over three hours. '
+            'Record the edition and timecode convention before comparing scenes.</p>'
+            + references(['a24', 'idfa']) +
+            '<div class="callout"><h2>Was the first half acted?</h2>'
             '<p>The festival account describes documentary access to Holmes and Evans. '
             'The participant interview identifies a later performance element involving Seyfried. '
             'That does not justify calling every first-half shot unstaged, or every later shot a recreation. '
