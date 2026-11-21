@@ -25,11 +25,12 @@ function content(link, container, full) {
   container.replaceChildren();
   const add = (tag, text, cls) => {const e=document.createElement(tag);e.textContent=text;if(cls)e.className=cls;container.append(e);return e;};
   add('p',link.status,'status');
-  const heading=add(full?'h2':'h3',link.title);if(full)heading.id='evidence-title';
+  const heading=add(full?'h2':'h3',link.title);if(full){heading.id='evidence-title';heading.tabIndex=-1;}
   add('p',link.text);
   add('h3','What this does not establish');add('p',link.limit,'limit');
   if(link.source){const a=add('a',link.sourceLabel);a.href=link.source;}
   if(researchTargets[link.id]){const p=add('p','');const a=document.createElement('a');a.href=researchTargets[link.id];a.textContent='Follow this question into the analysis';p.append(a);}
+  if(full){const p=add('p','');const a=document.createElement('a');a.href='#edges';a.textContent='Choose another evidence question';p.append(a);}
 }
 let selected=links[0].id;
 // Replace the server-readable fallback only after the interactive script runs.
@@ -45,6 +46,13 @@ document.querySelectorAll('.edge,.node').forEach(a=>a.addEventListener('click',e
   event.preventDefault();
   history.replaceState(null,'',a.hash);
   select(a.hash.slice(1));
+  const heading=panel.querySelector('#evidence-title');
+  heading.focus({preventScroll:true});
+  // On stacked layouts the answer is below the controls, often off-screen.
+  // Bring even a repeated selection into view without introducing motion.
+  if(window.matchMedia('(max-width: 850px)').matches){
+    heading.scrollIntoView({block:'start',behavior:'instant'});
+  }
 }));
 window.addEventListener('hashchange',()=>select(location.hash.slice(1)));
 const canvas=document.querySelector('canvas');
