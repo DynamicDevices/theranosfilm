@@ -1,0 +1,3 @@
+config/*-proposals/
+__pycache__/
+*.pyc
