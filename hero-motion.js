@@ -1,6 +1,7 @@
 /* Decorative motion only: all research and headings remain ordinary HTML. */
 'use strict';
 function createHeroMotion(video, poster, button, preference, doc, connection, observe) {
+  video.defaultPlaybackRate = 0.5;
   let paused = false, visible = true, failed = false, optedIn = false, loaded = false;
   let revision = 0;
   const enabled = () => optedIn || (!preference.matches && !connection?.saveData);
@@ -12,6 +13,7 @@ function createHeroMotion(video, poster, button, preference, doc, connection, ob
     label();
     if (!canRun()) { video.pause(); if (!enabled() || failed) still(); return; }
     if (!loaded) { video.src = video.dataset.src; loaded = true; }
+    video.playbackRate = 0.5;
     try {
       const attempt = video.play();
       if (attempt?.catch) attempt.catch(() => {
