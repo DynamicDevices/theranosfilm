@@ -17,6 +17,8 @@ class BuildTests(unittest.TestCase):
             home = (output / 'index.html').read_text()
             version = re.search(r'href="editorial.css\?v=([0-9a-f]{16})"', home).group(1)
             self.assertIn(f'src="map.js?v={version}"', home)
+            self.assertIn(f'data-src="hero-loop.mp4?v={version}"', home)
+            self.assertIn(f'src="hero-poster.webp?v={version}"', home)
             self.assertIn(f'@import url("style.css?v={version}")',
                           (output / 'editorial.css').read_text())
             for name in PAGES:

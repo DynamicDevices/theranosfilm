@@ -28,6 +28,12 @@ The film guide distinguishes the distributor's 175-minute listing from the
 festival's 174-minute listing: scene references must identify their edition.
 Neither listing proves the runtime or edit shown at a particular screening.
 
+The homepage includes a silent, original abstract video loop—not film footage or
+evidence of working technology. Its text remains readable HTML. A poster is shown
+without JavaScript, reduced-motion and Save-Data preferences prevent automatic
+video loading, and a pause control is available. Artwork provenance is recorded
+in [hero-media.json](hero-media.json).
+
 Read the [film sequence guide](film-guide.html), [claim-to-evidence comparisons](claims.html), [people analysis](analysis.html), [technology explanation](technology.html), [investor timeline](timeline.html), [investor representations](investors.html), [money questions](money.html) and [source register](sources.html). Scene timestamps and the unidentified engineer remain explicit gaps, not invented facts.
 
 We distinguish allegations, court findings, source observations and interpretation. A document can establish what someone claimed without proving that the claimed technology worked. Inspection limits, uncertainty and competing supported accounts belong alongside the evidence. We do not infer dishonesty from body language, diagnose participants or imply guilt by association.

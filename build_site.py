@@ -19,7 +19,8 @@ PAGES += tuple(p for p in RESEARCH_PAGES if p not in PAGES)
 ASSETS = ('style.css', 'editorial.css', 'map.js', 'LICENSE.md',
           'CONTRIBUTING.md', 'contribution.schema.json', 'project.json',
           'research-issues.json', 'research-ui.js', 'review.schema.json', 'social-card.png',
-          'views-preview.svg', 'dossiers.schema.json')
+          'views-preview.svg', 'dossiers.schema.json', 'hero-motion.js',
+          'hero-loop.mp4', 'hero-poster.webp', 'hero-media.json')
 
 
 class Metadata(HTMLParser):
@@ -78,7 +79,8 @@ def build(destination, base_url, source=ROOT):
     destination.mkdir(parents=True)
     # A release's pages must not reuse stale cached CSS/JS from the previous
     # release. One deterministic version also covers style.css's CSS import.
-    versioned_assets = ('style.css', 'editorial.css', 'map.js', 'research-ui.js')
+    versioned_assets = ('style.css', 'editorial.css', 'map.js', 'research-ui.js',
+                        'hero-motion.js', 'hero-loop.mp4', 'hero-poster.webp')
     version_hash = hashlib.sha256()
     for filename in versioned_assets:
         version_hash.update(filename.encode() + b'\0')
@@ -169,6 +171,7 @@ def build(destination, base_url, source=ROOT):
                         + '</script>')
         text = text.replace('</head>', '\n' + '\n'.join(tags) + '\n</head>', 1)
         for asset in versioned_assets:
+            text = text.replace(f'data-src="{asset}"', f'data-src="{asset}?v={asset_version}"')
             text = text.replace(f'href="{asset}"', f'href="{asset}?v={asset_version}"')
             text = text.replace(f'src="{asset}"', f'src="{asset}?v={asset_version}"')
         (destination / filename).write_text(text)
