@@ -157,6 +157,24 @@ def render(root=ROOT):
 <h2>What the later engineering paper describes</h2>
 <p>The 2018 Theranos-authored paper describes miniLab hardware, assay-configurable cartridges and a connected server called the virtual analyzer. It reports selected genetic, antibody, lipid and cell measurements using different modules: a shared architecture, not one universal sensor. The authors were current/former employees with possible equity interests. This is published company research, not independent replication or proof of earlier commercial readiness.</p>'''
                   + references(['minilab-paper']) + '''
+<h2 id="assay-demonstrations">What the supporting experiments actually measured</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="miniLab assay specifications"><table>
+<caption>Original Supporting Information Table 1: separate assay configurations, not a combined workflow</caption>
+<thead><tr><th scope="col">Assay</th><th scope="col">Material loaded</th><th scope="col">Volume loaded</th><th scope="col">Volume used by protocol</th><th scope="col">Assay run time</th></tr></thead><tbody>
+<tr><th scope="row">Zika nucleic acid</th><td>K2-EDTA whole blood</td><td>160 µL</td><td>150 µL; 75 µL plasma after separation</td><td>140 minutes</td></tr>
+<tr><th scope="row">HSV-2 antibodies</th><td>Serum</td><td>30 µL</td><td>4 µL</td><td>80 minutes</td></tr>
+<tr><th scope="row">Lipid panel</th><td>Lithium-heparin plasma</td><td>160 µL</td><td>8 µL</td><td>45 minutes</td></tr>
+<tr><th scope="row">Lymphocyte subsets</th><td>K2-EDTA whole blood</td><td>160 µL</td><td>31 µL</td><td>109 minutes</td></tr>
+</tbody></table></div>
+<p>Run time is not patient turnaround time: collection, preparation and reporting may add time. Loaded serum/plasma is not original whole-blood collection volume, and protocol consumption is not the amount that could be collected. Do not add these figures into an invented combined workflow or claim all tests ran from one shared sample.</p>
+<h3>What the platform had not yet integrated</h3>
+<p>Printed page 65 acknowledges that not all modules fitted into the then-current chassis, only one cartridge could run at a time, and the reported data used one assay or panel per cartridge. Full integration and broader multiplexing were future work. These are the authors' stated limits, not evidence that every individual assay failed.</p>
+<h3>Real experiments, with specific sample conditions</h3>
+<p>Zika analytical sensitivity used venous blood spiked with virus. HSV-2 comparison used remnant venous serum; lipids used venous plasma. Some cell samples were adjusted to abnormal concentrations. Such disclosed experiments can be useful, but do not independently validate a broad-menu fingerstick service. High correlation with a comparator also does not by itself establish interchangeable results or clinical acceptability.</p>
+<h3>Failed runs, retesting and exclusions matter</h3>
+<p>The supplement reports 21 HSV-2 comparison runs meeting exclusion criteria, all repeated. Lipid comparison had 13 such runs: seven repeated, six from four subjects excluded. Lymphocyte comparison had seven: two retested and five subjects excluded. Additional comparator-range and statistical exclusions are described. These disclosures are not proof of misconduct. Final specimen counts are not valid denominators for an invented attempt-failure rate.</p>
+<p>Assess retained-result accuracy, first-attempt reliability, final-result yield, real turnaround, cartridge consumption and operating cost separately. The paper and supplement do not provide an independently audited real-world reliability or cost model.</p>'''
+                  + references(['minilab-paper', 'minilab-supplement']) + '''
 <h2>Claim, date and device: keep the sequence visible</h2>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Dated capability comparison"><table>
 <caption>Selected evidence, not a complete assay-by-assay audit</caption>

@@ -57,6 +57,7 @@ def sections(data, references):
 <tr><th scope="row">Wrong development strategy</th><td>Proof of an assay versus a menu, sequence of milestones, resources and economics.</td></tr>
 </tbody></table></div><p>None of these possibilities has been established as the speaker's meaning. An optical patent is a research lead, not proof that a new venture solves the earlier system's problems.</p>
 <p><a href="scene-companion.html#companion-engineer">Supply a lawful scene locator</a> · <a href="specialists.html#expert-engineering">Engineering review brief</a></p>'''
+            body += '<p><a href="technology.html#assay-demonstrations">Inspect the assay materials, sample volumes, run times and reliability limits.</a></p>'
         elif work['page'] == 'investor-case.html':
             body += '''<h2>The evidence chain—and its missing link</h2>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Investor evidence chain"><table><caption>Records must be linked, not merely placed next to one another</caption><thead><tr><th scope="col">Record</th><th scope="col">What it establishes here</th><th scope="col">Still missing</th></tr></thead><tbody>
