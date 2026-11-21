@@ -30,6 +30,17 @@ test('manual pause survives visibility and viewport changes',()=>{
   s.intersect(false);s.intersect(true);
   assert.equal(s.video.plays,plays);assert.equal(s.button.textContent,'Play background video');
 });
+test('half-speed playback persists through loading, pause and resume',()=>{
+  for (const reduced of [false,true]) {
+    const s=setup(reduced);
+    assert.equal(s.video.defaultPlaybackRate,0.5);
+    if(reduced) s.button.events.click();
+    assert.equal(s.video.playbackRate,0.5);
+    s.button.events.click();s.button.events.click();
+    s.intersect(false);s.intersect(true);
+    assert.equal(s.video.playbackRate,0.5);
+  }
+});
 test('hidden or offscreen media pauses, then resumes when allowed',()=>{
   const s=setup();const plays=s.video.plays;s.intersect(false);s.intersect(true);
   assert.ok(s.video.pauses>0);assert.equal(s.video.plays,plays+1);
