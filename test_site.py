@@ -28,6 +28,11 @@ class Page(HTMLParser):
 
 
 class SiteTests(unittest.TestCase):
+    def test_map_interaction_regressions(self):
+        import subprocess
+        subprocess.run(['node', '--test', str(ROOT / 'test_map_interactions.cjs')],
+                       check=True, capture_output=True)
+
     def test_homepage_motion_is_optional_and_lifecycle_tests_pass(self):
         import subprocess
         source = (ROOT / 'index.html').read_text()

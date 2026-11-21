@@ -51,6 +51,8 @@ blockquote { border-left: 3px solid #ef3340; padding-left: 1rem; margin-inline: 
 .research-index li { break-inside: avoid; padding-right: 16px; }
 header nav a { display: inline-flex; align-items: center; min-height: 44px; }
 #connections-section, #reading-title { scroll-margin-top: 24px; }
+#evidence-title { scroll-margin-top: 24px; }
+#evidence-title:focus-visible { outline: 3px solid var(--red); outline-offset: 5px; }
 .chapter-outline { margin-block: 24px 32px; }
 .chapter-outline summary { cursor: pointer; min-height: 44px; padding-block: 10px; font-weight: 700; }
 .chapter-outline ol { columns: 2; padding-left: 24px; }
