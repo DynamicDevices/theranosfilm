@@ -42,14 +42,14 @@
   },
   "repository_governance": {
     "preloop": "Paused for this project by Alex on 21 November 2026; do not admit, trigger or disable shared flows",
-    "release_route": "Proposed protected-main publication after genuine site CI and an independent approving GitHub review; Preloop excluded; requires replacement signed release approval",
+    "release_route": "CI-gated protected-main delivery without required manual approval, as requested by Alex; Preloop paused. Signed authority and exact-artifact verification are separate from merge checks.",
     "intended_owner": "DynamicDevices",
     "intended_visibility": "public",
     "default_branch": "main",
     "protection_verified": true,
     "protection_ruleset_id": 27780408,
-    "required_ci_and_preloop_checks_configured": false,
-    "requested_protections": ["Require pull requests and at least one approving review", "Dismiss stale approvals", "Require conversation resolution", "Block force pushes and deletion", "Require site CI; Preloop paused by Alex", "Enforce for administrators without routine bypass"]
+    "required_site_ci_configured": true,
+    "requested_protections": ["Require pull requests without mandatory manual approval", "Require conversation resolution", "Block force pushes and deletion", "Require current-base site CI; Preloop paused by Alex", "Enforce for administrators without routine bypass"]
   },
   "assistance": "Assisted-by: Briar"
 }

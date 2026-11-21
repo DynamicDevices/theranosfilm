@@ -18,19 +18,19 @@ pushed under unchanged protections. Source implementation is pushed on
 site-launch, not on main.
 Domain control is verified through authenticated Cloudflare UI; zone has zero
 records. SEO release builder and tests are implemented locally. Six site tests
-pass. Alex signed the replacement project-specific release agreement on
-21 November: no Preloop; genuine site CI and the existing independent approving
-GitHub review remain mandatory. Expiry: 22 November 2026, 11:56 GMT. The selected
-agreement was independently verified; historical signed grants are unchanged.
+pass. PR #8 is open and genuine site-checks passed on e1da246. Strict site-checks
+from GitHub Actions is now required. Alex explicitly rejected the agent-added
+human-approval fallback and signed the complete correction on 21 November.
+Selected agreement expiry: 22 November 2026, 12:03 GMT. Its exact signature was
+independently verified; original signed files remain unchanged.
 
-Current approved route: source PR with real site CI and the existing independent
-approving GitHub review; merge through unchanged main protections, then publish
-the separately approved built artifact through the main workflow. No Preloop,
-gh-pages detour or protection bypass. DNS only after the domain is bound to the
-claimed hosting. This supersedes the earlier proposed artifact-branch route,
-which was never approved or used. Current next step: open the source PR and
-establish authentic site-checks, then require that check without changing any
-existing protection. No merge without qualifying approval; no deployment or DNS
+Current approved route: remove required human review count, last-push approval
+and extra approval for unattributed changes; retain PRs, conversation resolution,
+strict site-checks, protected history and no bypass actors. Merge only the exact
+CI-passed head, then publish the separately approved artifact through the main
+workflow. No Preloop or alternate review provider, gh-pages detour or admin bypass.
+The three delivery skills now explicitly prohibit agent-added manual gates.
+DNS only after the domain is bound to claimed hosting. No deployment or DNS
 changes yet. Historical notes below describe earlier state, not current authority.
 
 Alex selected theranosfilm.com and requested a public DD repository, Theranos-
