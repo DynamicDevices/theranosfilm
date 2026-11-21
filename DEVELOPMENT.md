@@ -1,6 +1,28 @@
 # Current development state — 21 November 2026
 
-## Current checkpoint — primary-source-dossiers
+## Current checkpoint — evidence follow-up
+
+Alex requested research into the unresolved questions, then “update the site”.
+The revised sources and pages identify investor-facing Exhibit 1853 and Dynasty
+Financial II LLC through selected filed testimony; quantify testified 2011–2013
+operating expenses/R&D without claiming a cash ledger; explain the specific FDA
+HSV-1 clearance and independent JCI service comparison; document the filmmakers'
+two-part production account and Christian Holmes's Clean Energy Solutions role.
+The former-CTO report is a role lead, not identification of the film engineer.
+Patent database legal events are not a current title opinion.
+
+32 Python tests and 4 Node tests pass; 21-page local release manifest:
+da6b5d48aafcebe3d6cffc6231055113d29588eb4ba828d0d0e657749498d80c.
+No new expert contacts, acceptance decisions or checked scene timestamps.
+Development coverage remains the original primary-dossiers agreement through
+22 November 2026, 12:54:17 GMT; verify it live. This changed public build needs
+its own publication approval. Existing repaired Pages workflow, privacy, counter,
+DNS, HTTPS, branch protections and Preloop pause are unchanged. The preceding
+21-page release was verified live after PR #13; private delivery receipts hold
+the exact source/deployment evidence. Do not use historical checkpoints as live
+status. Next: source-bound CI integration, exact-build approval and HTTPS check.
+
+## Historical checkpoint — primary-source-dossiers
 
 Alex asked “work through 1 - 6” for engineer identification, a documented investor
 case, patent/product mapping, a scene companion, financial reconstruction and

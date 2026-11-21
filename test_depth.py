@@ -13,10 +13,13 @@ from research import ROOT, load_depth, read_json
 
 
 class DepthTests(unittest.TestCase):
-    def test_six_profiles_have_attributed_roles_and_limits(self):
+    def test_seven_profiles_have_attributed_roles_and_limits(self):
         research = read_json(ROOT / 'data/research.json')
         depth = load_depth(ROOT, research)
-        self.assertEqual(len(depth['profiles']), 6)
+        self.assertEqual(len(depth['profiles']), 7)
+        father = next(p for p in depth['profiles'] if p['id'] == 'christian-holmes')
+        self.assertEqual(father['sources'], ['rice-holmes'])
+        self.assertIn('not a comprehensive exoneration', father['analysis'])
         pages = render()
         for person in depth['profiles']:
             self.assertIn(f'id="{person["id"]}"', pages['analysis.html'])
@@ -26,7 +29,8 @@ class DepthTests(unittest.TestCase):
             self.assertIn(name, PAGES)
             self.assertIn('not independently fact-checked', pages[name])
         self.assertIn('Search extract', pages['evidence.html'])
-        self.assertIn('not quantified', pages['money.html'].lower())
+        self.assertIn('2011–2013 expense testimony quantified', pages['money.html'])
+        self.assertIn('not a complete payment ledger', pages['money.html'])
 
     def test_depth_rejects_missing_fields_duplicate_ids_and_unknown_sources(self):
         research = read_json(ROOT / 'data/research.json')

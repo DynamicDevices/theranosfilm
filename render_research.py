@@ -164,8 +164,11 @@ def render(root=ROOT):
 <li><strong>Measure performance:</strong> bias and repeatability, reportable range, interference, sample stability, invalid results and relevant sensitivity/specificity measures.</li>
 <li><strong>Test realistic operation:</strong> different operators, sites, lots and clinically relevant samples; include failures and repeats rather than hiding them.</li>
 <li><strong>Keep the scope:</strong> a validated assay is not a validated menu, and analytical agreement is not automatically clinical usefulness or regulatory permission.</li></ol>
-<h2>What the available evidence does—and does not—show</h2>
-<p>The 2016 JCI comparison examined delivered testing services using 22 tests in 60 healthy adults. It provides a useful comparison within that design. It is not a complete instrument teardown, a study of every assay, or proof of which machine produced each individual result.</p>'''
+<h2>Did any Theranos technology genuinely work?</h2>
+<p>FDA K143236 cleared the HSV-1 IgG assay for specified uses and specimen types, including fingerstick whole blood, in July 2015. The 7 July letter corrects a 2 July letter. That is a real, limited regulatory achievement—not clearance of a universal testing platform, every earlier claim or every result. “Nothing worked” is too broad.</p>'''
+                  + references(['fda-hsv1']) + '''
+<h2>What the independent comparison found</h2>
+<p>The 2016 JCI study compared 22 measurements in 60 healthy adults using Theranos, Quest and LabCorp. It found significant interservice differences and more out-of-range flags at Theranos. This supports concerns about the delivered service, not a claim every result was wrong. It is not a complete instrument teardown, a study of every assay, or proof of which machine produced each result.</p>'''
                   + references(['jci']) + '''
 <p>The SEC alleged that Theranos used third-party analyzers for most patient tests while representing broader proprietary capability. The DOJ’s trial account describes limitations in the proprietary technology. Keep the civil allegations, reported trial evidence and actual verdict distinct.</p>'''
                   + references(['sec-release', 'doj']) + '''
