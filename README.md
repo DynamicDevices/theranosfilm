@@ -1,53 +1,47 @@
-# Local interface prototype
+# Theranos Film — Independent Evidence Analysis
 
-Current direction: Preloop is paused for this project at Alex's explicit request.
-Do not trigger it or change shared flows. `DEVELOPMENT.md` records the current
-source/release state and supersedes the earlier rollout notes below. Domain
-control is verified. Production publication is not yet complete.
+An independent, public research project examining *You Can See Everything* and the Theranos story: what the film shows, what the underlying sources establish, and what remains unanswered.
 
-`project.json` records the purpose, research scope, evidence standards, UX,
-contribution tracking, licence and actual publication status. It describes
-main-branch protections and their verification status. The public repository is
-https://github.com/DynamicDevices/theranosfilm. PR/review protections, force-push
-and deletion blocking were applied and read back; CI/Preloop required checks are
-not configured. Source publication is still pending the native review route.
+**Website:** [theranosfilm.com](https://theranosfilm.com) · **Research and corrections:** [GitHub issues](https://github.com/DynamicDevices/theranosfilm/issues)
 
-`analysis.html` is the initial plain-language guide, prioritising Elizabeth
-Holmes, her personal/business partners, the interviewer and the actress.
-It distinguishes sourced document observations from unverified film context
-and unanswered biographical questions. Additional chapters cover technology,
-investors, money and source limits. `research-issues.json` retains the seven
-issue outlines now posted to GitHub. The contribution schema is a
-submission contract, not yet a working fact-checking or review service.
+The public website is being deployed. This repository contains the analysis, source register, contribution format and publishing code. It is not affiliated with Theranos, the filmmakers or the people discussed.
 
-The site now has its own local Git repository to isolate prospective public
-files from private research. `config/*-proposals/` is ignored and must never be
-published. Authority records are not research evidence or public-site assets.
+## What we investigate
 
-Selected domain: theranosfilm.com. Registration and control are not established.
+- **The film and its construction:** interviews, recordings, performances and recreations; what can and cannot be established scene by scene.
+- **The people:** Elizabeth Holmes, Billy Evans, Ramesh “Sunny” Balwani, Nathan Fielder, Lance Oppenheim and Amanda Seyfried, keeping personal and professional roles distinct.
+- **The technology:** blood sampling, assays, the proposed platform, patents, clinical validation and the claim that Theranos used the wrong technology.
+- **The investor claims:** what was represented as working at the time, what was a future ambition, and what original documents actually say.
+- **The money and the failure:** financing and expenditure questions, without inventing a spending breakdown or treating an open question as an established finding.
 
-Serve this folder with `python3 -m http.server 8080 --directory site` from the
-project directory, then visit http://localhost:8080. No build or network assets
-are needed. This folder alone is a prospective public-site candidate, not the
-private research project. Nothing here establishes publication approval.
+This is an initial, evolving analysis—not a completed biography, scene audit, patent review, clinical evaluation or forensic accounting exercise.
 
-The WebGL canvas draws relationships. Real HTML anchors expose the same topics
-and evidence to keyboard, assistive technology and no-WebGL users. Every
-relationship has a shareable fragment and a permanent readable entry. No
-analytics, tracking, remote fonts, physics animation or inferred confidence score.
-The map is curated, not a quantitative network analysis. Position, distance,
-colour and degree must not imply guilt or evidential strength.
+## Follow the evidence
 
-Theranos-inspired red/white/black styling is requested by Alex. No official logo
-or film imagery is included. Independence is stated in the header and footer.
+The site connects claims, people, chronology and sources. Its interactive relationship map has readable HTML alternatives; the chapters remain available without WebGL or JavaScript. Visual proximity or connections do not establish guilt or evidential strength.
 
-Source summaries combine earlier evidence with a bounded new film/clinical/legal
-source check. The source register states inspection scope. Before release:
-review every excerpt and public claim, check
-source accessibility, browser/keyboard/screen-reader behaviour, responsive layout
-and contrast, complete the required publication review, establish repository and
-domain authority, and add a real corrections channel. Remove noindex and add
-canonical metadata/sitemap only for the verified deployment address. No feedback
-submission endpoint is connected yet. Do not publish the parent working dataset.
+Read the [people and film analysis](https://theranosfilm.com/analysis.html), [technology](https://theranosfilm.com/technology.html), [investor representations](https://theranosfilm.com/investors.html), [money questions](https://theranosfilm.com/money.html) and [source register](https://theranosfilm.com/sources.html).
+
+We distinguish allegations, court findings, source observations and interpretation. A document can establish what someone claimed without proving that the claimed technology worked. Inspection limits, uncertainty and competing supported accounts belong alongside the evidence. We do not infer dishonesty from body language, diagnose participants or imply guilt by association.
+
+## Contribute or correct something
+
+[Open an issue](https://github.com/DynamicDevices/theranosfilm/issues/new) with one specific claim or correction, an exact source location, what it supports and its limitations. Source-backed JSON contributions can be proposed through a pull request using [contribution.schema.json](contribution.schema.json). Read [CONTRIBUTING.md](CONTRIBUTING.md) for evidence, attribution, review and rights requirements.
+
+Submissions are proposals, not automatically accepted facts. GitHub records the submitting account, discussion and revisions; an account is not proof of real-world identity. The accepted-record review and website-import workflow remains under development.
+
+Do not submit private medical or contact information, unsupported allegations or copyrighted document dumps. Public Git history can be difficult to remove; link to third-party sources rather than copying them wholesale.
+
+## Publication and access
+
+The site is static, with readable chapters, accessible relationship links and no advertising, analytics or remote fonts. Releases include canonical URLs, a sitemap and structured metadata to help readers and search engines find the analysis; inclusion or ranking is not guaranteed.
+
+Changes use pull requests and genuine current-base CI, without required manual PR approval. Preloop is paused for this project at Alex's request. Publication separately checks the approved main commit and exact build manifest. See [Actions](https://github.com/DynamicDevices/theranosfilm/actions) for the actual workflow state; a passing check is not proof that the public domain is live.
+
+## Rights and independence
+
+Original research text and annotations are licensed under **CC BY-SA 4.0**; see [LICENSE.md](LICENSE.md). Third-party documents, trademarks and images retain their owners' rights. The Creative Commons grant does not license the software; no software licence has been selected.
+
+Theranos-inspired colours identify the subject of the research, not an official affiliation. Private working research and authority records are excluded from this repository and the published site.
 
 Assisted-by: Briar.
