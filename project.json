@@ -42,7 +42,7 @@
   },
   "repository_governance": {
     "preloop": "Paused for this project by Alex on 21 November 2026; do not admit, trigger or disable shared flows",
-    "release_route": "Proposed exact-artifact manual publication after site CI, without merging or weakening protected main; requires replacement signed release approval",
+    "release_route": "Proposed protected-main publication after genuine site CI and an independent approving GitHub review; Preloop excluded; requires replacement signed release approval",
     "intended_owner": "DynamicDevices",
     "intended_visibility": "public",
     "default_branch": "main",

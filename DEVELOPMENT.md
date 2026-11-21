@@ -13,17 +13,25 @@ review needs BOTH its trigger-project allowlist and a matching read-only clone
 mapping. The attempted change included only the allowlist. No retry of that
 mutation was made; a deliberately stale If-Match diagnostic returned 412.
 
-GitHub main now has an empty signed base, e8b727ccecfb851d495b3456b24d41837d12cca4,
-pushed under unchanged protections. Source implementation is not on main.
+GitHub main has an empty signed base, e8b727ccecfb851d495b3456b24d41837d12cca4,
+pushed under unchanged protections. Source implementation is pushed on
+site-launch, not on main.
 Domain control is verified through authenticated Cloudflare UI; zone has zero
 records. SEO release builder and tests are implemented locally. Six site tests
-pass. A replacement exact-artifact manual release agreement is required because
-the previous production agreement requires Preloop before publication.
+pass. Alex signed the replacement project-specific release agreement on
+21 November: no Preloop; genuine site CI and the existing independent approving
+GitHub review remain mandatory. Expiry: 22 November 2026, 11:56 GMT. The selected
+agreement was independently verified; historical signed grants are unchanged.
 
-Proposed route: source PR with real site CI; preserve main review protection;
-publish only the separately approved built artifact from gh-pages through
-GitHub Pages. No source merge or protection bypass. DNS only after the domain
-is bound to the claimed hosting. Historical notes below describe earlier state.
+Current approved route: source PR with real site CI and the existing independent
+approving GitHub review; merge through unchanged main protections, then publish
+the separately approved built artifact through the main workflow. No Preloop,
+gh-pages detour or protection bypass. DNS only after the domain is bound to the
+claimed hosting. This supersedes the earlier proposed artifact-branch route,
+which was never approved or used. Current next step: open the source PR and
+establish authentic site-checks, then require that check without changing any
+existing protection. No merge without qualifying approval; no deployment or DNS
+changes yet. Historical notes below describe earlier state, not current authority.
 
 Alex selected theranosfilm.com and requested a public DD repository, Theranos-
 inspired branding, connection/evidence-first WebGL UX, accessible and balanced
