@@ -154,6 +154,26 @@ def render(root=ROOT):
 <p>A platform can be a common sample-handling system, a shared cartridge, several instruments in one enclosure, software linking modules, or a laboratory service. Those are different architectures. Cell counting, chemical concentration measurements, antibody-based assays and nucleic-acid tests require different measurement principles and often different preparation.</p>
 <p>Integration is useful engineering, but it does not make every module clinically validated. A proposed later system must not be used as proof that an earlier product could already do the same things.</p>'''
                   + references(['minilab']) + '''
+<h2>What the later engineering paper describes</h2>
+<p>The 2018 Theranos-authored paper describes miniLab hardware, assay-configurable cartridges and a connected server called the virtual analyzer. It reports selected genetic, antibody, lipid and cell measurements using different modules: a shared architecture, not one universal sensor. The authors were current/former employees with possible equity interests. This is published company research, not independent replication or proof of earlier commercial readiness.</p>'''
+                  + references(['minilab-paper']) + '''
+<h2>Claim, date and device: keep the sequence visible</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Dated capability comparison"><table>
+<caption>Selected evidence, not a complete assay-by-assay audit</caption>
+<thead><tr><th scope="col">Date</th><th scope="col">Evidence</th><th scope="col">What it does not establish</th></tr></thead><tbody>
+<tr><th scope="row">2009–2010</th><td>SEC complaint describes a limited earlier analyser and development toward a broader miniLab.</td><td>Civil allegations are not technical certification.</td></tr>
+<tr><th scope="row">2013 retail launch</th><td>SEC alleges substantial third-party analyser use; Grossman describes a December pitch about an operating proprietary service.</td><td>A service test menu is not a proprietary-device test menu.</td></tr>
+<tr><th scope="row">October 2014</th><td>Peterson describes received forecasts and a planned 900-location rollout.</td><td>Financial projections do not validate the assays needed to deliver them.</td></tr>
+<tr><th scope="row">July 2015</th><td>FDA clearance of a specified HSV-1 IgG assay.</td><td>Not universal-platform clearance or retrospective validation of earlier representations.</td></tr>
+<tr><th scope="row">2017–2018</th><td>Later engineering paper submitted in September 2017, accepted in December, published in 2018.</td><td>Selected later results do not demonstrate 2013–2014 readiness.</td></tr>
+</tbody></table></div>'''
+                  + references(['sec', 'trial-grossman-2021', 'trial-peterson-2021', 'fda-hsv1', 'minilab-paper']) + '''
+<h2>Which proprietary device reached patient testing?</h2>
+<p>The amended appellate opinion states that Edison was the only Theranos-developed device used for patient testing, while miniLab and other devices remained in development. It distinguishes developed assays from the twelve ever run on Edison. This is a judicial account of trial evidence, not our reconstruction of every assay record. A later prototype cannot establish an earlier deployed capability.</p>'''
+                  + references(['appeal-2025']) + '''
+<h2>Independent evidence about fingerprick collection</h2>
+<p>Bond and Richards-Kortum found greater drop-to-drop variability in selected blood-cell and hemoglobin measurements from fingerpricks than in venous controls, with greater consistency at larger volumes in their experiment. This was not a Theranos-machine study, and does not show that all fingerstick testing fails. It shows why sample collection must be validated alongside the analyser.</p>'''
+                  + references(['rice-fingerprick-study']) + '''
 <h2>Why a tiny sample is not a universal shortcut</h2>
 <p>A usable sample has a budget: collection losses and retained material reduce what can be divided between tests, quality controls and repeat measurements. The relevant volume is the amount of original sample reaching each assay, not merely the amount collected.</p>
 <p>Adding diluent increases liquid volume, not the amount of target material originally present. Whether a diluted sample is usable depends on the validated assay range, preparation uncertainty and detection performance. Some tests can work at small volumes; that does not establish that all tests can share one tiny sample under one protocol.</p>
@@ -177,6 +197,8 @@ def render(root=ROOT):
 <p>A specification can describe embodiments and aspirations broader than the legal protection ultimately granted. Neither a patent grant nor an application is a clinical performance certificate. Trade secrets, software, know-how, contracts and regulatory evidence are separate assets and separate questions.</p>'''
                   + references(['patent', 'exhibit']) + '''
 <h2>Was it “the wrong technology”?</h2>
+<p>Haemanthus patent records describe Raman optical measurement, rather than integrating several assay methods in the Theranos architecture. A published application describes pump/Stokes beams; a distinct 2026 grant covers counterpropagating beams. Neither establishes broad diagnostic accuracy or identifies the film speaker. A different measurement approach still needs its own intended-use and clinical evidence.</p>'''
+                  + references(['haemanthus-application', 'haemanthus-grant-12791485']) + '''
 <p>We have not authenticated the engineer’s identity or the remembered exchange. It would be misleading to attribute a technical verdict to an unidentified speaker. The phrase could concern sample preparation, detection method, engineering architecture, development sequence or economics; those remain hypotheses.</p>
 <p>The next useful step is the full passage and a precise comparison: what was being measured, why the chosen method was said to fail, which alternative was proposed, and what evidence supports that alternative. A later patent or successful method does not prove the earlier task was impossible; a promising experiment does not prove a commercial platform was ready.</p>
 <p><a href="film-guide.html#sequence-engineer">Contribute the scene locator</a> · <a href="claims.html#claim-platform">Compare platform claims with their evidence</a> · <a href="timeline.html">Place the claim in its investor timeline</a></p>''')

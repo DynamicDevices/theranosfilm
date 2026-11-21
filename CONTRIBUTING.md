@@ -69,6 +69,10 @@ workstreams, patent elements, classified USD figures, edition-aware scene leads
 and prepared specialist briefs. Empty scene times must remain null until the
 record is explicitly checked with an edition, source and ordered timestamps.
 Forecast and reported-snapshot values are not actual-spending records. Do not
+confuse `reported_accounts` historical/actual-labelled company statements with
+independent audits or cash payments. Keep source units, expense-sign conversion
+and unusual period labels explicit; do not annualise the Mar-15 / 2 Mth-A column.
+Do not
 upgrade prepared briefs into expert endorsements or infer a speaker's identity
 from a patent inventor's name. Curated dossier history is separate from submitted
 proposals and exact-hash editorial decisions.
