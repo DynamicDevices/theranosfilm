@@ -28,6 +28,20 @@ class Page(HTMLParser):
 
 
 class SiteTests(unittest.TestCase):
+    def test_homepage_motion_is_optional_and_lifecycle_tests_pass(self):
+        import subprocess
+        source = (ROOT / 'index.html').read_text()
+        self.assertIn('data-src="hero-loop.mp4"', source)
+        video_tag = re.search(r'<video\b[^>]*>', source).group(0)
+        self.assertNotRegex(video_tag, r'(?<![-\w])src=')
+        self.assertIn('id="hero-video-toggle"', source)
+        self.assertIn('preload="none"', source)
+        css = (ROOT / 'editorial.css').read_text()
+        self.assertIn('border-radius: 50%', css)
+        self.assertIn('border-radius: inherit', css)
+        subprocess.run(['node', '--check', str(ROOT / 'hero-motion.js')], check=True, capture_output=True)
+        subprocess.run(['node', '--test', str(ROOT / 'test_hero_motion.cjs')], check=True, capture_output=True)
+
     def test_chapter_outline_preserves_anchors_and_disambiguates_duplicates(self):
         from render_research import chapter_outline
         outline, body = chapter_outline(
@@ -48,7 +62,7 @@ class SiteTests(unittest.TestCase):
     def test_homepage_starts_with_the_explanation_and_keeps_deep_routes(self):
         source = (ROOT / 'index.html').read_text()
         opening = source.split('<main id="main">', 1)[1].lstrip()
-        self.assertTrue(opening.startswith('<section class="intro"'))
+        self.assertRegex(opening, r'^<section class="intro(?:\s[^\"]*)?"')
         self.assertIn('aria-labelledby="film-title"', opening)
         hero = opening.split('</section>', 1)[0]
         self.assertIn('href="start-here.html"', hero)

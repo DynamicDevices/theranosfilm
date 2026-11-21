@@ -20,10 +20,15 @@ class Images(HTMLParser):
 
 
 class ViewsBadgeTests(unittest.TestCase):
+    def badge_images(self, text):
+        # The poster precedes the footer; identify the counter's own container,
+        # not whichever image happens to occur first on the homepage.
+        return Images(text[text.index('<div id="page-views"'):text.index('</footer>')]).images
+
     def test_source_preview_does_not_contact_counter(self):
         text = (ROOT / 'index.html').read_text()
         self.assertNotIn('https://hits.sh/', text)
-        self.assertEqual(Images(text).images[0]['src'], 'views-preview.svg')
+        self.assertEqual(self.badge_images(text)[0]['src'], 'views-preview.svg')
         self.assertTrue((ROOT / 'views-preview.svg').is_file())
         self.assertGreater(text.index('views-badge'), text.index('<footer>'))
 
@@ -32,7 +37,7 @@ class ViewsBadgeTests(unittest.TestCase):
             with tempfile.TemporaryDirectory() as temporary:
                 output = Path(temporary) / 'release'
                 build(output, base)
-                image = Images((output / 'index.html').read_text()).images[0]
+                image = self.badge_images((output / 'index.html').read_text())[0]
                 if base != 'https://theranosfilm.com':
                     self.assertEqual(image['src'], 'views-preview.svg')
                     continue

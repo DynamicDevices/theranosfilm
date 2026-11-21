@@ -26,6 +26,12 @@ records. Publish those limits plainly, not as answered questions.
 
 ## Workstream closeout
 
+Homepage motion addition: Alex approved a silent abstract drop/network/source
+storyboard and accepted the edited eight-second loop after playback. The new
+candidate adds optional motion with a poster, pause control, reduced-motion and
+Save-Data loading policy, and public artwork provenance. It does not change any
+research finding. Publication is separate from creative acceptance.
+
 Implementation and publication are complete for this release. Further research
 is separate from release acceptance. Keep these issues open until their own
 evidence requirements are satisfied; a completed web page is not a completed
