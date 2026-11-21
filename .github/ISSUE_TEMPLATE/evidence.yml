@@ -1,0 +1,46 @@
+name: Evidence or correction
+description: Propose one source-backed claim, correction or scene locator.
+title: "[Evidence] "
+body:
+  - type: markdown
+    attributes:
+      value: "Public submissions are proposals, not accepted facts. Do not include private medical/contact information, secrets or copyrighted document dumps. Your GitHub account and discussion will be public."
+  - type: input
+    id: entry
+    attributes:
+      label: Existing claim or scene ID / page URL
+      description: Include the stable entry ID if correcting an existing claim.
+  - type: textarea
+    id: claim
+    attributes:
+      label: One specific claim or correction
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source URL and exact locator
+      description: Give the page, paragraph, edition/timecode or other precise location; link rather than dump a document.
+    validations:
+      required: true
+  - type: textarea
+    id: support
+    attributes:
+      label: What the source supports and what it does not
+      description: Separate observation, allegation, finding and interpretation. State inspection limits and counterevidence.
+    validations:
+      required: true
+  - type: textarea
+    id: scene
+    attributes:
+      label: For film references, edition and timecode convention
+      description: Leave blank if not a scene contribution. Label recollection; do not invent a timestamp or quotation.
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Rights and privacy
+      options:
+        - label: I have the right to license my original contribution text under CC BY-SA 4.0; third-party sources retain their rights.
+          required: true
+        - label: I understand this submission is public and have not included sensitive personal information or unauthorised copies.
+          required: true

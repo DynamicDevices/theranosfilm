@@ -1,5 +1,31 @@
 # Current development state — 21 November 2026
 
+## Evidence-analysis update: current checkpoint
+
+Alex requested improvements 1–6: film guide, claim/evidence comparison, technology
+explanation, investor timeline, tracked contributions and accessibility. Work is
+on evidence-analysis from merged main 83b4c63. The earlier production site is live
+with a valid certificate for apex/www and HTTPS enforcement.
+
+New public JSON drives six readable pages (technology replaces its earlier
+version). Six claim entries, four untimed sequence leads and six timeline entries
+retain source locators and gaps. No authenticated film copy/transcript, engineer
+identification, complete spending reconstruction or new independent review is
+claimed. Contribution records remain proposed; separate review records bind
+their exact digest and source/discussion. No automatic acceptance or arbitrary
+URL fetching. One seed proposal, zero real review decisions.
+
+16 Python and four Node tests form the final validation suite. Browser checks covered
+390/1280px, skip link, filter/hash navigation, local-only JSON helper, script-free
+reading and reduced motion. Phone map target collisions were corrected; checked
+map targets no longer overlap. Not a complete screen-reader/WCAG audit.
+
+Next: finish source-bound validation, submit the coherent PR through authentic
+strict CI with no manual approval or Preloop, obtain the changed artifact's exact
+publication signature, then dispatch/verify production. Do not reuse the older
+artifact approval for changed release bytes. Historical notes below are not the
+current source/deployment state.
+
 ## Latest direction and current publication work
 
 Alex: “lock out preloop for now - we need to make progress - we will continue

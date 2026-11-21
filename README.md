@@ -6,7 +6,7 @@ An independent, public research project examining *You Can See Everything* and t
 
 **Website:** [theranosfilm.com](https://theranosfilm.com) · **Research and corrections:** [GitHub issues](https://github.com/DynamicDevices/theranosfilm/issues)
 
-The public website is being deployed. This repository contains the analysis, source register, contribution format and publishing code. It is not affiliated with Theranos, the filmmakers or the people discussed.
+The public website is live over HTTPS. Source changes reach it only through a separate approved release. This repository contains the analysis, source register, contribution records and publishing code. It is not affiliated with Theranos, the filmmakers or the people discussed.
 
 ## What we investigate
 
@@ -22,15 +22,17 @@ This is an initial, evolving analysis—not a completed biography, scene audit, 
 
 The site connects claims, people, chronology and sources. Its interactive relationship map has readable HTML alternatives; the chapters remain available without WebGL or JavaScript. Visual proximity or connections do not establish guilt or evidential strength.
 
-Read the [people and film analysis](https://theranosfilm.com/analysis.html), [technology](https://theranosfilm.com/technology.html), [investor representations](https://theranosfilm.com/investors.html), [money questions](https://theranosfilm.com/money.html) and [source register](https://theranosfilm.com/sources.html).
+Read the [film sequence guide](film-guide.html), [claim-to-evidence comparisons](claims.html), [people analysis](analysis.html), [technology explanation](technology.html), [investor timeline](timeline.html), [investor representations](investors.html), [money questions](money.html) and [source register](sources.html). Scene timestamps and the unidentified engineer remain explicit gaps, not invented facts.
 
 We distinguish allegations, court findings, source observations and interpretation. A document can establish what someone claimed without proving that the claimed technology worked. Inspection limits, uncertainty and competing supported accounts belong alongside the evidence. We do not infer dishonesty from body language, diagnose participants or imply guilt by association.
 
 ## Contribute or correct something
 
-[Open an issue](https://github.com/DynamicDevices/theranosfilm/issues/new) with one specific claim or correction, an exact source location, what it supports and its limitations. Source-backed JSON contributions can be proposed through a pull request using [contribution.schema.json](contribution.schema.json). Read [CONTRIBUTING.md](CONTRIBUTING.md) for evidence, attribution, review and rights requirements.
+[Open an evidence issue](https://github.com/DynamicDevices/theranosfilm/issues/new?template=evidence.yml) with one specific claim or correction, an exact source location, what it supports and its limitations. The [contribution page](contribute.html) offers a local JSON helper and readable record history. Source-backed JSON contributions can be proposed through a pull request using [contribution.schema.json](contribution.schema.json). Read [CONTRIBUTING.md](CONTRIBUTING.md) for evidence, attribution, review and rights requirements.
 
-Submissions are proposals, not automatically accepted facts. GitHub records the submitting account, discussion and revisions; an account is not proof of real-world identity. The accepted-record review and website-import workflow remains under development.
+Submissions are proposals, not automatically accepted facts. GitHub records the submitting account, discussion and revisions; an account is not proof of real-world identity. Separate editorial records use [review.schema.json](review.schema.json) to bind a decision to the exact proposal hash and recorded source revision. Corrections preserve earlier records. Schema checks are not fact checking, and there is no automatic issue-to-accepted-fact importer.
+
+The source register, claims, sequence leads and timeline live in [data/research.json](data/research.json). Readable pages are deterministically rendered from those records with escaped text. CI rejects stale pages, invalid links, changed historical contribution records and mismatched review hashes. See [the access page](accessibility.html) for reading alternatives and testing limits; no WCAG certification is claimed.
 
 Do not submit private medical or contact information, unsupported allegations or copyrighted document dumps. Public Git history can be difficult to remove; link to third-party sources rather than copying them wholesale.
 

@@ -1,12 +1,12 @@
 /* Curated prototype only. Never import the private working dataset here. */
 'use strict';
 const topics = [
-  {id:'promise',title:'The promise',kind:'Claim',x:.19,y:.22},
+  {id:'promise',title:'The promise',kind:'Claim',x:.12,y:.18},
   {id:'deck',title:'Investor presentation',kind:'Trial exhibit 3696',x:.52,y:.18},
-  {id:'investors',title:'Investor disclosures',kind:'Legal evidence',x:.81,y:.36},
-  {id:'technology',title:'The technology',kind:'Research question',x:.21,y:.69},
-  {id:'patents',title:'Patents & IPR',kind:'Patent record',x:.53,y:.78},
-  {id:'film',title:'The film',kind:'Scene comparison pending',x:.79,y:.72}
+  {id:'investors',title:'Investor disclosures',kind:'Legal evidence',x:.88,y:.42},
+  {id:'technology',title:'The technology',kind:'Research question',x:.12,y:.78},
+  {id:'patents',title:'Patents & IPR',kind:'Patent record',x:.52,y:.84},
+  {id:'film',title:'The film',kind:'Scene comparison pending',x:.88,y:.82}
 ];
 const exhibit = 'https://files.cand.uscourts.gov/files/18-CR-258%20USA%20v.%20Holmes/Trial%20Exh.%203696/Trial%20Exh.%203696%20Presentation.pdf';
 const links = [
@@ -18,6 +18,9 @@ const links = [
 ];
 const byId = Object.fromEntries(topics.map(t => [t.id,t]));
 const panel = document.querySelector('#evidence');
+const researchTargets = {'claim-deck':'claims.html#claim-now','deck-investors':'timeline.html',
+  'promise-technology':'claims.html#claim-platform','technology-patents':'claims.html#claim-patent',
+  'film-investors':'film-guide.html#sequence-investors'};
 function content(link, container, full) {
   container.replaceChildren();
   const add = (tag, text, cls) => {const e=document.createElement(tag);e.textContent=text;if(cls)e.className=cls;container.append(e);return e;};
@@ -26,8 +29,11 @@ function content(link, container, full) {
   add('p',link.text);
   add('h3','What this does not establish');add('p',link.limit,'limit');
   if(link.source){const a=add('a',link.sourceLabel);a.href=link.source;}
+  if(researchTargets[link.id]){const p=add('p','');const a=document.createElement('a');a.href=researchTargets[link.id];a.textContent='Follow this question into the analysis';p.append(a);}
 }
 let selected=links[0].id;
+// Replace the server-readable fallback only after the interactive script runs.
+document.querySelector('#reading-list').replaceChildren();
 function select(id){const link=links.find(l=>l.id===id);if(!link)return;selected=id;content(link,panel,true);document.querySelectorAll('.edge').forEach(a=>a.setAttribute('aria-current',String(a.dataset.id===id)));draw();}
 for(const t of topics){const a=document.createElement('a');a.className='node';a.href='#'+links.find(l=>l.a===t.id||l.b===t.id).id;a.style.left=t.x*100+'%';a.style.top=t.y*100+'%';a.textContent=t.title;const small=document.createElement('small');small.textContent=t.kind;a.append(small);document.querySelector('#nodes').append(a);}
 for(const l of links){const a=document.createElement('a');a.className='edge';a.dataset.id=l.id;a.href='#'+l.id;a.textContent=l.label;a.style.left=(byId[l.a].x+byId[l.b].x)*50+'%';a.style.top=(byId[l.a].y+byId[l.b].y)*50+'%';document.querySelector('#edges').append(a);const article=document.createElement('article');article.id=l.id;content(l,article,false);document.querySelector('#reading-list').append(article);}

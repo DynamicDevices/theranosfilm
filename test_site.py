@@ -30,7 +30,7 @@ class SiteTests(unittest.TestCase):
     def test_static_local_links_and_fragments(self):
         for file in ROOT.glob('*.html'):
             page = Page(file.read_text())
-            self.assertEqual(page.lang, 'en')
+            self.assertIn(page.lang, ('en', 'en-GB'))
             self.assertEqual(page.h1, 1)
             for href in page.links:
                 parts = urlsplit(href)
