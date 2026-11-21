@@ -1,0 +1,55 @@
+{
+  "id": "theranos-film-analysis",
+  "name": "Theranos Film — Independent Evidence Analysis",
+  "updated": "2026-11-21",
+  "selected_domain": "theranosfilm.com",
+  "domain_control_verified": true,
+  "domain_control_evidence": "Authenticated Cloudflare registration and domain-management view plus registry/DNS checks, 21 November 2026; no DNS write performed by this verification",
+  "purpose": "Examine You Can See Everything by connecting specific claims with sources, qualifications, alternative explanations and corrections.",
+  "research_topics": ["Film portrayal and recording context", "People, relationships and chronology", "Technology, platform claims and clinical validation", "Patents and actual implementation", "Investor representations: present capability versus future potential", "Financing, actual expenditure and failure"],
+  "priority_profiles": ["Elizabeth Holmes", "Billy Evans; separately Ramesh Sunny Balwani, with dated role research pending", "Nathan Fielder, co-director with Lance Oppenheim", "Amanda Seyfried, participant and performer; scene audit pending"],
+  "plain_language_analysis": "analysis.html",
+  "reading_sections": ["analysis.html", "technology.html", "investors.html", "money.html", "sources.html", "about.html"],
+  "planned_issues": "research-issues.json",
+  "interface": {
+    "primary": "WebGL evidence map",
+    "alternative": "Accessible HTML links and readable evidence entries",
+    "branding": "Theranos-inspired red, white and black; explicitly independent",
+    "principle": "Visual prominence, distance and connectivity do not establish truth or guilt."
+  },
+  "evidence_standards": ["Stable claim identifiers and exact source locators", "Honest inspection limits", "Separate allegations, findings, observations and interpretations", "Document wording does not prove the claimed capability", "Repeated reporting is not independent corroboration", "No diagnosis, body-language lie detection or guilt by association", "Preserve disagreements and correction history"],
+  "contributions": {
+    "format": "JSON",
+    "schema": "contribution.schema.json",
+    "guidance": "CONTRIBUTING.md",
+    "planned_transport": "GitHub pull requests",
+    "attribution": "Public profile, PR and exact reviewed revision; not proof of real-world identity",
+    "initial_status": "proposed",
+    "workflow_live": false
+  },
+  "licensing": {
+    "original_research": "CC-BY-SA-4.0",
+    "scope": "LICENSE.md",
+    "third_party_material": "Excluded; source rights retained",
+    "software": "No licence selected"
+  },
+  "publication": {
+    "stage": "release candidate; not deployed",
+    "repository_url": "https://github.com/DynamicDevices/theranosfilm",
+    "deployment_verified": false,
+    "indexing": "noindex pending reviewed deployment",
+    "private_research": "Excluded; never upload the parent working directory"
+  },
+  "repository_governance": {
+    "preloop": "Paused for this project by Alex on 21 November 2026; do not admit, trigger or disable shared flows",
+    "release_route": "CI-gated protected-main delivery without required manual approval, as requested by Alex; Preloop paused. Signed authority and exact-artifact verification are separate from merge checks.",
+    "intended_owner": "DynamicDevices",
+    "intended_visibility": "public",
+    "default_branch": "main",
+    "protection_verified": true,
+    "protection_ruleset_id": 27780408,
+    "required_site_ci_configured": true,
+    "requested_protections": ["Require pull requests without mandatory manual approval", "Require conversation resolution", "Block force pushes and deletion", "Require current-base site CI; Preloop paused by Alex", "Enforce for administrators without routine bypass"]
+  },
+  "assistance": "Assisted-by: Briar"
+}
