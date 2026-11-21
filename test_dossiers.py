@@ -111,6 +111,19 @@ class DossierTests(unittest.TestCase):
         self.assertIn('does not yet label it true or false', page)
         self.assertIn('not every investor', page)
 
+    def test_pharmaceutical_reports_keep_claims_defence_and_endorsement_separate(self):
+        work = next(w for w in self.data['workstreams'] if w['id'] == 'peterson-investor-case')
+        findings = {f['id']: f for f in work['findings']}
+        self.assertIn('not independent verification', findings['pfizer-narrow-study']['text'])
+        self.assertIn('company-reported limitations', findings['pfizer-calibration-limits']['text'])
+        self.assertIn('not proof Pfizer approved', findings['holmes-logo-defence']['text'])
+        self.assertIn('not an exhaustive audit', findings['weber-logo-counterrecord']['text'])
+        page = render(ROOT)['investor-case.html']
+        for source in ['pfizer-report-0143', 'peterson-pharma-binder', 'holmes-logo-explanation',
+                       'weber-pharma-testimony', 'government-logo-comparison']:
+            self.assertTrue(f'evidence.html#source-{source}' in page, source)
+        self.assertIn('not two complete standalone reports', findings['pfizer-prepared-for-not-by']['text'])
+
     def test_film_and_comparator_limits_remain_explicit(self):
         findings = {f['id']: f for w in self.data['workstreams'] for f in w['findings']}
         self.assertIn('No frequency count or behavioural diagnosis', findings['companion-nodding-boundary']['text'])

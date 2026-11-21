@@ -43,6 +43,14 @@ def sections(data, references):
     for work in data['workstreams']:
         body = (f'<div class="callout"><h2>Current evidence status</h2><p>{esc(work["status"])}</p></div>'
                 + index)
+        if work['page'] == 'investor-case.html':
+            body += '''<nav aria-label="In this investor case study"><h2>Read the evidence by question</h2><ul>
+<li><a href="#pfizer-prepared-for-not-by">Who wrote the Pfizer report?</a></li>
+<li><a href="#pfizer-narrow-study">What did the study actually cover?</a></li>
+<li><a href="#holmes-logo-defence">What was Holmes's explanation?</a></li>
+<li><a href="#peterson-committee-memo">What did the investment memo record?</a></li>
+<li><a href="#investor-claim-types">Existing capability or future promise?</a></li>
+</ul></nav>'''
         for finding in work['findings']:
             body += (f'<section class="evidence-card" id="{esc(finding["id"])}"><h2>{esc(finding["label"])}</h2>'
                      f'<p>{esc(finding["text"])}</p>' + refs(finding['sources'])
