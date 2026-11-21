@@ -59,12 +59,22 @@ def sections(data, references):
 <p><a href="scene-companion.html#companion-engineer">Supply a lawful scene locator</a> · <a href="specialists.html#expert-engineering">Engineering review brief</a></p>'''
             body += '<p><a href="technology.html#assay-demonstrations">Inspect the assay materials, sample volumes, run times and reliability limits.</a></p>'
         elif work['page'] == 'investor-case.html':
+            body += '''<section id="dated-investor-comparison"><h2>What existed when investors heard the claims?</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Dated investor comparison"><table>
+<caption>Different dates, different records—not one pitch or one machine</caption>
+<thead><tr><th scope="col">Date / record</th><th scope="col">Claim or achievement</th><th scope="col">What it does not establish</th></tr></thead><tbody>
+<tr><th scope="row">December 2013 / Grossman testimony</th><td>Executives described technology already used on human samples and generating reimbursement.</td><td>A meeting recording, identical disclosures to every investor, or independent validation of the claimed performance.</td></tr>
+<tr><th scope="row">October 2014 / Peterson testimony</th><td>Financial forecasts received and discussed; an expectation about future performance.</td><td>A guaranteed outcome. Her interpretation of the starting position must be distinguished from the forecast itself.</td></tr>
+<tr><th scope="row">July 2015 / FDA HSV-1 clearance</th><td>A specific assay and defined specimen/use conditions.</td><td>Clearance of the whole menu, or proof that a broad platform worked in 2013–2014.</td></tr>
+<tr><th scope="row">2018 / miniLab engineering paper</th><td>Selected assay/module results; integration still identified as future work.</td><td>Independent clinical replication or retrospective proof of earlier deployed capability.</td></tr>
+</tbody></table></div><p>This is an editorial comparison of the sources below, not a finding that the later records were supplied to earlier investors. Present capability, development plans and forecasts require separate evidence.</p></section>'''
+            body += refs(['trial-grossman-2021', 'trial-peterson-2021', 'fda-hsv1', 'minilab-paper'])
             body += '''<h2>The evidence chain—and its missing link</h2>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Investor evidence chain"><table><caption>Records must be linked, not merely placed next to one another</caption><thead><tr><th scope="col">Record</th><th scope="col">What it establishes here</th><th scope="col">Still missing</th></tr></thead><tbody>
-<tr><th scope="row">Appellate account of Peterson's testimony</th><td>A court-described forecast representation received from the executives.</td><td>Full testimony and exact investor-facing attachments.</td></tr>
+<tr><th scope="row">Peterson's selected direct/cross-examination</th><td>Receipt and discussion of Exhibit 1853; investing entity named in testimony.</td><td>Complete testimony, exact scan identity and complete delivery history.</td></tr>
 <tr><th scope="row">15 July 2014 internal email, Exhibit 15031</th><td>A particular financial version circulated internally.</td><td>Proof that this version reached Peterson, when, and with which qualifications.</td></tr>
 <tr><th scope="row">Surviving technology presentation, Exhibit 3696</th><td>Wording presenting a testing capability.</td><td>Investor-specific delivery and a dated, validated demonstration.</td></tr>
-<tr><th scope="row">Investment decision</th><td>Requires its own transaction and reliance records.</td><td>Verified entity, dates, amounts and decision evidence.</td></tr></tbody></table></div>
+<tr><th scope="row">Investment decision</th><td>Dynasty Financial II LLC identified in testimony; reliance described by the witness.</td><td>All beneficial owners, payment reconciliation and complete decision records.</td></tr></tbody></table></div>
 <h2>Provisional conclusion</h2><p>This is a useful primary-record case study, not yet a complete reconstruction of a particular investment. It shows why forecast risk, present capability and actual reliance need separate treatment. A matching dollar figure does not close the delivery gap.</p>
 <p><a href="financial-records.html">Inspect the financial records and arithmetic</a> · <a href="capabilities.html">Present versus future claims</a> · <a href="timeline.html">Investor chronology</a></p>'''
         elif work['page'] == 'patent-map.html':

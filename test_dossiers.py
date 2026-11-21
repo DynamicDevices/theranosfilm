@@ -73,6 +73,33 @@ class DossierTests(unittest.TestCase):
         self.assertEqual(rows['snapshot-deficit']['amount_usd'], -305787000)
         self.assertEqual(rows['forecast-rd-2015']['basis'], 'forecast')
 
+    def test_settlement_claims_payments_and_original_spending_stay_distinct(self):
+        findings = {f['id']: f for w in self.data['workstreams'] for f in w['findings']}
+        self.assertIn('12 September 2018', findings['finance-assignment-followthrough']['text'])
+        self.assertIn('not inspection of the original', findings['finance-assignment-followthrough']['text'])
+        self.assertIn('$1,331,094.88', findings['finance-allowed-versus-paid']['text'])
+        self.assertIn('not a receipt', findings['finance-allowed-versus-paid']['text'])
+        self.assertIn('Walgreens to fund $44m', findings['finance-walgreens-separate-funds']['text'])
+        self.assertNotIn('actual_spending', {r['basis'] for r in self.data['financial_rows']})
+
+    def test_investor_chronology_does_not_backdate_later_achievements(self):
+        page = render(ROOT)['investor-case.html']
+        self.assertIn('id="dated-investor-comparison"', page)
+        for date in ['December 2013', 'October 2014', 'July 2015', '2018 / miniLab']:
+            self.assertIn(date, page)
+        self.assertIn('not a finding that the later records were supplied', page)
+        self.assertIn('source-trial-peterson-2021', page)
+        self.assertIn('null protocol', page)
+        self.assertIn('not our reconstruction of every visit', page)
+
+    def test_film_and_comparator_limits_remain_explicit(self):
+        findings = {f['id']: f for w in self.data['workstreams'] for f in w['findings']}
+        self.assertIn('No frequency count or behavioural diagnosis', findings['companion-nodding-boundary']['text'])
+        self.assertIn('absence from our notes is not proof', findings['companion-investor-comparison']['text'])
+        self.assertIn('not direct-fingerstick universal', findings['patent-comparator-scope']['text'])
+        self.assertEqual(findings['patent-comparator-scope']['sources'], ['filmarray-k160457'])
+        self.assertIn('no further operator intervention', findings['engineer-automation-boundary']['text'])
+
     def test_new_expense_testimony_is_not_a_forecast_or_a_cash_ledger(self):
         rows = {r['id']: r for r in self.data['financial_rows']}
         for year, opex, rd in [(2011, 28200000, 22000000),
