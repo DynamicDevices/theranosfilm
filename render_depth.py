@@ -19,7 +19,14 @@ def sections(research, depth, references, dossiers=None):
 <h2>Why the two halves can feel confusing</h2>
 <p>The festival synopsis describes documentary access to Holmes and Evans; a participant interview discusses Seyfried's performance. These support distinguishing documentary access from performance, but do not establish a clean boundary at the halfway point. Do not assume every earlier shot is unconstructed or every later shot is acted.</p>'''
     start += references(['flc', 'participants'])
-    start += '''<h2>A short route through the investigation</h2>
+    start += '''<section id="after-watching"><h2>Questions after watching You Can See Everything</h2>
+<h3>Is Elizabeth Holmes played by an actor?</h3><p>The production accounts distinguish access to Holmes from Amanda Seyfried's later performance. Check the passage, not simply which half it appears in. <a href="film-guide.html">Read the real-footage and actors guide</a>.</p>
+<h3>Who is the interviewer?</h3><p>Nathan Fielder co-directed the film with Lance Oppenheim. <a href="analysis.html#interviewer">Read Fielder's role and the account of how he became involved</a>.</p>
+<h3>What did the Theranos machine actually do?</h3><p>A working assay, a multi-method prototype and a validated patient-testing service are different achievements. <a href="technology.html">Compare Edison, miniLab and the documented limits</a>.</p>
+<h3>Were investors buying a future idea or an existing invention?</h3><p>Both forecasts and claims about present operations appear in the records. <a href="investor-case.html#dated-investor-comparison">Follow the dated investor comparison</a>.</p>
+<h3>What does the ending prove?</h3><p>A later interview or reconstruction does not settle historical technical claims. <a href="scene-companion.html">Check the performance, memory and scene-evidence limits</a>.</p>
+<h3>Where did the money go?</h3><p>We have some historical expense records, not a complete spending ledger. <a href="financial-records.html">Inspect the financial reconstruction and separate settlement payments</a>.</p>
+</section><h2>A short route through the investigation</h2>
 <ol class="reading-route"><li><a href="analysis.html">Meet the people</a>: separate company executives, later personal relationships and the people constructing the film.</li>
 <li><a href="film-guide.html">Check the recording and performance guide</a>: identify what a passage can establish before interpreting it.</li>
 <li><a href="capabilities.html">Compare present capability with future potential</a>: read the investor wording and its limits.</li>

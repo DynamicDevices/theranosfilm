@@ -40,6 +40,25 @@ Do not submit private medical or contact information, unsupported allegations or
 
 ## Publication and access
 
+### Finding the analysis after watching the film
+
+The site answers viewer questions about *You Can See Everything*: real footage
+versus acting, Nathan Fielder and Amanda Seyfried, the Theranos technology,
+investor representations and the money. Page titles, descriptions and a visible
+after-watching guide link those questions to source-backed chapters and remaining
+gaps. Production accounts remain attributed, not treated as independent proof.
+
+Published builds include canonical URLs, an XML sitemap, crawlable HTML,
+robots.txt, social previews, film-subject structured data and breadcrumbs matching
+the visible navigation. Local previews remain noindex. No hidden keyword text,
+invented ratings, official-film affiliation or guaranteed search ranking is used.
+The optional llms.txt is a reading index, not a Google indexing requirement.
+
+These choices follow Google's [SEO starter guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
+and [AI search guidance](https://developers.google.com/search/docs/appearance/ai-features).
+Search Console submission and index-coverage reporting have not been performed
+as part of this update; sitemap availability alone does not establish indexing.
+
 The site is static, with readable chapters, accessible relationship links and no advertising, tracking scripts or remote fonts. The next release adds a Hits.sh counter image to the homepage footer: its provider receives visitors' IP addresses and request metadata. The figure represents approximate badge loads, not unique readers or an audited audience. Local source previews use an inactive placeholder. See [counter and privacy](about.html#views-privacy). Releases include canonical URLs, a sitemap and structured metadata to help readers and search engines find the analysis; inclusion or ranking is not guaranteed.
 
 Changes use pull requests and genuine current-base CI, without required manual PR approval. Preloop is paused for this project at Alex's request. Publication separately checks the approved main commit and exact build manifest. See [Actions](https://github.com/DynamicDevices/theranosfilm/actions) for the actual workflow state; a passing check is not proof that the public domain is live.

@@ -13,6 +13,14 @@ from research import ROOT, load_depth, read_json
 
 
 class DepthTests(unittest.TestCase):
+    def test_new_production_account_narrows_origin_but_not_final_cut(self):
+        research = read_json(ROOT / 'data/research.json')
+        depth = load_depth(ROOT, research)
+        interviewer = next(p for p in depth['profiles'] if p['id'] == 'interviewer')
+        self.assertIn('initially intended to produce', interviewer['involvement'])
+        self.assertIn('final-cut authority', interviewer['gap'])
+        self.assertIn('oppenheim-gq-2026', interviewer['sources'])
+
     def test_seven_profiles_have_attributed_roles_and_limits(self):
         research = read_json(ROOT / 'data/research.json')
         depth = load_depth(ROOT, research)
