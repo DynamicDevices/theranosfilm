@@ -9,6 +9,7 @@ from jsonschema import ValidationError
 
 from render_dossiers import PAGES, financial_checks, sections
 from research import ROOT, load_dossiers, read_json
+from render_research import render
 
 
 class DossierTests(unittest.TestCase):
@@ -119,6 +120,32 @@ class DossierTests(unittest.TestCase):
         self.assertIn('not a Theranos-machine', findings['engineer-sampling-evidence']['text'])
         self.assertIn('not our independent identification', findings['companion-device-counteraccount']['text'])
         self.assertEqual(findings['grossman-existing-business']['sources'], ['trial-grossman-2021'])
+
+    def test_platform_experiments_keep_integration_and_attempt_limits(self):
+        findings = {f['id']: f for w in self.data['workstreams'] for f in w['findings']}
+        self.assertIn('could not contain all modules', findings['engineer-integration-limits']['text'])
+        self.assertIn('Do not divide by final specimen counts', findings['engineer-first-attempt-reliability']['text'])
+        page = render(ROOT)['technology.html']
+        self.assertIn('id="assay-demonstrations"', page)
+        for time in ['140 minutes', '80 minutes', '45 minutes', '109 minutes']:
+            self.assertIn(time, page)
+        self.assertIn('separate assay configurations, not a combined workflow', page)
+        self.assertIn('Run time is not patient turnaround time', page)
+        self.assertIn('source-minilab-supplement', page)
+
+    def test_closure_letter_is_not_a_final_settlement_or_spending_ledger(self):
+        findings = {f['id']: f for w in self.data['workstreams'] for f in w['findings']}
+        self.assertEqual(findings['finance-closure-letter']['sources'], ['closure-letter-2018'])
+        self.assertIn('at least $60m', findings['finance-closure-letter']['text'])
+        self.assertIn('not audited balances', findings['finance-closure-letter']['text'])
+        self.assertIn('does not prove completed settlement', findings['finance-ip-settlement-proposal']['text'])
+
+    def test_litigation_is_not_proven_patent_value(self):
+        findings = {f['id']: f for w in self.data['workstreams'] for f in w['findings']}
+        entry = findings['patent-postclosure-assertion']
+        self.assertIn('without prejudice', entry['text'])
+        self.assertIn('not proven infringement', entry['text'])
+        self.assertEqual(entry['sources'], ['labrador-complaint-2020', 'labrador-dismissal-2020'])
 
     def test_arithmetic_differences_are_derived_not_hidden(self):
         checks = {c['id']: c for c in financial_checks(self.data)}
