@@ -38,7 +38,14 @@ function select(id){const link=links.find(l=>l.id===id);if(!link)return;selected
 for(const t of topics){const a=document.createElement('a');a.className='node';a.href='#'+links.find(l=>l.a===t.id||l.b===t.id).id;a.style.left=t.x*100+'%';a.style.top=t.y*100+'%';a.textContent=t.title;const small=document.createElement('small');small.textContent=t.kind;a.append(small);document.querySelector('#nodes').append(a);}
 for(const l of links){const a=document.createElement('a');a.className='edge';a.dataset.id=l.id;a.href='#'+l.id;a.textContent=l.label;a.style.left=(byId[l.a].x+byId[l.b].x)*50+'%';a.style.top=(byId[l.a].y+byId[l.b].y)*50+'%';document.querySelector('#edges').append(a);const article=document.createElement('article');article.id=l.id;content(l,article,false);document.querySelector('#reading-list').append(article);}
 // Native anchors retain a readable destination if graphics are unavailable.
-document.querySelectorAll('.edge,.node').forEach(a=>a.addEventListener('click',()=>select(a.hash.slice(1))));
+document.querySelectorAll('.edge,.node').forEach(a=>a.addEventListener('click',event=>{
+  // A normal selection updates the source panel in place. Modified clicks retain
+  // native link behaviour; the same anchors still work without JavaScript.
+  if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+  event.preventDefault();
+  history.replaceState(null,'',a.hash);
+  select(a.hash.slice(1));
+}));
 window.addEventListener('hashchange',()=>select(location.hash.slice(1)));
 const canvas=document.querySelector('canvas');
 const gl=canvas.getContext('webgl');

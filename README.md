@@ -22,6 +22,12 @@ This is an initial, evolving analysis—not a completed biography, scene audit, 
 
 The site connects claims, people, chronology and sources. Its interactive relationship map has readable HTML alternatives; the chapters remain available without WebGL or JavaScript. Visual proximity or connections do not establish guilt or evidential strength.
 
+Start with the short explanation, then follow a question into the evidence.
+Longer chapters have an expandable contents list and stable section links.
+The film guide distinguishes the distributor's 175-minute listing from the
+festival's 174-minute listing: scene references must identify their edition.
+Neither listing proves the runtime or edit shown at a particular screening.
+
 Read the [film sequence guide](film-guide.html), [claim-to-evidence comparisons](claims.html), [people analysis](analysis.html), [technology explanation](technology.html), [investor timeline](timeline.html), [investor representations](investors.html), [money questions](money.html) and [source register](sources.html). Scene timestamps and the unidentified engineer remain explicit gaps, not invented facts.
 
 We distinguish allegations, court findings, source observations and interpretation. A document can establish what someone claimed without proving that the claimed technology worked. Inspection limits, uncertainty and competing supported accounts belong alongside the evidence. We do not infer dishonesty from body language, diagnose participants or imply guilt by association.

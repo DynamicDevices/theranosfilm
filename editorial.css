@@ -21,3 +21,29 @@ blockquote { border-left: 3px solid #ef3340; padding-left: 1rem; margin-inline: 
 .views-badge > a { display: inline-flex; align-items: center; min-height: 44px; }
 .views-badge img { display: block; max-width: 100%; }
 .views-badge small { display: block; line-height: 1.6; }
+
+/* Give a first-time viewer an explanation before asking them to choose a dossier. */
+.intro { min-height: 0; padding-block: 44px 48px; }
+.intro h1 { font-size: clamp(56px, 7vw, 96px); margin-block: 22px; }
+.intro .standfirst { max-width: 720px; margin-block: 20px; }
+.entry-links { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 24px; }
+.entry-links a { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font-size: 16px; }
+.intro .intro-note { margin-top: 22px; font-size: 13px; line-height: 1.7; }
+.research-index { border-block: 1px solid var(--line); padding-block: 20px; }
+.research-index summary { cursor: pointer; padding-block: 10px; min-height: 44px; }
+.research-index ul { columns: 2; padding-left: 22px; }
+.research-index li { break-inside: avoid; padding-right: 16px; }
+header nav a { display: inline-flex; align-items: center; min-height: 44px; }
+#connections-section, #reading-title { scroll-margin-top: 24px; }
+.chapter-outline { margin-block: 24px 32px; }
+.chapter-outline summary { cursor: pointer; min-height: 44px; padding-block: 10px; font-weight: 700; }
+.chapter-outline ol { columns: 2; padding-left: 24px; }
+.chapter-outline li { break-inside: avoid; margin-block: 10px; padding-right: 14px; font-size: 15px; }
+.reading h2[id] { scroll-margin-top: 24px; }
+@media (max-width: 600px) {
+  .intro { padding-block: 28px 36px; }
+  .intro h1 { font-size: clamp(38px, 10.5vw, 60px); letter-spacing: -1.5px; }
+  .entry-links { flex-direction: column; gap: 6px; }
+  .research-index ul { columns: 1; }
+  .chapter-outline ol { columns: 1; }
+}

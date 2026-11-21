@@ -1,5 +1,25 @@
 # Six improvements and the research they still need
 
+## Viewer release — current candidate, 21 November 2026
+
+The new candidate puts the film explanation before the deeper investigation
+links, adds chapter contents with stable anchors, and improves phone navigation.
+The relationship map updates its evidence panel without following the reading
+list anchor; panel resizing can still move the layout. The film guide now cites
+the different distributor/festival runtime listings without assuming a cinema cut.
+Release CSS and JavaScript URLs are content-versioned to avoid stale assets.
+
+Validation: 49 Python tests, four JavaScript tests, syntax and research-data
+checks pass. Browser checks confirm chapter navigation and no horizontal overflow
+at a 390px phone viewport. This is not a screen-reader audit or WCAG certification.
+The candidate is not yet published; strict CI, protected merge and exact-build
+production approval remain. The successful sitemap submission is already recorded;
+discovery is not proof of indexing or ranking. No independent fact review is claimed.
+
+Research still needs a checked film edition/transcript and engineer identification,
+exact investor document delivery, complete assay validation and actual spending
+records. Publish those limits plainly, not as answered questions.
+
 ## Primary-source follow-up — 21 November 2026
 
 Alex subsequently asked Briar to work through the engineer identification,

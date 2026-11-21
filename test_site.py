@@ -1,5 +1,6 @@
 """Offline structure checks. Not a browser/accessibility or truth audit."""
 import json
+import re
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
@@ -27,6 +28,37 @@ class Page(HTMLParser):
 
 
 class SiteTests(unittest.TestCase):
+    def test_chapter_outline_preserves_anchors_and_disambiguates_duplicates(self):
+        from render_research import chapter_outline
+        outline, body = chapter_outline(
+            '<section id="section-matched"><h2>Matched</h2></section>'
+            '<h2 id="original">Existing &amp; explained</h2>'
+            '<h2>Matched</h2><h2>A &lt;script&gt; claim</h2>')
+        self.assertIn('id="original"', body)
+        self.assertIn('href="#original"', outline)
+        self.assertIn('id="section-matched-2"', body)
+        self.assertIn('id="section-matched-3"', body)
+        self.assertIn('Existing &amp; explained', outline)
+        self.assertIn('A &lt;script&gt; claim', outline)
+        self.assertNotIn('<script>', outline)
+        ids = re.findall(r'\bid="([^"]+)"', body)
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertEqual(chapter_outline('<h2>Only one</h2>')[0], '')
+
+    def test_homepage_starts_with_the_explanation_and_keeps_deep_routes(self):
+        source = (ROOT / 'index.html').read_text()
+        opening = source.split('<main id="main">', 1)[1].lstrip()
+        self.assertTrue(opening.startswith('<section class="intro"'))
+        self.assertIn('aria-labelledby="film-title"', opening)
+        hero = opening.split('</section>', 1)[0]
+        self.assertIn('href="start-here.html"', hero)
+        self.assertIn('href="#connections-section"', hero)
+        self.assertIn('Not affiliated with Theranos or the filmmakers', hero)
+        self.assertIn('aria-label="Deeper investigations"', source)
+        for name in ('engineer.html', 'patent-map.html', 'financial-records.html',
+                     'scene-companion.html', 'specialists.html'):
+            self.assertIn(f'href="{name}"', source)
+
     def test_static_local_links_and_fragments(self):
         for file in ROOT.glob('*.html'):
             page = Page(file.read_text())

@@ -1,6 +1,7 @@
 """Build an allowlisted static release. Never copy the working directory wholesale."""
 import argparse
 import html
+import hashlib
 import json
 import re
 import shutil
@@ -75,6 +76,15 @@ def build(destination, base_url, source=ROOT):
         if (source / filename).read_text() != expected:
             raise ValueError(f'Research page out of date: {filename}')
     destination.mkdir(parents=True)
+    # A release's pages must not reuse stale cached CSS/JS from the previous
+    # release. One deterministic version also covers style.css's CSS import.
+    versioned_assets = ('style.css', 'editorial.css', 'map.js', 'research-ui.js')
+    version_hash = hashlib.sha256()
+    for filename in versioned_assets:
+        version_hash.update(filename.encode() + b'\0')
+        version_hash.update((source / filename).read_bytes())
+        version_hash.update(b'\0')
+    asset_version = version_hash.hexdigest()[:16]
     urls = []
     for filename in PAGES:
         text = (source / filename).read_text()
@@ -158,9 +168,15 @@ def build(destination, base_url, source=ROOT):
                         + json.dumps(breadcrumbs, ensure_ascii=False).replace('<', '\\u003c')
                         + '</script>')
         text = text.replace('</head>', '\n' + '\n'.join(tags) + '\n</head>', 1)
+        for asset in versioned_assets:
+            text = text.replace(f'href="{asset}"', f'href="{asset}?v={asset_version}"')
+            text = text.replace(f'src="{asset}"', f'src="{asset}?v={asset_version}"')
         (destination / filename).write_text(text)
     for filename in ASSETS:
         shutil.copyfile(source / filename, destination / filename)
+    editorial = destination / 'editorial.css'
+    editorial.write_text(editorial.read_text().replace(
+        '@import url("style.css")', f'@import url("style.css?v={asset_version}")'))
     # Only validated, explicitly addressed public records are release assets.
     public_records = ['data/research.json', 'data/depth.json', 'data/dossiers.json'] + [f'data/contributions/{key}.json' for key in proposals] + [f'data/reviews/{key}.json' for key in reviews]
     for filename in public_records:
