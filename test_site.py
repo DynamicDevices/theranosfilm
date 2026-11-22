@@ -34,7 +34,8 @@ class SiteTests(unittest.TestCase):
         self.assertIn('aria-labelledby="updates-title"', history)
         self.assertIn('not new findings about Theranos', history)
         self.assertEqual(history.count('<time datetime="2026-11-21">'), 4)
-        self.assertEqual(history.count('<time datetime="2026-11-22">'), 1)
+        self.assertEqual(history.count('<time datetime="2026-11-22">'), 2)
+        self.assertIn('source-guardian-bradshaw-20261119', history)
         self.assertIn('href="evidence.html#source-guardian-shoard-20261121"', history)
         positions = [history.index(f'/pull/{number}"') for number in (26, 25, 24, 22)]
         self.assertEqual(positions, sorted(positions))

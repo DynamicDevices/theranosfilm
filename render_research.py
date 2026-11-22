@@ -365,7 +365,9 @@ def render(root=ROOT):
              '<p>We record criticism separately from factual findings. Before adopting an assessment, '
              'identify the exact scene, the interview question and answer, and the relevant primary record. '
              'Distinguish what the film shows from what a reviewer infers.</p>'
-             '<p><a href="evidence.html#source-guardian-shoard-20261121">Guardian commentary: source and limitations</a>. '
+             '<ul><li><a href="evidence.html#source-guardian-bradshaw-20261119">Peter Bradshaw: review, 19 November 2026</a> (contains spoilers).</li>'
+             '<li><a href="evidence.html#source-guardian-shoard-20261121">Catherine Shoard: commentary, 21 November 2026</a>.</li></ul>'
+             '<p>These are different writers, not a single editorial verdict. Compare their assessments with the same scene and primary record. '
              'Adding a source does not authenticate a scene or establish a participant’s motives. '
              'The article remains the publisher’s work; we link it rather than reproduce it.</p></section>')
     film += '<h2>Continue the scene investigation</h2><p><a href="scene-companion.html">Use the edition-aware scene companion</a> · <a href="engineer.html">Investigate the remembered wrong-technology exchange</a>.</p>'
