@@ -34,12 +34,27 @@ class SiteTests(unittest.TestCase):
         self.assertIn('aria-labelledby="updates-title"', history)
         self.assertIn('not new findings about Theranos', history)
         self.assertEqual(history.count('<time datetime="2026-11-21">'), 4)
+        self.assertEqual(history.count('<time datetime="2026-11-22">'), 1)
+        self.assertIn('href="evidence.html#source-guardian-shoard-20261121"', history)
         positions = [history.index(f'/pull/{number}"') for number in (26, 25, 24, 22)]
         self.assertEqual(positions, sorted(positions))
+        self.assertLess(history.index('datetime="2026-11-22"'), positions[0])
         self.assertIn('/commits/main/', history)
         self.assertIn('href="contribute.html"', history)
         self.assertLess(source.index('class="participate"'), source.index('id="updates"'))
         self.assertLess(source.index('id="updates"'), source.index('<footer>'))
+
+    def test_guardian_commentary_is_classified_and_connected_without_new_findings(self):
+        from render_research import render
+        research = json.loads((ROOT / 'data/research.json').read_text())
+        source = next(s for s in research['sources'] if s['id'] == 'guardian-shoard-20261121')
+        self.assertEqual(source['kind'], 'Critical opinion')
+        self.assertIn('not independent authentication', source['limit'])
+        pages = render(ROOT)
+        self.assertIn('id="critical-responses"', pages['film-guide.html'])
+        self.assertIn('evidence.html#source-guardian-shoard-20261121', pages['film-guide.html'])
+        for name in ('film-guide.html', 'evidence.html'):
+            self.assertIn('datetime="2026-11-22">Updated 22 November 2026', pages[name])
 
     def test_map_interaction_regressions(self):
         import subprocess
