@@ -72,7 +72,8 @@ def chapter_outline(body):
     return outline, body
 
 
-def page(title, description, eyebrow, intro, body, active):
+def page(title, description, eyebrow, intro, body, active, updated='2026-11-21'):
+    readable_date = datetime.strptime(updated, '%Y-%m-%d').strftime('%d %B %Y').lstrip('0')
     outline, body = chapter_outline(body)
     search_title = SEARCH_TITLES.get(active, title)
     nav = [('start-here.html', 'Start here'), ('film-guide.html', 'Film guide'), ('claims.html', 'Claims'),
@@ -94,12 +95,12 @@ def page(title, description, eyebrow, intro, body, active):
             f'<main id="article" class="reading longform"><p class="eyebrow">{esc(eyebrow)}</p>'
             f'<h1>{esc(title)}</h1><p class="standfirst">{esc(intro)}</p>'
             '<p class="editorial-note">Edited by the Theranos Film project · Briar assisted · '
-            '<time datetime="2026-11-21">Updated 21 November 2026</time>. '
+            f'<time datetime="{esc(updated)}">Updated {esc(readable_date)}</time>. '
             'Editorial draft; not independently fact-checked. '
             '<a href="about.html">About this independent project</a> · '
             '<a href="contribute.html">Corrections and review history</a>.</p>'
             f'{outline}{body}</main>'
-            '<footer>Independent research in progress · 21 November 2026. '
+            f'<footer>Independent research in progress · {esc(readable_date)}. '
             'Not affiliated with Theranos, the filmmakers or any agency. '
             '<a href="evidence.html">Source register and inspection limits</a> · '
             '<a href="accessibility.html">Access and reading options</a> · '
@@ -360,6 +361,13 @@ def render(root=ROOT):
 <h2>What is not claimed</h2><p>This is not a WCAG certification or a substitute for testing with disabled readers. Automated checks cannot establish screen-reader usability, clear language or a fully accessible WebGL map. Full screen-reader and real-device coverage remain unverified for this release. Report a barrier with the page, device/browser, assistive technology if relevant and what you expected—without sharing private information.</p>
 <p><a href="https://github.com/DynamicDevices/theranosfilm/issues/new?template=accessibility.yml">Report an access barrier</a> · <a href="film-guide.html">Read the film guide</a> · <a href="claims.html">Read the evidence without the map</a></p>'''
 
+    film += ('<section id="critical-responses"><h2>How should we assess criticism of the film?</h2>'
+             '<p>We record criticism separately from factual findings. Before adopting an assessment, '
+             'identify the exact scene, the interview question and answer, and the relevant primary record. '
+             'Distinguish what the film shows from what a reviewer infers.</p>'
+             '<p><a href="evidence.html#source-guardian-shoard-20261121">Guardian commentary: source and limitations</a>. '
+             'Adding a source does not authenticate a scene or establish a participant’s motives. '
+             'The article remains the publisher’s work; we link it rather than reproduce it.</p></section>')
     film += '<h2>Continue the scene investigation</h2><p><a href="scene-companion.html">Use the edition-aware scene companion</a> · <a href="engineer.html">Investigate the remembered wrong-technology exchange</a>.</p>'
     technology += '<h2>Inspect a granted claim</h2><p><a href="patent-map.html">Read the first patent claim chart</a> and keep legal scope separate from product validation.</p>'
     timeline += '<h2>Follow one investor evidence chain</h2><p><a href="investor-case.html">Read the Peterson case study</a>: court-described testimony, an internal financial version and the delivery link still missing.</p>'
@@ -373,7 +381,9 @@ def render(root=ROOT):
     }
     definitions.update(sections(research, depth, references, dossiers))
     definitions.update(dossier_sections(dossiers, references))
-    return {name: page(*parts, active=name) for name, parts in definitions.items()}
+    return {name: page(*parts, active=name, updated=research['updated'])
+            if name in ('film-guide.html', 'evidence.html') else page(*parts, active=name)
+            for name, parts in definitions.items()}
 
 
 if __name__ == '__main__':
